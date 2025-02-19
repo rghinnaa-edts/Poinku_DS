@@ -1,10 +1,3 @@
-//
-//  tes.swift
-//  Poinku-DS
-//
-//  Created by Rizka Ghinna Auliya on 19/02/25.
-//
-
 # Ribbon
 The `Ribbon` component is a customizable view that displays a triangular ribbon-like element with a text label. It's designed to be used in a variety of IOS applications, especially for visual accents like banners or labels. The component supports different styles, colors, and gravity (alignment) settings, allowing for flexible usage in different UI layouts.
 
@@ -26,6 +19,8 @@ To use the `Ribbon` component, please add this line code to create the form of r
 
 ### Programmatic Usage
 ```Gradient Color
+//Gradient Color
+
 let ribbonView = RibbonView()
 ribbonView.ribbonText = "Hot Product!"
 ribbonView.triangleColor = .red50
@@ -42,6 +37,8 @@ ribbonView.anchorToView(
 ```
 
 ```Solid Color
+// Solid Color
+
 let ribbonView = RibbonView()
 ribbonView.ribbonText = "x2"
 ribbonView.triangleColor = .blue50
