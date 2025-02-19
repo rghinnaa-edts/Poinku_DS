@@ -199,7 +199,7 @@ class StampCardCell: UICollectionViewCell {
             rootParent: stampCard,
             targetView: vCoupon,
             verticalAlignment: .top,
-            offsetX: 21
+            offsetX: 25
         )
     }
 }
