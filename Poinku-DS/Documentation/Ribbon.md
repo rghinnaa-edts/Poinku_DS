@@ -18,8 +18,8 @@ The `Ribbon` component is a customizable view that displays a triangular ribbon-
 ## Ribbon Types Overview
 | Ribbon Gravity    | Preview                                  |
 |-------------------|------------------------------------------|
-| **Start Gravity** | ![Start](https://res.cloudinary.com/dr6cm6n5f/image/upload/v1739953957/Poinku-DS-UIKit/o16sp9cgheg0l9x51lb8.png) |
-| **End Gravity**   | ![End](https://res.cloudinary.com/dr6cm6n5f/image/upload/v1739953935/Poinku-DS-UIKit/ewlyc4vwldfd1ggnprma.png)     |
+| **Start Gravity** | ![Start](https://res.cloudinary.com/dr6cm6n5f/image/upload/v1739953935/Poinku-DS-UIKit/ewlyc4vwldfd1ggnprma.png) |
+| **End Gravity**   | ![End](https://res.cloudinary.com/dr6cm6n5f/image/upload/v1739953957/Poinku-DS-UIKit/o16sp9cgheg0l9x51lb8.png)   |
 
 ## Installation
 To use the `Ribbon` component, please add this line code to create the form of ribbon.
