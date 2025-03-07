@@ -8,7 +8,7 @@ The `Coachmark` component is a visual overlay element that helps guide users thr
 -  Provides an option to attach/anchor to a specific view in the layout
 
 ## Preview
-![Coachmark Preview](https://res.cloudinary.com/dr6cm6n5f/image/upload/v1741333998/coachmark_o262ie.gif)
+![Coachmark Preview](https://res.cloudinary.com/dr6cm6n5f/image/upload/v1741336737/WhatsApp_GIF_2025-03-07_at_14.50.56_mxtwms.gif)
 
 ## Methods
 - `configure(title: String, description: String, targetView: UIView, spotlightRadius: CGFloat, tintColor: UIView)`
