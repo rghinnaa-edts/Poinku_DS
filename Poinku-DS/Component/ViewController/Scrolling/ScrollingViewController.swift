@@ -1,14 +1,13 @@
 //
 //  ScrollingViewController.swift
-//  Poinku-DS-SB
+//  Poinku-DS
 //
-//  Created by Rizka Ghinna Auliya on 18/02/25.
+//  Created by Rizka Ghinna Auliya on 24/02/25.
 //
 
 import UIKit
 
 class ScrollingViewController: UIViewController {
-    
     private var uiStoryboard: UIStoryboard = UIStoryboard()
     
     override func viewDidLoad() {
