@@ -47,8 +47,8 @@ ribbonView.textColor = .white
 ribbonView.gravity = .start
 
 ribbonView.anchorToView(
-  rootParent: view,
-  targetView: testCard
+  rootParent: parentView,
+  targetView: view
 )
 ```
 
