@@ -7,7 +7,7 @@ The `Stamp Page Scroll Behavior` is a scroll behavior of position the chip bucke
 -  Auto scroll to selected bucket where product refer to
 
 ## Preview
-![Stamp Page Scroll Behavior Preview](https://res.cloudinary.com/dr6cm6n5f/image/upload/c_savel, w_200/v1741579637/scroll_k4vug5.gif)
+![Stamp Page Scroll Behavior Preview](https://res.cloudinary.com/dr6cm6n5f/image/upload/c_scale,w_200/v1741579637/scroll_k4vug5.gif)
 
 ## Methods
 - `selectDefaultChipBucket()`
