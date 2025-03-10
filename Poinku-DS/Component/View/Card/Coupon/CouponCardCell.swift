@@ -1,5 +1,5 @@
 //
-//  StampCardCell.swift
+//  CouponCardCell.swift
 //  Poinku-DS-SB
 //
 //  Created by Rizka Ghinna Auliya on 10/02/25.
@@ -9,14 +9,15 @@ import UIKit
 
 class CouponCardCell: UICollectionViewCell {
     
-    @IBOutlet var stampCard: UIView!
-    @IBOutlet var ivStampCard: UIImageView!
-    @IBOutlet var vCoupon: UIView!
-    @IBOutlet var lblCoupon: UILabel!
-    @IBOutlet var ivCoupon: UIImageView!
-    @IBOutlet var lblStampCard: UILabel!
-    @IBOutlet var vStamp: UIView!
-    @IBOutlet var lblStamp: UILabel!
+    @IBOutlet var couponCard: UIView!
+    @IBOutlet var ivCouponCard: UIImageView!
+    @IBOutlet var vAvailable: UIView!
+    @IBOutlet var lblAvailable: UILabel!
+    @IBOutlet var ivAvailable: UIImageView!
+    @IBOutlet var lblCouponCard: UILabel!
+    @IBOutlet var vIKupon: UIView!
+    @IBOutlet var ivIKupon: UIImageView!
+    @IBOutlet var lblIKupon: UILabel!
     @IBOutlet var btnExchange: UIButton!
     
     var id: String = ""
@@ -67,12 +68,12 @@ class CouponCardCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupStampCard()
+        setupCouponCard()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        setupStampCard()
+        setupCouponCard()
     }
     
     override func awakeFromNib() {
@@ -81,93 +82,97 @@ class CouponCardCell: UICollectionViewCell {
         setupUI()
     }
 
-    private func setupStampCard() {
-        if let nib = Bundle.main.loadNibNamed("StampCard", owner: self, options: nil),
+    private func setupCouponCard() {
+        if let nib = Bundle.main.loadNibNamed("CouponCard", owner: self, options: nil),
            let card = nib.first as? UIView {
-            stampCard = card
-            stampCard.frame = contentView.bounds
-            stampCard.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            contentView.addSubview(stampCard)
+            couponCard = card
+            couponCard.frame = contentView.bounds
+            couponCard.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            contentView.addSubview(couponCard)
             
             setupUI()
         } else {
-            print("Failed to load StampCard XIB")
+            print("Failed to load CouponCard XIB")
         }
     }
     
     private func setupUI() {
         UIStampCard()
-        UICoupon()
-        UIStamp()
+        UIAvailable()
+        UIikupon()
         UIRibbonHotProduct()
     }
     
     private func UIStampCard() {
-        stampCard.layer.cornerRadius = 8
-        stampCard.layer.masksToBounds = true
+        couponCard.layer.cornerRadius = 8
+        couponCard.layer.masksToBounds = true
         
-        stampCard.backgroundColor = .white
-        stampCard.layer.shadowColor = UIColor.blackIDM.cgColor
-        stampCard.layer.shadowOpacity = 0.15
-        stampCard.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
-        stampCard.layer.shadowRadius = 3.0
-        stampCard.layer.masksToBounds = false
+        couponCard.backgroundColor = .white
+        couponCard.layer.shadowColor = UIColor.black.cgColor
+        couponCard.layer.shadowOpacity = 0.15
+        couponCard.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+        couponCard.layer.shadowRadius = 3.0
+        couponCard.layer.masksToBounds = false
         
-        lblStampCard.textColor = .grey70
-        lblStampCard.font = Font.Body.B3.Small.font
+        lblCouponCard.textColor = .grey70
+        lblCouponCard.font = Font.Body.B3.Small.font
         
         btnExchange.backgroundColor = .blue30
         btnExchange.layer.cornerRadius = 4
         btnExchange.titleLabel?.textColor = .white
         btnExchange.titleLabel?.font = Font.Button.Small.font
         
-        lblStampCard.text = "Diskon Rp2.000 Lifebuoy Red Fresh"
-        ivStampCard.image = UIImage(named: "placeholder")
+        lblCouponCard.text = "Diskon Rp2.000 Lifebuoy Red Fresh"
+        ivCouponCard.image = UIImage(named: "placeholder")
     }
     
-    private func UICoupon() {
-        ivCoupon.image = if coupon < 10 && coupon > 0 {
+    private func UIAvailable() {
+        ivAvailable.image = if coupon < 10 && coupon > 0 {
             UIImage(named: "exclamation")
         } else {
             UIImage(named: "product-empty")
         }
-        ivCoupon.image = ivCoupon.image?.withRenderingMode(.alwaysTemplate)
+        ivAvailable.image = ivAvailable.image?.withRenderingMode(.alwaysTemplate)
         
-        ivCoupon.tintColor = if coupon < 10 && coupon > 0 {
+        ivAvailable.tintColor = if coupon < 10 && coupon > 0 {
             .warningStrong
         } else {
             .errorStrong
         }
         
-        vCoupon.backgroundColor = if coupon < 10 && coupon > 0 {
+        vAvailable.backgroundColor = if coupon < 10 && coupon > 0 {
             .warningWeak
         } else {
             .errorWeak
         }
         
-        lblCoupon.textColor = if coupon < 10 && coupon > 0 {
+        lblAvailable.textColor = if coupon < 10 && coupon > 0 {
             .warningStrong
         } else {
             .errorStrong
         }
         
-        lblCoupon.text = if coupon < 10 && coupon > 0 {
+        lblAvailable.text = if coupon < 10 && coupon > 0 {
             "Kupon Mau Habis"
         } else {
             "Kupon Habis"
         }
-        lblCoupon.font = Font.Body.B4.Small.font
+        lblAvailable.font = Font.Body.B4.Small.font
     }
     
-    private func UIStamp() {
-        vStamp.backgroundColor = .highlightWeak
-        vStamp.layer.cornerRadius = 8
-        vStamp.layer.borderWidth = 1
-        vStamp.layer.borderColor = UIColor.warningStrong.cgColor
+    private func UIikupon() {
+        ivIKupon.image = UIImage(named: "store-01")
+        ivIKupon.image = ivIKupon.image?.withRenderingMode(.alwaysTemplate)
+        ivIKupon.tintColor = .primaryHighlightStrong
         
-        lblStamp.textColor = .warningStrong
-        lblStamp.font = Font.Body.B4.Small.font
-        lblStamp.text = "24 Stamp"
+        vIKupon.backgroundColor = .primaryHighlightWeak
+        vIKupon.layer.cornerRadius = 8
+        vIKupon.layer.borderWidth = 1
+        vIKupon.layer.borderColor = UIColor.primaryHighlightStrong.cgColor
+        
+        lblIKupon.textColor = .primaryHighlightStrong
+        lblIKupon.font = Font.Body.B4.Small.font
+        lblIKupon.text = "i-Kupon"
     }
     
     private func UIRibbonHotProduct() {
@@ -180,8 +185,23 @@ class CouponCardCell: UICollectionViewCell {
         ribbonView.gravity = .start
 
         ribbonView.anchorToView(
-            rootParent: stampCard,
-            targetView: stampCard
+            rootParent: couponCard,
+            targetView: couponCard
         )
+    }
+    
+    func calculateHeight(for width: CGFloat) -> CGFloat {
+        let widthConstraint = couponCard.widthAnchor.constraint(equalToConstant: width)
+        widthConstraint.isActive = true
+        
+        let size = couponCard.systemLayoutSizeFitting(
+            CGSize(width: width, height: UIView.layoutFittingCompressedSize.height),
+            withHorizontalFittingPriority: .required,
+            verticalFittingPriority: .fittingSizeLevel
+        )
+        
+        widthConstraint.isActive = false
+        
+        return size.height
     }
 }

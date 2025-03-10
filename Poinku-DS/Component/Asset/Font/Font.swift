@@ -66,7 +66,8 @@ struct Font {
     
     struct Body {
         struct B1 {
-            static let Large = BaseFont.semibold(size: 16, lineHeight: 18)
+            static let Large = BaseFont.bold(size: 16, lineHeight: 18)
+            static let Medium = BaseFont.semibold(size: 16, lineHeight: 18)
             static let Small = BaseFont.regular(size: 16, lineHeight: 18)
         }
         

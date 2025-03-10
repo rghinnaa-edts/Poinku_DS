@@ -11,9 +11,9 @@ class StampCardCell: UICollectionViewCell {
     
     @IBOutlet var stampCard: UIView!
     @IBOutlet var ivStampCard: UIImageView!
-    @IBOutlet var vCoupon: UIView!
-    @IBOutlet var lblCoupon: UILabel!
-    @IBOutlet var ivCoupon: UIImageView!
+    @IBOutlet var vQuantity: UIView!
+    @IBOutlet var lblQuantity: UILabel!
+    @IBOutlet var ivQuantity: UIImageView!
     @IBOutlet var lblStampCard: UILabel!
     @IBOutlet var vStamp: UIView!
     @IBOutlet var lblStamp: UILabel!
@@ -22,7 +22,7 @@ class StampCardCell: UICollectionViewCell {
     var id: String = ""
     var title: String = ""
     var imageURL: String = ""
-    var coupon: Int = 0
+    var quantity: Int = 3
     var stampCount: Int = 0
     var price: Int = 0
     var isNew: Bool = false
@@ -41,7 +41,7 @@ class StampCardCell: UICollectionViewCell {
         let id: String
         let title: String
         let imageURL: String
-        let coupon: Int
+        let quantity: Int
         let stampCount: Int
         let price: Int
         let isNew: Bool
@@ -55,7 +55,7 @@ class StampCardCell: UICollectionViewCell {
         id = product.id
         title = product.title
         imageURL = product.imageURL
-        coupon = product.coupon
+        quantity = product.quantity
         stampCount = product.stampCount
         price = product.price
         isNew = product.isNew
@@ -99,8 +99,8 @@ class StampCardCell: UICollectionViewCell {
         UIStampCard()
         UICoupon()
         UIStamp()
-        UIRibbonHotProduct()
-        UIRibbonNew()
+//        UIRibbonHotProduct()
+//        UIRibbonNew()
     }
     
     private func UIStampCard() {
@@ -108,15 +108,20 @@ class StampCardCell: UICollectionViewCell {
         stampCard.layer.masksToBounds = true
         
         stampCard.backgroundColor = .white
-        stampCard.layer.shadowColor = UIColor.blackIDM.cgColor
+        stampCard.layer.shadowColor = UIColor.black.cgColor
         stampCard.layer.shadowOpacity = 0.15
         stampCard.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
         stampCard.layer.shadowRadius = 3.0
         stampCard.layer.masksToBounds = false
         
+        vQuantity.layer.cornerRadius = 8
+        vQuantity.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
+        vQuantity.clipsToBounds = true
+        
         lblStampCard.textColor = .grey70
         lblStampCard.font = Font.Body.B3.Small.font
         
+        btnExchange.titleLabel?.text = "Tukar Stamp"
         btnExchange.backgroundColor = .blue30
         btnExchange.layer.cornerRadius = 4
         btnExchange.titleLabel?.textColor = .white
@@ -127,37 +132,37 @@ class StampCardCell: UICollectionViewCell {
     }
     
     private func UICoupon() {
-        ivCoupon.image = if coupon < 10 && coupon > 0 {
+        ivQuantity.image = if quantity < 10 && quantity > 0 {
             UIImage(named: "exclamation")
         } else {
             UIImage(named: "product-empty")
         }
-        ivCoupon.image = ivCoupon.image?.withRenderingMode(.alwaysTemplate)
+        ivQuantity.image = ivQuantity.image?.withRenderingMode(.alwaysTemplate)
         
-        ivCoupon.tintColor = if coupon < 10 && coupon > 0 {
+        ivQuantity.tintColor = if quantity < 10 && quantity > 0 {
             .warningStrong
         } else {
             .errorStrong
         }
         
-        vCoupon.backgroundColor = if coupon < 10 && coupon > 0 {
+        vQuantity.backgroundColor = if quantity < 10 && quantity > 0 {
             .warningWeak
         } else {
             .errorWeak
         }
         
-        lblCoupon.textColor = if coupon < 10 && coupon > 0 {
+        lblQuantity.textColor = if quantity < 10 && quantity > 0 {
             .warningStrong
         } else {
             .errorStrong
         }
         
-        lblCoupon.text = if coupon < 10 && coupon > 0 {
-            "Kupon Mau Habis"
+        lblQuantity.text = if quantity < 10 && quantity > 0 {
+            "Kuota Mau Habis"
         } else {
-            "Kupon Habis"
+            "Kuota Habis"
         }
-        lblCoupon.font = Font.Body.B4.Small.font
+        lblQuantity.font = Font.Body.B4.Small.font
     }
     
     private func UIStamp() {
@@ -197,9 +202,24 @@ class StampCardCell: UICollectionViewCell {
 
         ribbonView.anchorToView(
             rootParent: stampCard,
-            targetView: vCoupon,
+            targetView: vQuantity,
             verticalAlignment: .top,
-            offsetX: 25
+            offsetX: 21
         )
+    }
+    
+    func calculateHeight(for width: CGFloat) -> CGFloat {
+        let widthConstraint = stampCard.widthAnchor.constraint(equalToConstant: width)
+        widthConstraint.isActive = true
+        
+        let size = stampCard.systemLayoutSizeFitting(
+            CGSize(width: width, height: UIView.layoutFittingCompressedSize.height),
+            withHorizontalFittingPriority: .required,
+            verticalFittingPriority: .fittingSizeLevel
+        )
+        
+        widthConstraint.isActive = false
+        
+        return size.height
     }
 }

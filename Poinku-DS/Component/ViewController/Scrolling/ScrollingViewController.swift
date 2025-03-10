@@ -8,23 +8,21 @@
 import UIKit
 
 class ScrollingViewController: UIViewController {
-    private var uiStoryboard: UIStoryboard = UIStoryboard()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        uiStoryboard = UIStoryboard(name: "Main", bundle: nil)
     }
     
     
     @IBAction func GoToScrollingScale(_ sender: Any) {
-        let vc = uiStoryboard.instantiateViewController(withIdentifier: "ScrollingScale")
+        let vc = UIStoryboard(name: "ScrollingScaleViewController", bundle: nil).instantiateViewController(withIdentifier: "ScrollingScale")
         navigationController?.pushViewController(vc, animated: true)
     }
     
     
     @IBAction func GoToScrollingFade(_ sender: Any) {
-        let vc = uiStoryboard.instantiateViewController(withIdentifier: "ScrollingFade")
+        let vc = UIStoryboard(name: "ScrollingFadeViewController", bundle: nil).instantiateViewController(withIdentifier: "ScrollingFade")
         navigationController?.pushViewController(vc, animated: true)
     }
 }

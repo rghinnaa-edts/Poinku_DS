@@ -10,8 +10,8 @@ import UIKit
 extension UIColor {
     
     struct Neutral {
-        static let whiteIDM = UIColor(named: "WhiteIDM")
-        static let blackIDM = UIColor(named: "BlackIDM")
+        static let white = UIColor(named: "White")
+        static let black = UIColor(named: "Black")
     }
     
     struct Grey {
@@ -22,6 +22,7 @@ extension UIColor {
         static let grey50 = UIColor(named: "Grey-50")
         static let grey60 = UIColor(named: "Grey-60")
         static let grey70 = UIColor(named: "Grey-70")
+        static let grey80 = UIColor(named: "Grey-80")
     }
     
     struct Blue {
@@ -87,6 +88,8 @@ extension UIColor {
         static let warningWeak = UIColor(named: "Warning-Weak")
         static let highlightStrong = UIColor(named: "Highlight-Strong")
         static let highlightWeak = UIColor(named: "Highlight-Weak")
+        static let primaryHighlightStrong = UIColor(named: "Primary-Highlight-Strong")
+        static let primaryHighlightWeak = UIColor(named: "Primary-Highlight-Weak")
     }
     
     struct Brand {

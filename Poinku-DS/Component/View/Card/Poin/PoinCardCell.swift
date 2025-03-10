@@ -1,6 +1,6 @@
 //
-//  StampCardCell.swift
-//  Poinku-DS-SB
+//  CouponCardCell.swift
+//  Poinku-DS
 //
 //  Created by Rizka Ghinna Auliya on 10/02/25.
 //
@@ -9,20 +9,23 @@ import UIKit
 
 class PoinCardCell: UICollectionViewCell {
     
-    @IBOutlet var stampCard: UIView!
-    @IBOutlet var ivStampCard: UIImageView!
+    @IBOutlet var poinCard: UIView!
+    @IBOutlet var ivPoinCard: UIImageView!
     @IBOutlet var vCoupon: UIView!
     @IBOutlet var lblCoupon: UILabel!
     @IBOutlet var ivCoupon: UIImageView!
-    @IBOutlet var lblStampCard: UILabel!
-    @IBOutlet var vStamp: UIView!
-    @IBOutlet var lblStamp: UILabel!
+    @IBOutlet var lblPoinCard: UILabel!
+    @IBOutlet var vPoin: UIView!
+    @IBOutlet var lblPoin: UILabel!
     @IBOutlet var btnExchange: UIButton!
+    @IBOutlet var vIKupon: UIView!
+    @IBOutlet var ivIKupon: UIImageView!
+    @IBOutlet var lblIKupon: UILabel!
     
     var id: String = ""
     var title: String = ""
     var imageURL: String = ""
-    var coupon: Int = 0
+    var coupon: Int = 9
     var stampCount: Int = 0
     var price: Int = 0
     var isNew: Bool = false
@@ -67,12 +70,12 @@ class PoinCardCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupStampCard()
+        setupPoinCard()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        setupStampCard()
+        setupPoinCard()
     }
     
     override func awakeFromNib() {
@@ -81,48 +84,50 @@ class PoinCardCell: UICollectionViewCell {
         setupUI()
     }
 
-    private func setupStampCard() {
-        if let nib = Bundle.main.loadNibNamed("StampCard", owner: self, options: nil),
+    private func setupPoinCard() {
+        if let nib = Bundle.main.loadNibNamed("PoinCard", owner: self, options: nil),
            let card = nib.first as? UIView {
-            stampCard = card
-            stampCard.frame = contentView.bounds
-            stampCard.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            contentView.addSubview(stampCard)
+            poinCard = card
+            poinCard.frame = contentView.bounds
+            poinCard.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            contentView.addSubview(poinCard)
             
             setupUI()
         } else {
-            print("Failed to load StampCard XIB")
+            print("Failed to load PoinCard XIB")
         }
     }
     
     private func setupUI() {
-        UIStampCard()
+        UIPoinCard()
         UICoupon()
-        UIStamp()
+        UIikupon()
+        UIPoin()
         UIRibbonHotProduct()
     }
     
-    private func UIStampCard() {
-        stampCard.layer.cornerRadius = 8
-        stampCard.layer.masksToBounds = true
+    private func UIPoinCard() {
+        poinCard.layer.cornerRadius = 8
+        poinCard.layer.masksToBounds = true
         
-        stampCard.backgroundColor = .white
-        stampCard.layer.shadowColor = UIColor.blackIDM.cgColor
-        stampCard.layer.shadowOpacity = 0.15
-        stampCard.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
-        stampCard.layer.shadowRadius = 3.0
-        stampCard.layer.masksToBounds = false
+        poinCard.backgroundColor = .white
+        poinCard.layer.shadowColor = UIColor.black.cgColor
+        poinCard.layer.shadowOpacity = 0.15
+        poinCard.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+        poinCard.layer.shadowRadius = 3.0
+        poinCard.layer.masksToBounds = false
         
-        lblStampCard.textColor = .grey70
-        lblStampCard.font = Font.Body.B3.Small.font
+        lblPoinCard.textColor = .grey70
+        lblPoinCard.font = Font.Body.B3.Small.font
         
+        btnExchange.titleLabel?.text = "Tukar Poin"
         btnExchange.backgroundColor = .blue30
         btnExchange.layer.cornerRadius = 4
         btnExchange.titleLabel?.textColor = .white
         btnExchange.titleLabel?.font = Font.Button.Small.font
         
-        lblStampCard.text = "Diskon Rp2.000 Lifebuoy Red Fresh"
-        ivStampCard.image = UIImage(named: "placeholder")
+        lblPoinCard.text = "Diskon Rp2.000 Lifebuoy Red Fresh"
+        ivPoinCard.image = UIImage(named: "placeholder")
     }
     
     private func UICoupon() {
@@ -159,15 +164,30 @@ class PoinCardCell: UICollectionViewCell {
         lblCoupon.font = Font.Body.B4.Small.font
     }
     
-    private func UIStamp() {
-        vStamp.backgroundColor = .highlightWeak
-        vStamp.layer.cornerRadius = 8
-        vStamp.layer.borderWidth = 1
-        vStamp.layer.borderColor = UIColor.warningStrong.cgColor
+    private func UIikupon() {
+        ivIKupon.image = UIImage(named: "store-01")
+        ivIKupon.image = ivIKupon.image?.withRenderingMode(.alwaysTemplate)
+        ivIKupon.tintColor = .primaryHighlightStrong
         
-        lblStamp.textColor = .warningStrong
-        lblStamp.font = Font.Body.B4.Small.font
-        lblStamp.text = "24 Stamp"
+        vIKupon.backgroundColor = .primaryHighlightWeak
+        vIKupon.layer.cornerRadius = 8
+        vIKupon.layer.borderWidth = 1
+        vIKupon.layer.borderColor = UIColor.primaryHighlightStrong.cgColor
+        
+        lblIKupon.textColor = .primaryHighlightStrong
+        lblIKupon.font = Font.Body.B4.Small.font
+        lblIKupon.text = "i-Kupon"
+    }
+    
+    private func UIPoin() {
+        vPoin.backgroundColor = .highlightWeak
+        vPoin.layer.cornerRadius = 8
+        vPoin.layer.borderWidth = 1
+        vPoin.layer.borderColor = UIColor.warningStrong.cgColor
+        
+        lblPoin.textColor = .warningStrong
+        lblPoin.font = Font.Body.B4.Small.font
+        lblPoin.text = "5.500 Poin"
     }
     
     private func UIRibbonHotProduct() {
@@ -180,8 +200,23 @@ class PoinCardCell: UICollectionViewCell {
         ribbonView.gravity = .start
 
         ribbonView.anchorToView(
-            rootParent: stampCard,
-            targetView: stampCard
+            rootParent: poinCard,
+            targetView: poinCard
         )
+    }
+    
+    func calculateHeight(for width: CGFloat) -> CGFloat {
+        let widthConstraint = poinCard.widthAnchor.constraint(equalToConstant: width)
+        widthConstraint.isActive = true
+        
+        let size = poinCard.systemLayoutSizeFitting(
+            CGSize(width: width, height: UIView.layoutFittingCompressedSize.height),
+            withHorizontalFittingPriority: .required,
+            verticalFittingPriority: .fittingSizeLevel
+        )
+        
+        widthConstraint.isActive = false
+        
+        return size.height
     }
 }

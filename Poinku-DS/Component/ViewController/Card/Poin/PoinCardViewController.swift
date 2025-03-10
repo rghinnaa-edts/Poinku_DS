@@ -1,5 +1,5 @@
 //
-//  StampCardViewController.swift
+//  PoinCardViewController.swift
 //  Poinku-DS
 //
 //  Created by Rizka Ghinna Auliya on 21/02/25.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class StampCardViewController: UIViewController {
+class PoinCardViewController: UIViewController {
     private var collectionView: UICollectionView!
     private var lastContentOffset: CGFloat = 0
     private var visibleCellsBeforeScroll: [IndexPath: CGPoint] = [:]
@@ -35,7 +35,7 @@ class StampCardViewController: UIViewController {
     }
 }
 
-extension StampCardViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension PoinCardViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 100
     }
@@ -47,7 +47,7 @@ extension StampCardViewController: UICollectionViewDataSource, UICollectionViewD
     }
 }
 
-extension StampCardViewController: StaggeredLayoutDelegate {
+extension PoinCardViewController: StaggeredLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView, heightForItemAt indexPath: IndexPath, width: CGFloat) -> CGFloat {
         let cell = PoinCardCell()
         

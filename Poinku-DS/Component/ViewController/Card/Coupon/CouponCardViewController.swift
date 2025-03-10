@@ -1,5 +1,5 @@
 //
-//  StampCardViewController.swift
+//  CouponCardViewController.swift
 //  Poinku-DS
 //
 //  Created by Rizka Ghinna Auliya on 21/02/25.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PoinCardViewController: UIViewController {
+class CouponCardViewController: UIViewController {
     private var collectionView: UICollectionView!
     private var lastContentOffset: CGFloat = 0
     private var visibleCellsBeforeScroll: [IndexPath: CGPoint] = [:]
@@ -29,27 +29,27 @@ class PoinCardViewController: UIViewController {
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(PoinCardCell.self, forCellWithReuseIdentifier: "PoinCardCell")
+        collectionView.register(CouponCardCell.self, forCellWithReuseIdentifier: "CouponCardCell")
         
         view.addSubview(collectionView)
     }
 }
 
-extension PoinCardViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension CouponCardViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 100
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PoinCardCell", for: indexPath) as! PoinCardCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CouponCardCell", for: indexPath) as! CouponCardCell
         
         return cell
     }
 }
 
-extension PoinCardViewController: StaggeredLayoutDelegate {
+extension CouponCardViewController: StaggeredLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView, heightForItemAt indexPath: IndexPath, width: CGFloat) -> CGFloat {
-        let cell = PoinCardCell()
+        let cell = CouponCardCell()
         
         configureCell(cell, for: indexPath)
         
@@ -58,7 +58,7 @@ extension PoinCardViewController: StaggeredLayoutDelegate {
         return height
     }
     
-    private func configureCell(_ cell: PoinCardCell, for indexPath: IndexPath) {
+    private func configureCell(_ cell: CouponCardCell, for indexPath: IndexPath) {
         // Configure with data that would affect height
         // For example:
         // cell.lblPoinCard.text = "Some text that might vary in length..."
