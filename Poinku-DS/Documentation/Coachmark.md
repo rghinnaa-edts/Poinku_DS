@@ -26,7 +26,7 @@ The `Coachmark` component is a visual overlay element that helps guide users thr
 
 ## Installation
 To use the `Coachmark` component, please follow this step.
-For now, It's available only when you add the coachmark class file of swift and XIB into your project
+For now, It's available only when you add the coachmark class file of swift and XIB into your project. It placed at `Poinku-DS/Component/View/Coachmark`
 - Add file Coachmark.swift and Coachmark.XIB into your project
 
 ### Usage
