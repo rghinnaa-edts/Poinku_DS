@@ -24,53 +24,6 @@ class RibbonViewController: UIViewController {
         ribbonView1()
         ribbonView2()
         ribbonView3()
-        
-        showCoachmark()
-    }
-    
-    func showCoachmark2() {
-        let coachmark = Coachmark(frame: view.bounds)
-        
-        coachmark.configure(
-            title: "Add New Item",
-            description: "Tap this button to add a new item to your list",
-            targetView: btnTest
-        )
-        
-        coachmark.show()
-    }
-    
-    func showCoachmark() {
-        let coachmark = Coachmark(frame: .zero)
-
-        coachmark.configureSteps(steps: [
-            Coachmark.StepConfiguration(
-                title: "Step 1",
-                description: "This is the first step step step step 2 steps yesss no masih kurang ya ges ya terus kita cobain kalo misal ininya lebih dari 3 lines kaya gimana. ternyata masih kurang gess kurang panjang",
-                targetView: btnTest
-            ),
-            Coachmark.StepConfiguration(
-                title: "Step 2",
-                description: "This is the second step",
-                targetView: testCard,
-                spotlightRadius: 8
-            ),
-            Coachmark.StepConfiguration(
-                title: "Step 3",
-                description: "This is the final step",
-                targetView: testCard3
-            )
-        ])
-
-        coachmark.show()
-    }
-    
-    @objc func dismissCoachmark() {
-        view.subviews.forEach { subview in
-            if let coachmark = subview as? Coachmark {
-                coachmark.dismiss()
-            }
-        }
     }
     
     func ribbonView1() {

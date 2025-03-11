@@ -39,6 +39,11 @@ class ViewController: UIViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     
+    @IBAction func GoToCoachmark(_ sender: Any) {
+        let vc = UIStoryboard(name: "CoachmarkViewController", bundle: nil).instantiateViewController(withIdentifier: "Coachmark")
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     @IBAction func GoToStampPage(_ sender: Any) {
         let vc = UIStoryboard(name: "StampPageViewController", bundle: nil).instantiateViewController(withIdentifier: "StampPage")
         navigationController?.pushViewController(vc, animated: true)

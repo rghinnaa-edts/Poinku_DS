@@ -54,7 +54,11 @@ class StampBrand: UICollectionViewCell {
     private func setupUI() {
         stampBrand.backgroundColor = .white
         stampBrand.layer.cornerRadius = 8
-        stampBrand.layer.borderWidth = 1
+        stampBrand.layer.borderWidth = if isActive {
+            1.5
+        } else {
+            1
+        }
         stampBrand.layer.borderColor = if isActive {
             UIColor.blue30.cgColor
         } else {
@@ -73,6 +77,12 @@ class StampBrand: UICollectionViewCell {
     }
     
     private func updateAppearance() {
+        stampBrand.layer.borderWidth = if isSelectedState {
+            1.5
+        } else {
+            1
+        }
+        
         stampBrand.layer.borderColor = if isSelectedState {
             UIColor.blue30.cgColor
         } else {

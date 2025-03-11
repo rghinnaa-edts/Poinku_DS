@@ -78,7 +78,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DQb-Ol-b65">
-                                <rect key="frame" x="306" y="264" width="88" height="24"/>
+                                <rect key="frame" x="306" y="264" width="85" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -103,7 +103,7 @@
                         <outlet property="cm2" destination="Wrz-Mf-Ogv" id="YIe-N3-bU9"/>
                         <outlet property="cm3" destination="Co1-0T-2Uv" id="pH2-pq-FjH"/>
                         <outlet property="cm4" destination="DQb-Ol-b65" id="eeu-YA-Ohz"/>
-                        <outlet property="collectionBrand" destination="DnY-b9-tom" id="6Kr-Ky-JXY"/>
+                        <outlet property="collectionBucket" destination="DnY-b9-tom" id="JXc-eT-Ckl"/>
                         <outlet property="collectionProduct" destination="99X-m7-22A" id="krk-ZW-AYT"/>
                         <outlet property="lblStamp" destination="kjH-GR-hDR" id="3De-Un-1D3"/>
                         <outlet property="stampChipBucket" destination="QcZ-Ms-Mli" id="lmP-a9-nhz"/>

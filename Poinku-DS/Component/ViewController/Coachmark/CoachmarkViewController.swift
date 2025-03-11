@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RibbonViewController: UIViewController {
+class CoachmarkViewController: UIViewController {
     
     @IBOutlet var testCard: UIView!
     @IBOutlet var testCard2: UIView!

@@ -79,12 +79,21 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r42-7p-mdP">
-                                <rect key="frame" x="232" y="229" width="112" height="35"/>
+                                <rect key="frame" x="40" y="304" width="112" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="StampPage"/>
                                 <connections>
                                     <action selector="GoToStampPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QFq-v5-59H"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tS9-12-V7c">
+                                <rect key="frame" x="231" y="241" width="112" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Coachmark"/>
+                                <connections>
+                                    <action selector="GoToCoachmark:" destination="BYZ-38-t0r" eventType="touchUpInside" id="puC-wp-BHs"/>
                                 </connections>
                             </button>
                         </subviews>
