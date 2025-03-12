@@ -14,13 +14,4 @@ This library provides a set of Design Kits and Components designed for Poinku Pr
   s.swift_version = '5.0'
   
   s.source_files = 'Poinku-DS/Poinku-DS//.{h,m,swift}'
-  
-  # s.resource_bundles = {
-  #   'PoinkuDesignKit' => ['PoinkuDesignKit/Assets/.xcassets']
-  # }
-  
-  s.exclude_files = 'Assets.xcassets/**/*'
-  
-  # s.public_header_files = 'Pod/Classes//*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
 end
