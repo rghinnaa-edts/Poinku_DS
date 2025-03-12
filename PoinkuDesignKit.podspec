@@ -13,5 +13,5 @@ This library provides a set of Design Kits and Components designed for Poinku Pr
   s.ios.deployment_target = '12.0'
   s.swift_version = '5.0'
   
-  s.source_files = 'Poinku-DS/Poinku-DS//.{h,m,swift}'
+  s.source_files = 'Poinku-DS//.{h,m,swift}'
 end
