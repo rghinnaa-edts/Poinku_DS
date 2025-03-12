@@ -8,19 +8,19 @@ This library provides a set of Design Kits and Components designed for Poinku Pr
   s.homepage         = 'https://github.com/rghinnaa-edts/Poinku-DS'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Rizka Ghinna' => 'rizka.ghinna@sg-edts.com' }
-  s.source           = { :git => 'https://github.com/rghinnaa-edts/Poinku-DS.git', :tag => 0.1.0 }
+  s.source           = { :git => 'https://github.com/rghinnaa-edts/Poinku-DS.git', :tag => '0.1.0' }
   
-  s.ios.deployment_target = '11.0'
+  s.ios.deployment_target = '12.0'
   s.swift_version = '5.0'
   
-  s.source_files = 'YourLibrary/Classes/**/*'
+  s.source_files = 'Poinku-DS/Poinku-DS//.{h,m,swift}'
   
   # s.resource_bundles = {
-  #   'YourLibrary' => ['YourLibrary/Assets/*.png']
+  #   'PoinkuDesignKit' => ['PoinkuDesignKit/Assets/.xcassets']
   # }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
+  
+  s.exclude_files = '/Assets.xcassets//*'
+  
+  # s.public_header_files = 'Pod/Classes//*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
 end
-
