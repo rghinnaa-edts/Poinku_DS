@@ -19,7 +19,7 @@ This library provides a set of Design Kits and Components designed for Poinku Pr
   #   'PoinkuDesignKit' => ['PoinkuDesignKit/Assets/.xcassets']
   # }
   
-  s.exclude_files = '/Assets.xcassets//*'
+  s.exclude_files = 'Assets.xcassets/**/*'
   
   # s.public_header_files = 'Pod/Classes//*.h'
   # s.frameworks = 'UIKit', 'MapKit'
