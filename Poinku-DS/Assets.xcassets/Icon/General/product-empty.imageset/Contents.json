@@ -1,8 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "product empty.svg",
-      "idiom" : "universal"
+      "filename" : "product empty.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
     }
   ],
   "info" : {
