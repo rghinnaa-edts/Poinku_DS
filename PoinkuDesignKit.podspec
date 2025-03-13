@@ -11,7 +11,11 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '12.0'
   s.swift_version = '5.0'
   
-  s.source_files = 'Poinku-DS/Component/**/*'
+  s.source_files = 'Poinku-DS/**/*'
+  s.exclude_files = 'Poinku-DS/**/Info.plist'
+  s.resource_bundles = {
+    'PoinkuDesignKit' => ['Poinku-DS/Assets.xcassets/**/*']
+  }
 
   s.frameworks = 'UIKit'
 end
