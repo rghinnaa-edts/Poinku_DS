@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '12.0'
   s.swift_version = '5.0'
   
-  s.source_files = 'Poinku-DS/**/*'
+  s.source_files = 'Poinku-DS/Component/**/*'
   s.exclude_files = ['Poinku-DS/**/Info.plist', 'Poinku-DS/**/Contents.json']
   s.resources = ['Poinku-DS/Assets.xcassets/**/*']
 
