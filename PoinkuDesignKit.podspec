@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   
   s.source_files = 'Poinku-DS/**/*'
   s.exclude_files = ['Poinku-DS/**/Info.plist', 'Poinku-DS/**/Contents.json']
-  s.resource_bundles = ['Poinku-DS/Assets.xcassets/**/*']
+  s.resources = ['Poinku-DS/Assets.xcassets/**/*']
 
   s.frameworks = 'UIKit'
 end
