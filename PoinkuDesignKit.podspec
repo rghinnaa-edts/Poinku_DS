@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '12.0'
   s.swift_version = '5.0'
   
-  s.source_files = 'Poinku-DS/Poinku-DS/**/*.{h,m,swift}'
+  s.source_files = 'PoinkuDesignKit/**/*.{h,m,swift}'
 
   s.frameworks = 'UIKit'
 end
