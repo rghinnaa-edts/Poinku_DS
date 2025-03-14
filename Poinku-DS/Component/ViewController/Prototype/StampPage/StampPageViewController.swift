@@ -43,7 +43,7 @@ class StampPageViewController: UIViewController {
         
         stampChipBucket.backgroundColor = .white
         stampChipBucket.backgroundColor = .white
-        stampChipBucket.layer.shadowColor = UIColor.grey50.cgColor
+        stampChipBucket.layer.shadowColor = UIColor.Grey.grey50.cgColor
         stampChipBucket.layer.shadowOpacity = 0.15
         stampChipBucket.layer.shadowOffset = CGSize(width: 0.0, height: 5.0)
         stampChipBucket.layer.shadowRadius = 3.0
@@ -117,7 +117,7 @@ class StampPageViewController: UIViewController {
         productFlowLayout.minimumLineSpacing = 16
         productFlowLayout.sectionInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
         collectionProduct.collectionViewLayout = productFlowLayout
-        collectionProduct.backgroundColor = .grey10
+        collectionProduct.backgroundColor = UIColor.Grey.grey10
         collectionProduct.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         collectionProduct.register(StampBrandProduct.self, forCellWithReuseIdentifier: "StampBrandProduct")
         

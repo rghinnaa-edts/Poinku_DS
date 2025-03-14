@@ -129,19 +129,19 @@ class Button: UIButton {
             self.backgroundColor = .white
             self.layer.cornerRadius = 8
             self.layer.borderWidth = 1
-            self.layer.borderColor = UIColor.blue30.cgColor
-            self.setTitleColor(.blue30, for: .normal)
+            self.layer.borderColor = UIColor.Blue.blue30.cgColor
+            self.setTitleColor(UIColor.Blue.blue30, for: .normal)
             self.titleLabel?.font = Font.Button.Big.font
-            self.tintColor = .blue30
+            self.tintColor = UIColor.Blue.blue30
         case .text:
             self.backgroundColor = .clear
             self.layer.cornerRadius = 0
             self.layer.borderWidth = 0
-            self.setTitleColor(.blue30, for: .normal)
+            self.setTitleColor(UIColor.Blue.blue30, for: .normal)
             self.titleLabel?.font = Font.Button.Big.font
-            self.tintColor = .blue30
+            self.tintColor = UIColor.Blue.blue30
         default:
-            self.backgroundColor = .blue30
+            self.backgroundColor = UIColor.Blue.blue30
             self.layer.cornerRadius = 8
             self.layer.borderWidth = 0
             self.setTitleColor(.white, for: .normal)

@@ -30,7 +30,7 @@ class HomeSwitcher: UIView {
         title.translatesAutoresizingMaskIntoConstraints = false
         
         
-        view.layer.backgroundColor = UIColor.grey20.cgColor
+        view.layer.backgroundColor = UIColor.Grey.grey20.cgColor
         return view
     }()
     

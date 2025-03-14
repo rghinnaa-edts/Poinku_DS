@@ -114,10 +114,10 @@ class CouponCardCell: UICollectionViewCell {
         couponCard.layer.shadowRadius = 3.0
         couponCard.layer.masksToBounds = false
         
-        lblCouponCard.textColor = .grey70
+        lblCouponCard.textColor = UIColor.Grey.grey70
         lblCouponCard.font = Font.Body.B3.Small.font
         
-        btnExchange.backgroundColor = .blue30
+        btnExchange.backgroundColor = UIColor.Blue.blue30
         btnExchange.layer.cornerRadius = 4
         btnExchange.titleLabel?.textColor = .white
         btnExchange.titleLabel?.font = Font.Button.Small.font
@@ -135,21 +135,21 @@ class CouponCardCell: UICollectionViewCell {
         ivAvailable.image = ivAvailable.image?.withRenderingMode(.alwaysTemplate)
         
         ivAvailable.tintColor = if coupon < 10 && coupon > 0 {
-            .warningStrong
+            UIColor.Support.warningStrong
         } else {
-            .errorStrong
+            UIColor.Support.errorStrong
         }
         
         vAvailable.backgroundColor = if coupon < 10 && coupon > 0 {
-            .warningWeak
+            UIColor.Support.warningWeak
         } else {
-            .errorWeak
+            UIColor.Support.errorWeak
         }
         
         lblAvailable.textColor = if coupon < 10 && coupon > 0 {
-            .warningStrong
+            UIColor.Support.warningStrong
         } else {
-            .errorStrong
+            UIColor.Support.errorStrong
         }
         
         lblAvailable.text = if coupon < 10 && coupon > 0 {
@@ -163,14 +163,14 @@ class CouponCardCell: UICollectionViewCell {
     private func UIikupon() {
         ivIKupon.image = UIImage(named: "store-01")
         ivIKupon.image = ivIKupon.image?.withRenderingMode(.alwaysTemplate)
-        ivIKupon.tintColor = .primaryHighlightStrong
+        ivIKupon.tintColor = UIColor.Support.primaryHighlightStrong
         
-        vIKupon.backgroundColor = .primaryHighlightWeak
+        vIKupon.backgroundColor = UIColor.Support.primaryHighlightWeak
         vIKupon.layer.cornerRadius = 8
         vIKupon.layer.borderWidth = 1
-        vIKupon.layer.borderColor = UIColor.primaryHighlightStrong.cgColor
+        vIKupon.layer.borderColor = UIColor.Support.primaryHighlightStrong.cgColor
         
-        lblIKupon.textColor = .primaryHighlightStrong
+        lblIKupon.textColor = UIColor.Support.primaryHighlightStrong
         lblIKupon.font = Font.Body.B4.Small.font
         lblIKupon.text = "i-Kupon"
     }
@@ -178,9 +178,9 @@ class CouponCardCell: UICollectionViewCell {
     private func UIRibbonHotProduct() {
         let ribbonView = RibbonView()
         ribbonView.ribbonText = "Hot Product!"
-        ribbonView.triangleColor = .red50
-        ribbonView.containerStartColor = .red20
-        ribbonView.containerEndColor = .red50
+        ribbonView.triangleColor = UIColor.Red.red50
+        ribbonView.containerStartColor = UIColor.Red.red20
+        ribbonView.containerEndColor = UIColor.Red.red50
         ribbonView.textColor = .white
         ribbonView.gravity = .start
 

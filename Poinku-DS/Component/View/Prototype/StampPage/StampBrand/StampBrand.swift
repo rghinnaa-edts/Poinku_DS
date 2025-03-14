@@ -60,18 +60,18 @@ class StampBrand: UICollectionViewCell {
             1
         }
         stampBrand.layer.borderColor = if isActive {
-            UIColor.blue30.cgColor
+            UIColor.Blue.blue30.cgColor
         } else {
-            UIColor.grey30.cgColor
+            UIColor.Grey.grey30.cgColor
         }
         
         lblTotalStamp.font = Font.Body.B1.Medium.font
         lblTotalStamp.text = "32"
-        lblTotalStamp.textColor = .blue30
+        lblTotalStamp.textColor = UIColor.Blue.blue30
         
         lblStamp.font = Font.Body.B4.Small.font
         lblStamp.text = "Stamp"
-        lblStamp.textColor = .blue30
+        lblStamp.textColor = UIColor.Blue.blue30
         
         ivBrand.contentMode = .scaleAspectFit
     }
@@ -84,9 +84,9 @@ class StampBrand: UICollectionViewCell {
         }
         
         stampBrand.layer.borderColor = if isSelectedState {
-            UIColor.blue30.cgColor
+            UIColor.Blue.blue30.cgColor
         } else {
-            UIColor.grey30.cgColor
+            UIColor.Grey.grey30.cgColor
         }
     }
     

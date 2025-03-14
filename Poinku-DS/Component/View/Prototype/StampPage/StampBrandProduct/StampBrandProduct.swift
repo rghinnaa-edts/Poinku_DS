@@ -53,7 +53,7 @@ class StampBrandProduct: UICollectionViewCell {
         stampBrandProduct.layer.masksToBounds = true
         
         stampBrandProduct.backgroundColor = .white
-        stampBrandProduct.layer.shadowColor = UIColor.grey60.cgColor
+        stampBrandProduct.layer.shadowColor = UIColor.Grey.grey60.cgColor
         stampBrandProduct.layer.shadowOpacity = 0.15
         stampBrandProduct.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
         stampBrandProduct.layer.shadowRadius = 3.0
@@ -61,28 +61,28 @@ class StampBrandProduct: UICollectionViewCell {
         
         ivBrand.layer.cornerRadius = 8
         ivBrand.layer.borderWidth = 1
-        ivBrand.layer.borderColor = UIColor.grey30.cgColor
+        ivBrand.layer.borderColor = UIColor.Grey.grey30.cgColor
         ivBrand.contentMode = .scaleAspectFit
         ivBrand.clipsToBounds = true
         
         lblBrand.font = Font.Heading.H2.font
-        lblBrand.textColor = .grey80
+        lblBrand.textColor = UIColor.Grey.grey80
         
         lblStamp.text = "Kamu Punya:"
         lblStamp.font = Font.Body.B3.Small.font
-        lblStamp.textColor = .grey50
+        lblStamp.textColor = UIColor.Grey.grey50
         
         lblTotalStamp.text = "80 Stamp"
         lblTotalStamp.font = Font.Body.B3.Large.font
-        lblTotalStamp.textColor = .orange30
+        lblTotalStamp.textColor = UIColor.Orange.orange30
         
         lblCoupon.text = "Kupon yang bisa ditukar:"
         lblCoupon.font = Font.Body.B3.Small.font
-        lblCoupon.textColor = .grey80
+        lblCoupon.textColor = UIColor.Grey.grey80
         
         let attributedSkip = NSAttributedString(string: "Lihat Semua", attributes: [
             .font: Font.Body.B3.Small.font,
-            .foregroundColor: UIColor.blue30
+            .foregroundColor: UIColor.Blue.blue30
         ])
         btnSeeAll.setAttributedTitle(attributedSkip, for: .normal)
         
@@ -102,7 +102,7 @@ class StampBrandProduct: UICollectionViewCell {
         productFlowLayout.itemSize = CGSize(width: cellWidth, height: cellHeight)
         
         collectionStampCard.collectionViewLayout = productFlowLayout
-        collectionStampCard.backgroundColor = .primaryHighlightWeak
+        collectionStampCard.backgroundColor = UIColor.Support.primaryHighlightWeak
         collectionStampCard.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         collectionStampCard.showsHorizontalScrollIndicator = false
         collectionStampCard.alwaysBounceHorizontal = true

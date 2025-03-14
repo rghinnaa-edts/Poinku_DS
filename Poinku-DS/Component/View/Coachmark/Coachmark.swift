@@ -41,7 +41,7 @@ class Coachmark: UIView {
         let spotlightRadius: CGFloat
         let tintColor: UIColor
         
-        init(title: String, description: String, targetView: UIView, spotlightRadius: CGFloat = 4, tintColor: UIColor = .blue30) {
+        init(title: String, description: String, targetView: UIView, spotlightRadius: CGFloat = 4, tintColor: UIColor = UIColor.Blue.blue30) {
             self.title = title
             self.description = description
             self.targetView = targetView
@@ -107,24 +107,24 @@ class Coachmark: UIView {
         
     private func setupUI() {
         lblTitle.font = Font.Heading.H3.font
-        lblTitle.textColor = .grey80
+        lblTitle.textColor = UIColor.Grey.grey80
         
         lblDescription.font = Font.Paragraph.P2.Small.font
-        lblDescription.textColor = .grey70
+        lblDescription.textColor = UIColor.Grey.grey70
         
         lblTotal.font = Font.Body.B3.Small.font
-        lblTotal.textColor = .grey50
+        lblTotal.textColor = UIColor.Grey.grey50
         
         let skip = btnSkip.title(for: .normal) ?? ""
         let attributedSkip = NSAttributedString(string: skip, attributes: [
             .font: Font.Button.Small.font,
-            .foregroundColor: UIColor.blue30.cgColor
+            .foregroundColor: UIColor.Blue.blue30.cgColor
         ])
         btnSkip.setAttributedTitle(attributedSkip, for: .normal)
         
         btnNext.contentEdgeInsets = UIEdgeInsets(top: 6, left: 8, bottom: 6, right: 8)
-        btnNext.backgroundColor = .blue30
-        btnNext.tintColor = .blue30
+        btnNext.backgroundColor = UIColor.Blue.blue30
+        btnNext.tintColor = UIColor.Blue.blue30
         btnNext.layer.cornerRadius = 4
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleBackgroundTap(_:)))
@@ -143,7 +143,7 @@ class Coachmark: UIView {
         }
     }
     
-    func configure(title: String, description: String, targetView: UIView, spotlightRadius: CGFloat = 4, tintColor: UIColor = .blue30) {
+    func configure(title: String, description: String, targetView: UIView, spotlightRadius: CGFloat = 4, tintColor: UIColor = UIColor.Blue.blue30) {
         self.lblTitle.text = title
         self.lblDescription.text = description
         self.lblTotal.text = "1/1"

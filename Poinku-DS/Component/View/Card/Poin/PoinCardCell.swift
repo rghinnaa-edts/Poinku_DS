@@ -117,11 +117,11 @@ class PoinCardCell: UICollectionViewCell {
         poinCard.layer.shadowRadius = 3.0
         poinCard.layer.masksToBounds = false
         
-        lblPoinCard.textColor = .grey70
+        lblPoinCard.textColor = UIColor.Grey.grey70
         lblPoinCard.font = Font.Body.B3.Small.font
         
         btnExchange.titleLabel?.text = "Tukar Poin"
-        btnExchange.backgroundColor = .blue30
+        btnExchange.backgroundColor = UIColor.Blue.blue30
         btnExchange.layer.cornerRadius = 4
         btnExchange.titleLabel?.textColor = .white
         btnExchange.titleLabel?.font = Font.Button.Small.font
@@ -139,21 +139,21 @@ class PoinCardCell: UICollectionViewCell {
         ivCoupon.image = ivCoupon.image?.withRenderingMode(.alwaysTemplate)
         
         ivCoupon.tintColor = if coupon < 10 && coupon > 0 {
-            .warningStrong
+            UIColor.Support.warningStrong
         } else {
-            .errorStrong
+            UIColor.Support.errorStrong
         }
         
         vCoupon.backgroundColor = if coupon < 10 && coupon > 0 {
-            .warningWeak
+            UIColor.Support.warningWeak
         } else {
-            .errorWeak
+            UIColor.Support.errorWeak
         }
         
         lblCoupon.textColor = if coupon < 10 && coupon > 0 {
-            .warningStrong
+            UIColor.Support.warningStrong
         } else {
-            .errorStrong
+            UIColor.Support.errorStrong
         }
         
         lblCoupon.text = if coupon < 10 && coupon > 0 {
@@ -167,25 +167,25 @@ class PoinCardCell: UICollectionViewCell {
     private func UIikupon() {
         ivIKupon.image = UIImage(named: "store-01")
         ivIKupon.image = ivIKupon.image?.withRenderingMode(.alwaysTemplate)
-        ivIKupon.tintColor = .primaryHighlightStrong
+        ivIKupon.tintColor = UIColor.Support.primaryHighlightStrong
         
-        vIKupon.backgroundColor = .primaryHighlightWeak
+        vIKupon.backgroundColor = UIColor.Support.primaryHighlightWeak
         vIKupon.layer.cornerRadius = 8
         vIKupon.layer.borderWidth = 1
-        vIKupon.layer.borderColor = UIColor.primaryHighlightStrong.cgColor
+        vIKupon.layer.borderColor = UIColor.Support.primaryHighlightStrong.cgColor
         
-        lblIKupon.textColor = .primaryHighlightStrong
+        lblIKupon.textColor = UIColor.Support.primaryHighlightStrong
         lblIKupon.font = Font.Body.B4.Small.font
         lblIKupon.text = "i-Kupon"
     }
     
     private func UIPoin() {
-        vPoin.backgroundColor = .highlightWeak
+        vPoin.backgroundColor = UIColor.Support.highlightWeak
         vPoin.layer.cornerRadius = 8
         vPoin.layer.borderWidth = 1
-        vPoin.layer.borderColor = UIColor.warningStrong.cgColor
+        vPoin.layer.borderColor = UIColor.Support.warningStrong.cgColor
         
-        lblPoin.textColor = .warningStrong
+        lblPoin.textColor = UIColor.Support.warningStrong
         lblPoin.font = Font.Body.B4.Small.font
         lblPoin.text = "5.500 Poin"
     }
@@ -193,9 +193,9 @@ class PoinCardCell: UICollectionViewCell {
     private func UIRibbonHotProduct() {
         let ribbonView = RibbonView()
         ribbonView.ribbonText = "Hot Product!"
-        ribbonView.triangleColor = .red50
-        ribbonView.containerStartColor = .red20
-        ribbonView.containerEndColor = .red50
+        ribbonView.triangleColor = UIColor.Red.red50
+        ribbonView.containerStartColor = UIColor.Red.red20
+        ribbonView.containerEndColor = UIColor.Red.red50
         ribbonView.textColor = .white
         ribbonView.gravity = .start
 
