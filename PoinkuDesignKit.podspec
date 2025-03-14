@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'PoinkuDesignKit'
-  s.version          = '0.1.0'
+  s.version          = '0.1.1'
   s.summary          = 'Set of Design Kits and Components of Poinku iOS App.'
   s.description      = 'This library provides a set of Design Kits and Components designed for Poinku Project use in iOS development. The library is currently under development, with ongoing efforts to expand its features and improve stability.'
   s.homepage         = 'https://github.com/rghinnaa-edts/Poinku-DS'
