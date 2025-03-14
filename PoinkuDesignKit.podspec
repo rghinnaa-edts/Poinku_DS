@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.swift_version = '5.0'
   
   s.source_files = 'Poinku-DS/**/*'
-  s.exclude_files = ['Poinku-DS/**/Info.plist', 'Poinku-DS/**/Contents.json', 'Poinku-DS/**/*.png']
+  s.exclude_files = ['Poinku-DS/**/Info.plist', 'Poinku-DS/**/Contents.json', 'Poinku-DS/**/*.png', 'Poinku-DS/**/*.svg']
   s.resources = ['Poinku-DS/Assets.xcassets/**/*']
 
   s.frameworks = 'UIKit'
