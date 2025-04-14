@@ -2,7 +2,7 @@
 The `Search Bar Animation` is interactive visual effects that enhance the user experience when engaging with search functionality.
 
 ## Preview
-![Search Bar Animation Preview](https://res.cloudinary.com/dr6cm6n5f/video/upload/v1744624375/WhatsApp_Video_2025-04-14_at_16.51.01_oxhnps.mp4)
+![Search Bar Animation Preview](https://res.cloudinary.com/dr6cm6n5f/image/upload/v1744625246/WhatsAppVideo2025-04-14at16.51.01-ezgif.com-video-to-gif-converter_gldxyv.gif)
 
 ## Installation
 To use the `Search Bar Animation`, add this following code to the 'button Search' action.
