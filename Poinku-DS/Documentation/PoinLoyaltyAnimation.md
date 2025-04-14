@@ -8,7 +8,7 @@ The `Poin Loyalty Animation` that transitions from a top widget to sticky positi
 -  Provides an option to attach/anchor to a specific view in the layout
 
 ## Preview
-![Coachmark Preview](https://res.cloudinary.com/dr6cm6n5f/image/upload/v1744626828/WhatsAppVideo2025-04-14at16.51.04-ezgif.com-video-to-gif-converter_mgfwym.gif)
+![Coachmark Preview](https://res.cloudinary.com/dr6cm6n5f/image/upload/c_scale,w_300/v1744626828/WhatsAppVideo2025-04-14at16.51.04-ezgif.com-video-to-gif-converter_mgfwym.gif)
 
 ## Methods
 - `configure(title: String, description: String, targetView: UIView, spotlightRadius: CGFloat, tintColor: UIView)`
