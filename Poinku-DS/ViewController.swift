@@ -14,6 +14,13 @@ class ViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        self.navigationController?.setToolbarHidden(false, animated: animated)
+    }
+    
     @IBAction func GoToDoubleArc(_ sender: Any) {
         let vc = UIStoryboard(name: "DoubleArcViewController", bundle: nil).instantiateViewController(withIdentifier: "DoubleArc")
         navigationController?.pushViewController(vc, animated: true)
@@ -46,6 +53,16 @@ class ViewController: UIViewController {
     
     @IBAction func GoToStampPage(_ sender: Any) {
         let vc = UIStoryboard(name: "StampPageViewController", bundle: nil).instantiateViewController(withIdentifier: "StampPage")
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @IBAction func GoToPoinLoyaltyPage(_ sender: Any) {
+        let vc = UIStoryboard(name: "PoinLoyaltyPageViewController", bundle: nil).instantiateViewController(withIdentifier: "PoinLoyaltyPage")
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @IBAction func GoToOnBoarding(_ sender: Any) {
+        let vc = UIStoryboard(name: "OnBoardingViewController", bundle: nil).instantiateViewController(withIdentifier: "OnBoardingPage")
         navigationController?.pushViewController(vc, animated: true)
     }
 }

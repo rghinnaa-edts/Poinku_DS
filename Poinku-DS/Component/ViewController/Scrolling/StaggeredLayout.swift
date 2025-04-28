@@ -41,13 +41,16 @@ class StaggeredLayout: UICollectionViewFlowLayout {
     override func prepare() {
         super.prepare()
         
+        sectionInset.left = 16
+        sectionInset.right = 16
+        
         guard let collectionView = collectionView else { return }
         
         cachedAttributes.removeAll()
         columnHeights = Array(repeating: 0, count: numberOfColumns)
         contentHeight = 0
         
-        let contentWidth = collectionView.bounds.width - 12 - sectionInset.left - sectionInset.right
+        let contentWidth = collectionView.bounds.width - sectionInset.left - sectionInset.right
         let totalSpacing = interColumnSpacing * CGFloat(numberOfColumns - 1)
         let columnWidth = (contentWidth - totalSpacing) / CGFloat(numberOfColumns)
         

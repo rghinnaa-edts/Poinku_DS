@@ -31,9 +31,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ci6-Kw-8MZ">
-                    <rect key="frame" x="14" y="0.0" width="122" height="120"/>
+                    <rect key="frame" x="15" y="0.0" width="120" height="120"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="120" id="Iaa-aV-J17"/>
+                        <constraint firstAttribute="width" constant="120" id="LMf-Hu-A3C"/>
                     </constraints>
                 </imageView>
                 <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2R9-dz-6QO">
@@ -136,6 +137,7 @@
                 <constraint firstItem="Grf-Xf-hLV" firstAttribute="leading" secondItem="Iu4-Dp-OW8" secondAttribute="leading" constant="8" id="7uR-rU-fqo"/>
                 <constraint firstItem="dCx-gs-GLO" firstAttribute="leading" secondItem="UvW-30-R2T" secondAttribute="leading" constant="8" id="ADz-o3-twg"/>
                 <constraint firstItem="efq-DT-mcn" firstAttribute="leading" secondItem="UvW-30-R2T" secondAttribute="leading" constant="8" id="C3l-ZM-lfp"/>
+                <constraint firstItem="Ci6-Kw-8MZ" firstAttribute="centerX" secondItem="UvW-30-R2T" secondAttribute="centerX" id="Ekq-Tr-cYr"/>
                 <constraint firstItem="7Ac-dU-gbg" firstAttribute="top" secondItem="dCx-gs-GLO" secondAttribute="bottom" constant="8" id="Kgg-bZ-ZxU"/>
                 <constraint firstItem="Ci6-Kw-8MZ" firstAttribute="top" secondItem="Iu4-Dp-OW8" secondAttribute="top" id="KxQ-Qg-QSR"/>
                 <constraint firstItem="efq-DT-mcn" firstAttribute="top" secondItem="Grf-Xf-hLV" secondAttribute="bottom" constant="8" id="Lq9-L8-EIn"/>
@@ -145,8 +147,6 @@
                 <constraint firstItem="2R9-dz-6QO" firstAttribute="leading" secondItem="Iu4-Dp-OW8" secondAttribute="leading" id="Ud6-aS-7Mc"/>
                 <constraint firstAttribute="trailing" secondItem="7Ac-dU-gbg" secondAttribute="trailing" constant="8" id="Y91-Nh-ocg"/>
                 <constraint firstItem="dCx-gs-GLO" firstAttribute="top" secondItem="efq-DT-mcn" secondAttribute="bottom" constant="8" id="eoh-JV-3X7"/>
-                <constraint firstItem="Ci6-Kw-8MZ" firstAttribute="leading" secondItem="Iu4-Dp-OW8" secondAttribute="leading" constant="14" id="ev2-Ew-sVb"/>
-                <constraint firstAttribute="trailing" secondItem="Ci6-Kw-8MZ" secondAttribute="trailing" constant="14" id="ezB-vC-ylx"/>
                 <constraint firstItem="2R9-dz-6QO" firstAttribute="top" secondItem="Ci6-Kw-8MZ" secondAttribute="bottom" id="q29-Mh-eRf"/>
                 <constraint firstAttribute="bottom" secondItem="7Ac-dU-gbg" secondAttribute="bottom" constant="8" id="raH-P3-0SR"/>
                 <constraint firstItem="2R9-dz-6QO" firstAttribute="trailing" secondItem="Iu4-Dp-OW8" secondAttribute="trailing" id="sdi-1t-IE1"/>
@@ -156,7 +156,7 @@
         </view>
     </objects>
     <resources>
-        <image name="exclamation" width="24" height="24"/>
+        <image name="exclamation" width="48" height="48"/>
         <namedColor name="Orange-10">
             <color red="0.93333333333333335" green="0.7803921568627451" blue="0.52941176470588236" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

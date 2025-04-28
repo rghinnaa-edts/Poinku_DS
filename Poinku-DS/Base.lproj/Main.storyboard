@@ -96,6 +96,24 @@
                                     <action selector="GoToCoachmark:" destination="BYZ-38-t0r" eventType="touchUpInside" id="puC-wp-BHs"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pvU-mv-xUY">
+                                <rect key="frame" x="212" y="304" width="150" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="PoinLoyaltyPage"/>
+                                <connections>
+                                    <action selector="GoToPoinLoyaltyPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tCH-GO-0JO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P6p-Jl-eQW">
+                                <rect key="frame" x="35" y="377" width="115" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="OnBoarding"/>
+                                <connections>
+                                    <action selector="GoToOnBoarding:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DnY-Mf-Qkd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ISo-hc-ZL6"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
