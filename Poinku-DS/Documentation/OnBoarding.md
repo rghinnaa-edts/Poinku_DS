@@ -31,7 +31,7 @@ For now, It's available only when you add all the OnBoarding class file of swift
 - Add the edge to edge UI for seamless the system bar
 
 ### Usage
-```Example OnBoarding
+```swift
   private func setupSlides() {
     onBoarding.slides = [
             OnBoardingSlide(
