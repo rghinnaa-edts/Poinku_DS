@@ -23,6 +23,7 @@ For now, It's available only when you add all the OnBoarding class file of swift
 - Add file OnBoardingCell.swift into your project //onBoardingCell Component
 - Add file OnBoardingCell.xib into your project //onBoardingCell Component
 - Add file OnBoardingSlide.swift into your project //onBoarding Model Class
+- Add file CustomPageControl into your project // Custom Page Control
 - Add OnBoarding assets (image onboarding, onboarding2, onboardig3)
 - Create a UIView in your View Controller storyboard and direct it class to OnBoarding.swift
 - Add the IBOutlet of OnBoarding UIView into your View Controller
