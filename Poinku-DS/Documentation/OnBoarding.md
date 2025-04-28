@@ -32,6 +32,8 @@ For now, It's available only when you add all the OnBoarding class file of swift
 
 ### Usage
 ```swift
+  @IBOutlet var onBoarding: OnBoarding!
+
   private func setupSlides() {
     onBoarding.slides = [
             OnBoardingSlide(
