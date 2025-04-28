@@ -5,7 +5,7 @@ The `OnBoarding` component is a series of screens or steps that introduce new us
 -  Customizable title, description, image
 
 ## Preview
-![OnBoarding Preview](https://res.cloudinary.com/dr6cm6n5f/image/upload/v1745818109/WhatsApp_GIF_2025-04-28_at_12.27.44_nlgmkt.gif)
+![OnBoarding Preview](https://res.cloudinary.com/dr6cm6n5f/image/upload/c_scale,w_300/v1745818109/WhatsApp_GIF_2025-04-28_at_12.27.44_nlgmkt.gif)
 
 ## Class
 - struct OnBoardingSlides = image: UIImage, title: String, description: String
