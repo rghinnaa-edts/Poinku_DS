@@ -67,16 +67,16 @@ class OnBoardingViewController: UIViewController {
         onBoarding.slides = [
             OnBoardingSlide(
                 image: UIImage(named: "onboarding"),
-                title: "Kumpulkan Poin dan Stamp Buat Dapetin Kejutan!",
-                description: "Kumpulkan poin serta stamp dari setiap transaksi dan tukarkan dengan kupon menarik di sini!"),
+                title: "Kumpulin Poin, Dapat Hadiah!",
+                description: "Kumpulin Poin & Stamp dari setiap transaksi, tukarkan dengan hadiah yang cuma ada di sini!"),
             OnBoardingSlide(
                 image: UIImage(named: "onboarding2"),
-                title: "Dapetin Diskon, Bonus, Sampai Gratisan!",
-                description: "Jangan lupa untuk gunakan kupon untuk mendapatkan banyak keuntungan!"),
+                title: "Anti Ribet, Nyaman Banget!",
+                description: "Simpan struk belanja & cek riwayat transaksi kapan saja, semua dalam satu aplikasi."),
             OnBoardingSlide(
                 image: UIImage(named: "onboarding3"),
-                title: "Semakin Sering Belanja, Semakin Untung!",
-                description: "Makin sering kamu belanja semakin banyak bonus, serta diskon yang bisa kamu dapetin.")
+                title: "Member Lebih Untung!",
+                description: "Nikmati berbagai Promo Khusus Member, Diskon, Bonus, sampai Belanja Gratis, yang dijamin untung banget!")
         ]
     }
     
