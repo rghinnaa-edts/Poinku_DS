@@ -88,7 +88,7 @@ class RibbonView: UIView {
     private let label: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.font = Font.Heading.H3.font
+        label.font = Font.H3.font
         return label
     }()
     

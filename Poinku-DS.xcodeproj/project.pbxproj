@@ -24,6 +24,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		501152972DD5BFFB0001F76A /* Poinku-DS 2.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "Poinku-DS 2.xcodeproj"; sourceTree = "<group>"; };
 		507620292D65BE6E002830BE /* Poinku-DS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Poinku-DS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5076203F2D65BE6F002830BE /* Poinku-DSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Poinku-DSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		507620492D65BE6F002830BE /* Poinku-DSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Poinku-DSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,6 +86,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		501152A42DD5BFFB0001F76A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		507620202D65BE6E002830BE = {
 			isa = PBXGroup;
 			children = (
@@ -211,6 +219,12 @@
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 5076202A2D65BE6E002830BE /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 501152A42DD5BFFB0001F76A /* Products */;
+					ProjectRef = 501152972DD5BFFB0001F76A /* Poinku-DS 2.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				507620282D65BE6E002830BE /* Poinku-DS */,

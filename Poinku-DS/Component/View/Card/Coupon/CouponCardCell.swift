@@ -157,7 +157,7 @@ class CouponCardCell: UICollectionViewCell {
         } else {
             "Kupon Habis"
         }
-        lblAvailable.font = Font.Body.B4.Small.font
+        lblAvailable.font = Font.B4.Small.font
     }
     
     private func UIikupon() {
@@ -171,7 +171,7 @@ class CouponCardCell: UICollectionViewCell {
         vIKupon.layer.borderColor = UIColor.Support.primaryHighlightStrong.cgColor
         
         lblIKupon.textColor = UIColor.Support.primaryHighlightStrong
-        lblIKupon.font = Font.Body.B4.Small.font
+        lblIKupon.font = Font.B4.Small.font
         lblIKupon.text = "i-Kupon"
     }
     

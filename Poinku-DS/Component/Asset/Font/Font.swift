@@ -59,9 +59,24 @@ struct Font {
     }
     
     struct Heading {
-        static let H1 = BaseFont.semibold(size: 16, lineHeight: 18)
-        static let H2 = BaseFont.semibold(size: 14, lineHeight: 16)
-        static let H3 = BaseFont.semibold(size: 12, lineHeight: 14)
+        
+    }
+    
+    static let H1 = BaseFont.semibold(size: 16, lineHeight: 18)
+    static let H2 = BaseFont.semibold(size: 14, lineHeight: 16)
+    static let H3 = BaseFont.semibold(size: 12, lineHeight: 14)
+    
+    struct B2 {
+        static let Heavy = BaseFont.bold(size: 14, lineHeight: 16)
+        static let Large = BaseFont.semibold(size: 14, lineHeight: 16)
+        static let Medium = BaseFont.medium(size: 14, lineHeight: 16)
+        static let Small = BaseFont.regular(size: 14, lineHeight: 16)
+    }
+    
+    struct B4 {
+        static let Heavy = BaseFont.bold(size: 10, lineHeight: 14)
+        static let Large = BaseFont.semibold(size: 10, lineHeight: 14)
+        static let Small = BaseFont.regular(size: 10, lineHeight: 14)
     }
     
     struct Body {
@@ -71,12 +86,7 @@ struct Font {
             static let Small = BaseFont.regular(size: 16, lineHeight: 18)
         }
         
-        struct B2 {
-            static let Heavy = BaseFont.bold(size: 14, lineHeight: 16)
-            static let Large = BaseFont.semibold(size: 14, lineHeight: 16)
-            static let Medium = BaseFont.medium(size: 14, lineHeight: 16)
-            static let Small = BaseFont.regular(size: 14, lineHeight: 16)
-        }
+        
         
         struct B3 {
             static let Large = BaseFont.semibold(size: 12, lineHeight: 16)
@@ -84,11 +94,7 @@ struct Font {
             static let Small = BaseFont.regular(size: 12, lineHeight: 16)
         }
         
-        struct B4 {
-            static let Heavy = BaseFont.bold(size: 10, lineHeight: 14)
-            static let Large = BaseFont.semibold(size: 10, lineHeight: 14)
-            static let Small = BaseFont.regular(size: 10, lineHeight: 14)
-        }
+        
     }
     
     struct Paragraph {

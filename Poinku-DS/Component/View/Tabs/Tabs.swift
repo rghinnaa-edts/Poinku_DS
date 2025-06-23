@@ -8,21 +8,18 @@
 import UIKit
 
 class Tabs: UIView {
-    // MARK: - Outlets
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var tabStackView: UIStackView!
     @IBOutlet weak var selectedIndicatorView: UIView!
     @IBOutlet weak var bottomRoundedView: UIView!
     @IBOutlet weak var indicatorLeadingConstraint: NSLayoutConstraint!
     
-    // MARK: - Properties
     weak var delegate: TabsDelegate?
     private var tabs: [Tab] = []
     private var selectedIndex: Int = 0
     private var tabButtons: [UIButton] = []
     private let animationDuration: TimeInterval = 0.3
     
-    // MARK: - Models
     enum TabType {
         case cart
         case home
@@ -32,7 +29,6 @@ class Tabs: UIView {
         case home_new2
     }
     
-    // MARK: - Initialization
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupFromNib()
@@ -54,7 +50,6 @@ class Tabs: UIView {
         }
     }
     
-    // MARK: - Setup
     private func setupInitialUI() {
         selectedIndicatorView.backgroundColor = .white
         selectedIndicatorView.layer.cornerRadius = 12
@@ -120,7 +115,6 @@ class Tabs: UIView {
         return button
     }
     
-    // MARK: - Actions
     @objc private func tabButtonTapped(_ sender: UIButton) {
         selectTab(at: sender.tag)
     }
@@ -132,7 +126,6 @@ class Tabs: UIView {
         delegate?.tabSelected(index)
     }
     
-    // MARK: - UI Updates
     private func updateSelectedTab(animated: Bool) {
         let tabWidth = bounds.width / CGFloat(tabs.count)
         let newLeadingConstraint = tabWidth * CGFloat(selectedIndex)

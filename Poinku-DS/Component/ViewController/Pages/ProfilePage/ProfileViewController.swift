@@ -25,6 +25,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet var lblTransactionTitle: UILabel!
     @IBOutlet var lblTransaction: UILabel!
     @IBOutlet var progressTransaction: UIProgressView!
+    @IBOutlet var scrollVoew: UIScrollView!
     
     @IBOutlet var ivMGM: UIImageView!
     @IBOutlet var ivArrowRight: UIImageView!
@@ -110,12 +111,16 @@ class ProfileViewController: UIViewController {
         vMGM.layer.cornerRadius = 8
         
         DispatchQueue.main.async {
-            self.vMGM.addAnimatedGradientBorder(
+            self.vMGM.startAnimationGradientBorder(
                 width: 2,
                 colors: [UIColor.white, UIColor.blue30],
                 duration: 3.0
             )
+            
+            self.vMGM.startAnimationNeonPulse()
         }
+        
+        scrollVoew.clipsToBounds = false
         
         ivGoogleWallet.image = UIImage(named: "googlewallet")
         lblGoogleWallet.text = "Tambahkan ke Google Wallet"
@@ -173,7 +178,8 @@ class ProfileViewController: UIViewController {
         
         coachmark.onDismiss = {
             DispatchQueue.main.asyncAfter(deadline: .now() + 15.0) {
-                self.vMGM.stopGradientBorderAnimation()
+                self.vMGM.stopAnimationGradientBorder()
+                self.vMGM.stopAnimationNeonPulse()
             }
         }
 

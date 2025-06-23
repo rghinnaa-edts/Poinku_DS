@@ -32,11 +32,6 @@ class OnBoardingViewController: UIViewController {
         onBoarding.viewWillAppear()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        onBoarding.viewWillDisappear()
-    }
-    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -105,10 +100,14 @@ class OnBoardingViewController: UIViewController {
     @IBAction func goToRegister(_ sender: Any) {
         let vc = UIStoryboard(name: "RegisterViewController", bundle: nil).instantiateViewController(withIdentifier: "RegisterPage")
         navigationController?.pushViewController(vc, animated: true)
+        
+        onBoarding.viewWillDisappear()
     }
     
     @IBAction func goToLogin(_ sender: Any) {
         let vc = UIStoryboard(name: "LoginViewController", bundle: nil).instantiateViewController(withIdentifier: "LoginPage")
         navigationController?.pushViewController(vc, animated: true)
+        
+        onBoarding.viewWillDisappear()
     }
 }

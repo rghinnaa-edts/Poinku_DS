@@ -12,18 +12,14 @@ class RibbonViewController: UIViewController {
     @IBOutlet var testCard: UIView!
     @IBOutlet var testCard2: UIView!
     @IBOutlet var testCard3: UIView!
-    @IBOutlet var btnTest: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        testCard.backgroundColor = UIColor.Grey.grey20
-        testCard2.backgroundColor = UIColor.Grey.grey20
-        testCard3.backgroundColor = UIColor.Grey.grey20
-        
         ribbonView1()
         ribbonView2()
         ribbonView3()
+        
     }
     
     func ribbonView1() {

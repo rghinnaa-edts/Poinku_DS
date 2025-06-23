@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2zy-FW-ndn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2zy-FW-ndn">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -14,11 +14,11 @@
             <objects>
                 <navigationController id="2zy-FW-ndn" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hN9-nE-i9q">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <rect key="frame" x="0.0" y="118" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="u2K-Qu-chF"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="yPx-IQ-W7W"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J49-Qm-D7i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -106,12 +106,48 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P6p-Jl-eQW">
-                                <rect key="frame" x="35" y="377" width="115" height="35"/>
+                                <rect key="frame" x="16" y="377" width="153" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="OnBoarding"/>
+                                <buttonConfiguration key="configuration" style="plain" title="OnBoardingPage"/>
                                 <connections>
                                     <action selector="GoToOnBoarding:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DnY-Mf-Qkd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cib-h3-B7r">
+                                <rect key="frame" x="225" y="377" width="111" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="ProfilePage"/>
+                                <connections>
+                                    <action selector="GotoProfile:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Aiq-7Z-POV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aRA-Y6-ceq">
+                                <rect key="frame" x="39" y="443" width="106" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="MGM Card"/>
+                                <connections>
+                                    <action selector="GoToMGMCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pSE-kX-in3"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="apK-Vh-XfF">
+                                <rect key="frame" x="218" y="443" width="125" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="RegisterPage"/>
+                                <connections>
+                                    <action selector="GoToRegister1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="26x-4r-W3b"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ws9-OA-yUl">
+                                <rect key="frame" x="38" y="503" width="108" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="HomePage"/>
+                                <connections>
+                                    <action selector="GoToHome:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MEh-YP-LLZ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -123,6 +159,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="300" y="-13"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="t9q-U6-ReV">
+            <objects>
+                <tableViewController id="ehM-lt-sIQ" customClass="TableViewController" customModule="Poinku_DS" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="ckU-48-jNs">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ComponentCell" id="OcY-I4-G7L">
+                                <rect key="frame" x="0.0" y="55.333332061767578" width="393" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OcY-I4-G7L" id="REp-Jd-5i0">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ehM-lt-sIQ" id="S14-Of-CMM"/>
+                            <outlet property="delegate" destination="ehM-lt-sIQ" id="9j9-7k-Rhf"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="LmN-rT-0Z5"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fi5-6A-E9x" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1024" y="-13"/>
         </scene>
     </scenes>
     <resources>

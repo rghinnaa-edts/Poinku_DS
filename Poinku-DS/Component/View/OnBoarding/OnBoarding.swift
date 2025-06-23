@@ -86,7 +86,7 @@ class OnBoarding: UIView {
              collectionView.dataSource = self
              
              let nib = UINib(nibName: "OnBoardingCell", bundle: nil)
-                 collectionView.register(nib, forCellWithReuseIdentifier: OnBoardingCell.identifier)
+             collectionView.register(nib, forCellWithReuseIdentifier: OnBoardingCell.identifier)
              
              setupUI()
              startAutoScrollTimer()
@@ -96,7 +96,7 @@ class OnBoarding: UIView {
      }
      
      private func setupUI() {
-         lblTitle.font = Font.Heading.H1.font
+         lblTitle.font = Font.H1.font
          lblTitle.textColor = UIColor.grey80
          
          lblDesc.font = Font.Paragraph.P2.Small.font
@@ -254,6 +254,11 @@ class OnBoarding: UIView {
     
     func viewWillDisappear() {
         stopAutoScrollTimer()
+    }
+    
+    deinit {
+        stopAutoScrollTimer()
+        stopDisplayLink()
     }
     
  }

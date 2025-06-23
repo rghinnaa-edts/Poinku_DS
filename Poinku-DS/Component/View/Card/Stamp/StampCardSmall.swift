@@ -93,7 +93,7 @@ class StampCardSmall: UICollectionViewCell {
         btnExchange.titleLabel?.font = Font.Button.Small.font
         
         lblStampCard.text = "Diskon Rp2.000 Lifebuoy Red Fresh"
-        ivStampCard.image = UIImage(named: "placeholder")
+        ivStampCard.image = UIImage(named: "product-image")
     }
     
     private func UIQuantity() {
@@ -131,7 +131,7 @@ class StampCardSmall: UICollectionViewCell {
         } else {
             "Kuota Habis"
         }
-        lblQuantity.font = Font.Body.B4.Small.font
+        lblQuantity.font = Font.B4.Small.font
     }
     
     private func UIStamp() {
@@ -141,7 +141,7 @@ class StampCardSmall: UICollectionViewCell {
         vStamp.layer.borderColor = UIColor.Support.warningStrong.cgColor
         
         lblStamp.textColor = UIColor.Support.warningStrong
-        lblStamp.font = Font.Body.B4.Small.font
+        lblStamp.font = Font.B4.Small.font
         lblStamp.text = "24 Stamp"
     }
     

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Fz-zE-vi6">
-                                <rect key="frame" x="0.0" y="59" width="393" height="52"/>
+                                <rect key="frame" x="0.0" y="118" width="393" height="52"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ML-eX-7Zh">
                                         <rect key="frame" x="16" y="12" width="24" height="24"/>
@@ -50,19 +50,19 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZYF-xy-hvn">
-                                <rect key="frame" x="16" y="126.99999999999999" width="361" height="20.333333333333329"/>
+                                <rect key="frame" x="16" y="186" width="361" height="20.333333333333343"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n7h-DM-ZFh">
-                                <rect key="frame" x="16" y="159.33333333333334" width="361" height="20.333333333333343"/>
+                                <rect key="frame" x="16" y="218.33333333333334" width="361" height="20.333333333333343"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nCS-yC-Lvf">
-                                <rect key="frame" x="16" y="191.66666666666666" width="361" height="34.333333333333343"/>
+                                <rect key="frame" x="16" y="250.66666666666666" width="361" height="34.333333333333343"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Verifikasi WhatsApp"/>
                                 <connections>
@@ -71,13 +71,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mlg-4d-4Mu">
-                                <rect key="frame" x="176" y="238" width="41.333333333333343" height="20.333333333333314"/>
+                                <rect key="frame" x="176" y="297" width="41.333333333333343" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LXK-je-KRE">
-                                <rect key="frame" x="16" y="247.66666666666666" width="148" height="1"/>
+                                <rect key="frame" x="16" y="306.66666666666669" width="148" height="1"/>
                                 <color key="backgroundColor" name="Grey-40"/>
                                 <color key="tintColor" name="Grey-40"/>
                                 <constraints>
@@ -85,24 +85,24 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HuD-jT-LxZ">
-                                <rect key="frame" x="229.33333333333337" y="247.66666666666666" width="147.66666666666663" height="1"/>
+                                <rect key="frame" x="229.33333333333337" y="306.66666666666669" width="147.66666666666663" height="1"/>
                                 <color key="backgroundColor" name="Grey-40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="qt5-2o-9Fb"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QbH-f9-8Nv">
-                                <rect key="frame" x="16" y="270.33333333333331" width="361" height="34.333333333333314"/>
+                                <rect key="frame" x="16" y="329.33333333333331" width="361" height="34.333333333333314"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Verifikasi Via Missed Call"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jjM-hg-7i8">
-                                <rect key="frame" x="16" y="316.66666666666669" width="361" height="34.333333333333314"/>
+                                <rect key="frame" x="16" y="375.66666666666669" width="361" height="34.333333333333314"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Verifikasi Via SMS"/>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mbz-Li-zcZ">
-                                <rect key="frame" x="135.33333333333334" y="363" width="122.66666666666666" height="20.333333333333314"/>
+                                <rect key="frame" x="135.33333333333334" y="422" width="122.66666666666666" height="20.333333333333314"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U12-LT-ymH">
                                         <rect key="frame" x="16.000000000000004" y="0.0" width="41.333333333333343" height="20.333333333333332"/>
@@ -125,13 +125,12 @@
                                     <constraint firstAttribute="trailing" secondItem="Pax-PE-SWu" secondAttribute="trailing" constant="16" id="bIc-5n-8m5"/>
                                     <constraint firstItem="U12-LT-ymH" firstAttribute="leading" secondItem="Mbz-Li-zcZ" secondAttribute="leading" constant="16" id="bK0-ui-PRS"/>
                                     <constraint firstItem="Pax-PE-SWu" firstAttribute="leading" secondItem="U12-LT-ymH" secondAttribute="trailing" constant="8" id="cSa-oH-O0s"/>
-                                    <constraint firstItem="U12-LT-ymH" firstAttribute="top" secondItem="Mbz-Li-zcZ" secondAttribute="top" id="tGW-pA-n2B"/>
                                     <constraint firstItem="Pax-PE-SWu" firstAttribute="top" secondItem="Mbz-Li-zcZ" secondAttribute="top" id="wrI-0i-B7u"/>
                                     <constraint firstAttribute="bottom" secondItem="Pax-PE-SWu" secondAttribute="bottom" id="xSv-d6-1XR"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eDh-L5-xR7">
-                                <rect key="frame" x="16" y="395.33333333333331" width="361" height="20.333333333333314"/>
+                                <rect key="frame" x="16" y="454.33333333333331" width="361" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>

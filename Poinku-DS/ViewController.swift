@@ -18,7 +18,7 @@ class ViewController: UIViewController {
         super.viewWillAppear(animated)
         
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
-        self.navigationController?.setToolbarHidden(false, animated: animated)
+        self.navigationController?.setToolbarHidden(true, animated: animated)
     }
     
     @IBAction func GoToDoubleArc(_ sender: Any) {
@@ -63,6 +63,26 @@ class ViewController: UIViewController {
     
     @IBAction func GoToOnBoarding(_ sender: Any) {
         let vc = UIStoryboard(name: "OnBoardingViewController", bundle: nil).instantiateViewController(withIdentifier: "OnBoardingPage")
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @IBAction func GotoProfile(_ sender: Any) {
+        let vc = UIStoryboard(name: "ProfileViewController", bundle: nil).instantiateViewController(withIdentifier: "ProfilePage")
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @IBAction func GoToMGMCard(_ sender: Any) {
+        let vc = UIStoryboard(name: "MGMViewController", bundle: nil).instantiateViewController(withIdentifier: "MGMCardPage")
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @IBAction func GoToRegister1(_ sender: Any) {
+        let vc = UIStoryboard(name: "Register1ViewController", bundle: nil).instantiateViewController(withIdentifier: "Register1Page")
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @IBAction func GoToHome(_ sender: Any) {
+        let vc = UIStoryboard(name: "HomeViewController", bundle: nil).instantiateViewController(withIdentifier: "HomePage")
         navigationController?.pushViewController(vc, animated: true)
     }
 }

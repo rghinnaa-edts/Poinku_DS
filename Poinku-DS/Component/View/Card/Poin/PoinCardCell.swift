@@ -126,8 +126,8 @@ class PoinCardCell: UICollectionViewCell {
         btnExchange.titleLabel?.textColor = .white
         btnExchange.titleLabel?.font = Font.Button.Small.font
         
-        lblPoinCard.text = "Diskon Rp2.000 Lifebuoy Red Fresh"
-        ivPoinCard.image = UIImage(named: "placeholder")
+        lblPoinCard.text = "Diskon Rp5.000 1 Pcs Kellogg’s Frosted Flakes 300gr"
+        ivPoinCard.image = UIImage(named: "product-image")
     }
     
     private func UICoupon() {
@@ -161,7 +161,7 @@ class PoinCardCell: UICollectionViewCell {
         } else {
             "Kupon Habis"
         }
-        lblCoupon.font = Font.Body.B4.Small.font
+        lblCoupon.font = Font.B4.Small.font
     }
     
     private func UIikupon() {
@@ -175,7 +175,7 @@ class PoinCardCell: UICollectionViewCell {
         vIKupon.layer.borderColor = UIColor.Support.primaryHighlightStrong.cgColor
         
         lblIKupon.textColor = UIColor.Support.primaryHighlightStrong
-        lblIKupon.font = Font.Body.B4.Small.font
+        lblIKupon.font = Font.B4.Small.font
         lblIKupon.text = "i-Kupon"
     }
     
@@ -186,7 +186,7 @@ class PoinCardCell: UICollectionViewCell {
         vPoin.layer.borderColor = UIColor.Support.warningStrong.cgColor
         
         lblPoin.textColor = UIColor.Support.warningStrong
-        lblPoin.font = Font.Body.B4.Small.font
+        lblPoin.font = Font.B4.Small.font
         lblPoin.text = "5.500 Poin"
     }
     

@@ -152,25 +152,21 @@ class Chip: UIView {
     }
     
     private func setupClickability() {
-        // Remove existing gesture recognizer if any
         if let existingGesture = tapGestureRecognizer {
             containerView.removeGestureRecognizer(existingGesture)
             tapGestureRecognizer = nil
         }
         
         if isClickable {
-            // Add tap gesture recognizer for clickable chips
             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(chipTapped))
             containerView.addGestureRecognizer(tapGesture)
             tapGestureRecognizer = tapGesture
             
-            // Visual indication that it's clickable
             containerView.isUserInteractionEnabled = true
             containerView.alpha = 1.0
         } else {
-            // Non-clickable chips shouldn't respond to touches
             containerView.isUserInteractionEnabled = false
-            containerView.alpha = 0.9 // Optional: slightly dim non-clickable chips
+            containerView.alpha = 0.9
         }
         
         setupUI()
@@ -178,10 +174,8 @@ class Chip: UIView {
     
     @objc private func chipTapped() {
         if isClickable {
-            // Toggle active state when tapped
             isActive = !isActive
             
-            // Call the tap handler if provided
             onTap?()
         }
     }

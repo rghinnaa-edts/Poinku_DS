@@ -69,7 +69,7 @@ class StampBrand: UICollectionViewCell {
         lblTotalStamp.text = "32"
         lblTotalStamp.textColor = UIColor.Blue.blue30
         
-        lblStamp.font = Font.Body.B4.Small.font
+        lblStamp.font = Font.B4.Small.font
         lblStamp.text = "Stamp"
         lblStamp.textColor = UIColor.Blue.blue30
         

@@ -65,7 +65,7 @@ class StampBrandProduct: UICollectionViewCell {
         ivBrand.contentMode = .scaleAspectFit
         ivBrand.clipsToBounds = true
         
-        lblBrand.font = Font.Heading.H2.font
+        lblBrand.font = Font.H2.font
         lblBrand.textColor = UIColor.Grey.grey80
         
         lblStamp.text = "Kamu Punya:"

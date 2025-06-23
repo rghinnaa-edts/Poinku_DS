@@ -200,14 +200,14 @@ class Textfield: UIView {
         vTextfield.layer.cornerRadius = 4
         vTextfield.layer.borderColor = UIColor.Grey.grey30.cgColor
         
-        labelText.font = Font.Heading.H3.font
+        labelText.font = Font.H3.font
         labelText.textColor = UIColor.Grey.grey60
         
-        labelRequired.font = Font.Heading.H3.font
+        labelRequired.font = Font.H3.font
         labelRequired.textColor = UIColor.Red.red30
         labelRequired.text = "*"
         
-        textfield.font = Font.Body.B2.Small.font
+        textfield.font = Font.B2.Small.font
         textfield.textColor = UIColor.Grey.grey80
         textfield.borderStyle = .none
         
@@ -231,11 +231,11 @@ class Textfield: UIView {
             iconTrailing.isHidden = false
         }
         
-        support.font = Font.Body.B4.Small.font
+        support.font = Font.B4.Small.font
         support.textColor = UIColor.Grey.grey60
         support.isHidden = true
         
-        counter.font = Font.Body.B4.Small.font
+        counter.font = Font.B4.Small.font
         counter.textColor = UIColor.Grey.grey60
         counter.isHidden = true
     }

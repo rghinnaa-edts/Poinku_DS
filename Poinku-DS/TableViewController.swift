@@ -8,6 +8,25 @@
 import UIKit
 
 class TableViewController: UITableViewController {
+    
+    private var sections = ["Components", "Pages"]
+    
+    private var componentList: [String] = [
+        "Progress Bar",
+        "Card",
+        "Ribbon",
+        "Scrolling Animation",
+        "Skeleton",
+        "Coachmark",
+        "MGM Card Animation"
+    ]
+    
+    private var pageList: [String] = [
+        "Stamp Page",
+        "Poin Loyalty Page",
+        "OnBoarding Page",
+        "Profile Page"
+    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,23 +42,36 @@ class TableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 2
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        if section == 0 {
+            return componentList.count
+        } else {
+            return pageList.count
+        }
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ComponentCell", for: indexPath)
+        
+        if indexPath.section == 0 {
+            cell.textLabel?.text = componentList[indexPath.row]
+        } else {
+            cell.textLabel?.text = pageList[indexPath.row]
+        }
 
         return cell
     }
-    */
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sections[section]
+    }
+    
+    private func setupUI() {
+    }
 
     /*
     // Override to support conditional editing of the table view.

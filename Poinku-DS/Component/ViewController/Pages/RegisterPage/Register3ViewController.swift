@@ -7,9 +7,12 @@
 
 import UIKit
 
-class Register2ViewController: UIViewController {
+class Register3ViewController: UIViewController {
     
     @IBOutlet var vStep: StepPageNav!
+    @IBOutlet var fieldPin: Textfield!
+    @IBOutlet var fieldRefillPin: Textfield!
+    @IBOutlet var btnLogin: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +22,40 @@ class Register2ViewController: UIViewController {
     
     private func setupUI() {
         vStep.title = ["Isi Data Diri", "Verifikasi", "Buat PIN"]
-        vStep.currentStep = 2
+        vStep.currentStep = 3
+        
+        fieldPin.label = "Kode PIN"
+        fieldPin.placeholder = "Masukkan Kode PIN"
+        fieldPin.keyboardType = .default
+        fieldPin.returnKeyType = .next
+        
+        fieldRefillPin.label = "Ulangi Kode PIN"
+        fieldRefillPin.placeholder = "Masukkan Lagi Kode PIN"
+        fieldRefillPin.keyboardType = .default
+        fieldRefillPin.returnKeyType = .next
+        
+        setupButton(isEnabled: true)
+    }
+    
+    private func setupButton(isEnabled: Bool) {
+        btnLogin.isEnabled = isEnabled
+        
+        if isEnabled {
+            btnLogin.backgroundColor = UIColor.Blue.blue30
+            btnLogin.tintColor = UIColor.Blue.blue30
+        } else {
+            btnLogin.backgroundColor = UIColor.Grey.grey30
+            btnLogin.tintColor = UIColor.Grey.grey30
+        }
+        
+        let attrLogin = NSAttributedString(string: "Konfirmasi", attributes: [
+            .font: Font.Button.Big.font,
+            .foregroundColor: UIColor.white
+        ])
+        btnLogin.setAttributedTitle(attrLogin, for: .normal)
+        
+        btnLogin.contentEdgeInsets = UIEdgeInsets(top: 6, left: 8, bottom: 6, right: 8)
+        btnLogin.layer.cornerRadius = 8
     }
     
 }
