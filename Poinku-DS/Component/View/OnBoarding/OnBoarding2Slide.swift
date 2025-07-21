@@ -7,8 +7,9 @@
 
 import UIKit
 
-struct OnBoardingSlide {
-    let image: UIImage?
+struct OnBoarding2Slide {
+    let imageIllustration: UIImage?
+    let imageBackground: UIImage?
     let title: String
     let description: String
 }

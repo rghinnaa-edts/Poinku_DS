@@ -21,6 +21,11 @@ class Register1ViewController: UIViewController {
         setupUI()
     }
     
+    private func setupStep() {
+        vStep.title = ["Isi Data Diri", "Verifikasi", "Buat PIN"]
+        vStep.currentStep = 1
+    }
+    
     private func setupUI() {
         vStep.title = ["Isi Data Diri", "Verifikasi", "Buat PIN"]
         vStep.currentStep = 1

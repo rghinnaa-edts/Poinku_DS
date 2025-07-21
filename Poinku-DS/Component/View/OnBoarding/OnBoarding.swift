@@ -272,7 +272,7 @@ class OnBoarding: UIView {
      func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
          let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OnBoardingCell.identifier, for: indexPath) as! OnBoardingCell
          
-         cell.setup(wrapSlides[indexPath.item])
+         cell.setup(wrapSlides[indexPath.item].image)
          
          return cell
      }

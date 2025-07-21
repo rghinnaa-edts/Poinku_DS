@@ -19,26 +19,30 @@ class CoachmarkViewController: UIViewController {
         DispatchQueue.main.async {
             self.showCoachmark()
         }
-        
     }
-    
+        
     func showCoachmark() {
         let coachmark = Coachmark(frame: .zero)
 
         coachmark.configureSteps(steps: [
             Coachmark.StepConfiguration(
                 title: "Step 1",
-                description: "This is the first step of coachmark",
-                targetView: testCard
+                description: "This is the first step with single spotlight",
+                targetView: testCard3
             ),
+            
             Coachmark.StepConfiguration(
-                title: "Step 2",
-                description: "This is the second step of coachmark",
-                targetView: testCard2
+                title: "Step 2 - Dual Spotlight",
+                description: "This step shows both start and end targets with dual spotlights",
+                targetView: testCard,
+                endTargetView: testCard2,
+                spotlightRadius: 8,
+                tintColor: UIColor.systemBlue
             ),
+            
             Coachmark.StepConfiguration(
                 title: "Step 3",
-                description: "This is the third step of coachmark",
+                description: "This is the final step with single spotlight",
                 targetView: testCard3
             )
         ])

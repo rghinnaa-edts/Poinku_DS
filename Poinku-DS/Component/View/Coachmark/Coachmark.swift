@@ -18,13 +18,16 @@ class Coachmark: UIView {
    
     private var contentView: UIView?
     private var targetView: UIView?
+    private var endTargetView: UIView?
     private var targetFrame: CGRect = .zero
+    private var endTargetFrame: CGRect = .zero
     private var spotlightRadius: CGFloat = 10
     private var dimColor: UIColor = UIColor.black.withAlphaComponent(0.7)
     private var currentStep = 0
     private var totalSteps = 0
     private var spotlightLayer: CAShapeLayer?
     private var spotlightFrame: CGRect = .zero
+    private var endSpotlightFrame: CGRect = .zero
     private var triangleView: UIView?
     private let triangleHeight: CGFloat = 8
     private let triangleWidth: CGFloat = 12
@@ -38,15 +41,27 @@ class Coachmark: UIView {
         let title: String
         let description: String
         let targetView: UIView
+        let endTargetView: UIView?
         let spotlightRadius: CGFloat
         let tintColor: UIColor
+        let isBtnSkipHide: Bool
+        let isBtnNextHide: Bool
+        let btnSkipText: String
+        let btnNextText: String
+        let offsetMargin: CGFloat
 
-        init(title: String, description: String, targetView: UIView, spotlightRadius: CGFloat = 4, tintColor: UIColor = UIColor.Blue.blue30) {
+        init(title: String, description: String, targetView: UIView, endTargetView: UIView? = nil, spotlightRadius: CGFloat = 4, tintColor: UIColor = UIColor.Blue.blue30, isBtnNextHide: Bool = false, isBtnSkipHide: Bool = false, btnSkipText: String = "Tutup", btnNextText: String = "Berikutnya", offsetMargin: CGFloat = 16) {
             self.title = title
             self.description = description
             self.targetView = targetView
+            self.endTargetView = endTargetView
             self.spotlightRadius = spotlightRadius
             self.tintColor = tintColor
+            self.isBtnSkipHide = isBtnSkipHide
+            self.isBtnNextHide = isBtnNextHide
+            self.btnNextText = btnNextText
+            self.btnSkipText = btnSkipText
+            self.offsetMargin = offsetMargin
         }
     }
 
@@ -76,87 +91,6 @@ class Coachmark: UIView {
         setupUI()
     }
 
-    private func setup() {
-        let bundle = Bundle(for: type(of: self))
-        let nib = UINib(nibName: String(describing: type(of: self)), bundle: bundle)
-        if let contentView = nib.instantiate(withOwner: self, options: nil).first as? UIView {
-            contentView.frame = CGRect(x: 0, y: 0, width: contentViewWidth, height: 0)
-            contentView.backgroundColor = .white
-            contentView.layer.cornerRadius = 12
-            contentView.layer.shadowColor = UIColor.black.cgColor
-            contentView.layer.shadowOffset = CGSize(width: 0, height: 2)
-            contentView.layer.shadowRadius = 4
-            contentView.layer.shadowOpacity = 0.1
-
-            contentView.translatesAutoresizingMaskIntoConstraints = true
-            contentView.autoresizingMask = []
-
-            self.contentView = contentView
-            addSubview(contentView)
-        }
-
-        setupUI()
-    }
-
-    private func setupUI() {
-        lblTitle.font = Font.H3.font
-        lblTitle.textColor = UIColor.Grey.grey80
-
-        lblDescription.font = Font.Paragraph.P2.Small.font
-        lblDescription.textColor = UIColor.Grey.grey70
-
-        lblTotal.font = Font.Body.B3.Small.font
-        lblTotal.textColor = UIColor.Grey.grey50
-
-        let skip = btnSkip.title(for: .normal) ?? ""
-        let attributedSkip = NSAttributedString(string: skip, attributes: [
-            .font: Font.Button.Small.font,
-            .foregroundColor: UIColor.Blue.blue30.cgColor
-        ])
-        btnSkip.setAttributedTitle(attributedSkip, for: .normal)
-
-        btnNext.contentEdgeInsets = UIEdgeInsets(top: 6, left: 8, bottom: 6, right: 8)
-        btnNext.backgroundColor = UIColor.Blue.blue30
-        btnNext.tintColor = UIColor.Blue.blue30
-        btnNext.layer.cornerRadius = 4
-
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleBackgroundTap(_:)))
-        self.addGestureRecognizer(tapGesture)
-    }
-
-    private func ensureContentViewWidth() {
-        calculateContentViewHeight()
-
-        guard let contentView = self.contentView else { return }
-        let desiredWidth = min(contentViewWidth, self.bounds.width - 32)
-        if contentView.frame.width != desiredWidth {
-            var frame = contentView.frame
-            frame.size.width = desiredWidth
-            contentView.frame = frame
-        }
-    }
-
-    func configure(title: String, description: String, targetView: UIView, spotlightRadius: CGFloat = 4, tintColor: UIColor = UIColor.Blue.blue30) {
-        self.lblTitle.text = title
-        self.lblDescription.text = description
-        self.lblTotal.text = "1/1"
-        self.targetView = targetView
-        self.spotlightRadius = spotlightRadius
-
-        let skip = btnSkip.title(for: .normal) ?? ""
-        let attributedSkip = NSAttributedString(string: skip, attributes: [
-            .font: Font.Button.Small.font,
-            .foregroundColor: tintColor
-        ])
-        self.btnSkip.setAttributedTitle(attributedSkip, for: .normal)
-
-        self.btnNext.backgroundColor = tintColor
-        self.btnNext.tintColor = tintColor
-
-        updateNavigationButtons()
-        ensureContentViewWidth()
-    }
-
     func configureSteps(steps: [StepConfiguration]) {
         self.stepConfigurations = steps
         self.totalSteps = steps.count
@@ -183,6 +117,16 @@ class Coachmark: UIView {
             spotlightFrame = CGRect(
                 x: targetFrame.midX - 1,
                 y: targetFrame.midY - 1,
+                width: 2,
+                height: 2
+            )
+        }
+
+        if let endTargetView = self.endTargetView {
+            endTargetFrame = endTargetView.convert(endTargetView.bounds, to: window)
+            endSpotlightFrame = CGRect(
+                x: endTargetFrame.midX - 1,
+                y: endTargetFrame.midY - 1,
                 width: 2,
                 height: 2
             )
@@ -240,6 +184,75 @@ class Coachmark: UIView {
             completion?()
         }
     }
+    
+    func setupCoachmarkButton(
+        isBtnLeftHide: Bool = false,
+        isBtnRightHide: Bool = false,
+        textBtnLeft: String = "",
+        textBtnRight: String = "",
+        btnLeftColor: UIColor? = nil,
+        btnRightColor: UIColor? = nil
+    ) {
+        
+        btnSkip.isHidden = isBtnLeftHide
+        btnNext.isHidden = isBtnRightHide
+        
+        if !textBtnLeft.isEmpty {
+            btnSkip.titleLabel?.text = textBtnLeft
+        }
+        
+        if !textBtnRight.isEmpty {
+            btnNext.titleLabel?.text = textBtnRight
+        }
+    }
+    
+    private func setup() {
+        let bundle = Bundle(for: type(of: self))
+        let nib = UINib(nibName: String(describing: type(of: self)), bundle: bundle)
+        if let contentView = nib.instantiate(withOwner: self, options: nil).first as? UIView {
+            contentView.frame = CGRect(x: 0, y: 0, width: contentViewWidth, height: 0)
+            contentView.backgroundColor = .white
+            contentView.layer.cornerRadius = 8
+            contentView.layer.shadowColor = UIColor.black.cgColor
+            contentView.layer.shadowOffset = CGSize(width: 0, height: 2)
+            contentView.layer.shadowRadius = 4
+            contentView.layer.shadowOpacity = 0.1
+
+            contentView.translatesAutoresizingMaskIntoConstraints = true
+            contentView.autoresizingMask = []
+
+            self.contentView = contentView
+            addSubview(contentView)
+        }
+
+        setupUI()
+    }
+
+    private func setupUI() {
+        lblTitle.font = Font.H3.font
+        lblTitle.textColor = UIColor.Grey.grey80
+
+        lblDescription.font = Font.Paragraph.P2.Small.font
+        lblDescription.textColor = UIColor.Grey.grey70
+
+        lblTotal.font = Font.Body.B3.Small.font
+        lblTotal.textColor = UIColor.Grey.grey50
+
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleBackgroundTap(_:)))
+        self.addGestureRecognizer(tapGesture)
+    }
+
+    private func ensureContentViewWidth() {
+        calculateContentViewHeight()
+
+        guard let contentView = self.contentView else { return }
+        let desiredWidth = min(contentViewWidth, self.bounds.width - 32)
+        if contentView.frame.width != desiredWidth {
+            var frame = contentView.frame
+            frame.size.width = desiredWidth
+            contentView.frame = frame
+        }
+    }
 
     private func updateCurrentStepUI() {
         guard currentStep > 0, currentStep <= stepConfigurations.count else { return }
@@ -252,43 +265,143 @@ class Coachmark: UIView {
         self.lblTotal.text = "\(currentStep)/\(totalSteps)"
 
         let oldTargetView = self.targetView
+        let oldEndTargetView = self.endTargetView
+        
         self.targetView = stepConfig.targetView
+        self.endTargetView = stepConfig.endTargetView
         self.spotlightRadius = stepConfig.spotlightRadius
-
-        let skip = btnSkip.title(for: .normal) ?? ""
+        
+        btnSkip.isHidden = stepConfig.isBtnSkipHide
+        let skip = btnSkip.title(for: .normal) ?? stepConfig.btnSkipText
         let attributedSkip = NSAttributedString(string: skip, attributes: [
             .font: Font.Button.Small.font,
             .foregroundColor: stepConfig.tintColor
         ])
         btnSkip.setAttributedTitle(attributedSkip, for: .normal)
-
+        
+        btnNext.isHidden = stepConfig.isBtnNextHide
+        let nextText = stepConfig.btnNextText
+        let attributedNext = NSAttributedString(string: nextText, attributes: [
+            .font: Font.Button.Small.font,
+            .foregroundColor: UIColor.white
+        ])
+        btnNext.setAttributedTitle(attributedNext, for: .normal)
         btnNext.backgroundColor = stepConfig.tintColor
         btnNext.tintColor = stepConfig.tintColor
-
-        updateNavigationButtons()
+        btnNext.contentEdgeInsets = UIEdgeInsets(top: 6, left: 8, bottom: 6, right: 8)
+        btnNext.layer.cornerRadius = 4
+        
+        if stepConfig.isBtnSkipHide == false && stepConfig.isBtnNextHide == false {
+            btnSkip.isHidden = (currentStep == totalSteps)
+        }
+        
+        if currentStep == totalSteps {
+            let nextText = "Tutup"
+            let attributedNext = NSAttributedString(string: nextText, attributes: [
+                .font: Font.Button.Small.font,
+                .foregroundColor: UIColor.white
+            ])
+            btnNext.setAttributedTitle(attributedNext, for: .normal)
+        }
 
         if let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow }),
            let targetView = self.targetView {
             targetFrame = targetView.convert(targetView.bounds, to: window)
+            
+            if let endTargetView = self.endTargetView {
+                endTargetFrame = endTargetView.convert(endTargetView.bounds, to: window)
+            }
 
             if self.alpha == 1 {
-                updateSpotlight(previousTarget: oldTargetView)
-                updateContentViewPosition()
+                updateSpotlight(previousTarget: oldTargetView, previousEndTarget: oldEndTargetView)
+                updateContentViewPosition(offsetMargin: stepConfig.offsetMargin)
                 updateTrianglePosition()
             }
         }
 
         ensureContentViewWidth()
     }
+    
+    private func createSpotlight() {
+        spotlightLayer?.removeFromSuperlayer()
 
-    private func updateSpotlight(previousTarget: UIView?) {
+        let spotlightLayer = CAShapeLayer()
+        self.layer.insertSublayer(spotlightLayer, at: 0)
+        self.spotlightLayer = spotlightLayer
+
+        let path = UIBezierPath(rect: self.bounds)
+
+        if spotlightFrame == .zero && targetFrame != .zero {
+            spotlightFrame = CGRect(
+                x: targetFrame.midX - 1,
+                y: targetFrame.midY - 1,
+                width: 2,
+                height: 2
+            )
+        }
+
+        if self.endTargetView != nil {
+            let unifiedSpotlightFrame = createUnifiedSpotlightFrame()
+            let spot = UIBezierPath(ovalIn: unifiedSpotlightFrame)
+            path.append(spot)
+        } else {
+            let spot = UIBezierPath(ovalIn: spotlightFrame)
+            path.append(spot)
+        }
+
+        path.usesEvenOddFillRule = true
+
+        spotlightLayer.path = path.cgPath
+        spotlightLayer.fillRule = .evenOdd
+        spotlightLayer.fillColor = dimColor.cgColor
+        spotlightLayer.frame = self.bounds
+    }
+
+    private func createUnifiedSpotlightFrame() -> CGRect {
+        let unifiedFrame = targetFrame.union(endTargetFrame)
+        
+        let paddingX: CGFloat = spotlightRadius + 8
+        let paddingY: CGFloat = spotlightRadius + 8
+        
+        let unifiedSpotlightFrame = CGRect(
+            x: unifiedFrame.minX - paddingX,
+            y: unifiedFrame.minY - paddingY,
+            width: unifiedFrame.width + (paddingX * 2),
+            height: unifiedFrame.height + (paddingY * 2)
+        )
+        
+        return unifiedSpotlightFrame
+    }
+
+    private func updateSpotlight(previousTarget: UIView?, previousEndTarget: UIView?) {
         guard let spotlightLayer = self.spotlightLayer, let targetView = self.targetView else { return }
 
-        if previousTarget != nil && previousTarget !== targetView {
+        let targetsChanged = (previousTarget != nil && previousTarget !== targetView) ||
+                           (previousEndTarget != nil && previousEndTarget !== endTargetView)
+
+        if targetsChanged {
             let path = UIBezierPath(rect: self.bounds)
-            let spotlightRect = targetFrame.insetBy(dx: -spotlightRadius, dy: -spotlightRadius)
-            let finalSpotPath = UIBezierPath(roundedRect: spotlightRect, cornerRadius: spotlightRadius)
-            path.append(finalSpotPath)
+            
+            if self.endTargetView != nil {
+                let unifiedFrame = targetFrame.union(endTargetFrame)
+                let paddingX: CGFloat = spotlightRadius + 8
+                let paddingY: CGFloat = spotlightRadius + 8
+                
+                let unifiedSpotlightRect = CGRect(
+                    x: unifiedFrame.minX - paddingX,
+                    y: unifiedFrame.minY - paddingY,
+                    width: unifiedFrame.width + (paddingX * 2),
+                    height: unifiedFrame.height + (paddingY * 2)
+                )
+                
+                let finalSpotPath = UIBezierPath(roundedRect: unifiedSpotlightRect, cornerRadius: spotlightRadius)
+                path.append(finalSpotPath)
+            } else {
+                let spotlightRect = targetFrame.insetBy(dx: -spotlightRadius, dy: -spotlightRadius)
+                let finalSpotPath = UIBezierPath(roundedRect: spotlightRect, cornerRadius: spotlightRadius)
+                path.append(finalSpotPath)
+            }
+            
             path.usesEvenOddFillRule = true
 
             let animation = CABasicAnimation(keyPath: "path")
@@ -307,26 +420,194 @@ class Coachmark: UIView {
         }
     }
 
-    private func updateContentViewPosition() {
+    private func updateSpotlightPosition() {
+        guard let targetView = targetView, let spotlightLayer = spotlightLayer else { return }
+
+        if let window = self.window {
+            targetFrame = targetView.convert(targetView.bounds, to: window)
+            
+            if let endTargetView = self.endTargetView {
+                endTargetFrame = endTargetView.convert(endTargetView.bounds, to: window)
+            }
+        }
+
+        if spotlightLayer.animation(forKey: "pathAnimation") == nil &&
+           spotlightLayer.animation(forKey: "closePathAnimation") == nil {
+            let path = UIBezierPath(rect: self.bounds)
+
+            if self.endTargetView != nil {
+                let unifiedFrame = targetFrame.union(endTargetFrame)
+                let paddingX: CGFloat = spotlightRadius + 8
+                let paddingY: CGFloat = spotlightRadius + 8
+                
+                let unifiedSpotlightRect = CGRect(
+                    x: unifiedFrame.minX - paddingX,
+                    y: unifiedFrame.minY - paddingY,
+                    width: unifiedFrame.width + (paddingX * 2),
+                    height: unifiedFrame.height + (paddingY * 2)
+                )
+                
+                let spotlightPath = UIBezierPath(roundedRect: unifiedSpotlightRect, cornerRadius: spotlightRadius)
+                path.append(spotlightPath)
+            } else {
+                let spotlightRect = targetFrame.insetBy(dx: -spotlightRadius, dy: -spotlightRadius)
+                let spotlightPath = UIBezierPath(roundedRect: spotlightRect, cornerRadius: spotlightRadius)
+                path.append(spotlightPath)
+            }
+
+            path.usesEvenOddFillRule = true
+
+            spotlightLayer.path = path.cgPath
+            spotlightLayer.frame = self.bounds
+        }
+    }
+
+    private func animateSpotlight(completion: (() -> Void)? = nil) {
+        let path = UIBezierPath(rect: self.bounds)
+        
+        if self.endTargetView != nil {
+            let unifiedFrame = targetFrame.union(endTargetFrame)
+            let centerPoint = CGPoint(x: unifiedFrame.midX, y: unifiedFrame.midY)
+            let initialSpotFrame = CGRect(x: centerPoint.x - 1, y: centerPoint.y - 1, width: 2, height: 2)
+            let spotPath = UIBezierPath(ovalIn: initialSpotFrame)
+            path.append(spotPath)
+        } else {
+            let spotPath = UIBezierPath(ovalIn: spotlightFrame)
+            path.append(spotPath)
+        }
+
+        path.usesEvenOddFillRule = true
+        spotlightLayer?.path = path.cgPath
+
+        CATransaction.begin()
+        CATransaction.setCompletionBlock {
+            completion?()
+        }
+
+        let animation = CABasicAnimation(keyPath: "path")
+        animation.duration = 0.5
+        animation.timingFunction = CAMediaTimingFunction(controlPoints: 0.215, 0.610, 0.355, 1.000)
+
+        animation.fromValue = path.cgPath
+
+        let finalPath = UIBezierPath(rect: self.bounds)
+        
+        if self.endTargetView != nil {
+            let unifiedFrame = targetFrame.union(endTargetFrame)
+            let paddingX: CGFloat = spotlightRadius + 8
+            let paddingY: CGFloat = spotlightRadius + 8
+            
+            let unifiedSpotlightRect = CGRect(
+                x: unifiedFrame.minX - paddingX,
+                y: unifiedFrame.minY - paddingY,
+                width: unifiedFrame.width + (paddingX * 2),
+                height: unifiedFrame.height + (paddingY * 2)
+            )
+            
+            let finalSpotPath = UIBezierPath(roundedRect: unifiedSpotlightRect, cornerRadius: spotlightRadius)
+            finalPath.append(finalSpotPath)
+        } else {
+            let spotlightRect = targetFrame.insetBy(dx: -spotlightRadius, dy: -spotlightRadius)
+            let finalSpotPath = UIBezierPath(roundedRect: spotlightRect, cornerRadius: spotlightRadius)
+            finalPath.append(finalSpotPath)
+        }
+
+        finalPath.usesEvenOddFillRule = true
+
+        animation.toValue = finalPath.cgPath
+
+        spotlightLayer?.path = finalPath.cgPath
+        spotlightLayer?.add(animation, forKey: "pathAnimation")
+
+        CATransaction.commit()
+    }
+
+    private func animateSpotlightClose(completion: (() -> Void)? = nil) {
+        guard let currentPath = spotlightLayer?.path else {
+            completion?()
+            return
+        }
+
+        CATransaction.begin()
+        CATransaction.setCompletionBlock {
+            completion?()
+        }
+
+        let animation = CABasicAnimation(keyPath: "path")
+        animation.duration = 0.4
+        animation.timingFunction = CAMediaTimingFunction(controlPoints: 0.550, 0.055, 0.675, 0.190)
+
+        animation.fromValue = currentPath
+
+        let finalPath = UIBezierPath(rect: self.bounds)
+        
+        if self.endTargetView != nil {
+            let unifiedFrame = targetFrame.union(endTargetFrame)
+            let centerPoint = CGPoint(x: unifiedFrame.midX, y: unifiedFrame.midY)
+            let finalSpotPath = UIBezierPath(arcCenter: centerPoint,
+                                             radius: 0,
+                                             startAngle: 0,
+                                             endAngle: 2 * CGFloat.pi,
+                                             clockwise: true)
+            finalPath.append(finalSpotPath)
+        } else {
+            let centerPoint = CGPoint(x: targetFrame.midX, y: targetFrame.midY)
+            let finalSpotPath = UIBezierPath(arcCenter: centerPoint,
+                                             radius: 0,
+                                             startAngle: 0,
+                                             endAngle: 2 * CGFloat.pi,
+                                             clockwise: true)
+            finalPath.append(finalSpotPath)
+        }
+
+        finalPath.usesEvenOddFillRule = true
+
+        animation.toValue = finalPath.cgPath
+
+        spotlightLayer?.path = finalPath.cgPath
+        spotlightLayer?.add(animation, forKey: "closePathAnimation")
+
+        CATransaction.commit()
+    }
+
+    private func updateContentViewPosition(offsetMargin: CGFloat = 16) {
         guard let contentView = self.contentView else { return }
 
         ensureContentViewWidth()
 
         let padding: CGFloat = 12
         let contentHeight = contentView.frame.height
+        let triangleMargin: CGFloat = 8
+        let containerMargin: CGFloat = offsetMargin
 
-        let spaceBelow = self.bounds.height - targetFrame.maxY - padding - contentHeight - triangleHeight
+        let referenceFrame: CGRect
+        if self.endTargetView != nil {
+            let combinedFrame = targetFrame.union(endTargetFrame)
+            let paddingX: CGFloat = spotlightRadius + 8
+            let paddingY: CGFloat = spotlightRadius + 8
+            
+            referenceFrame = CGRect(
+                x: combinedFrame.minX - paddingX,
+                y: combinedFrame.minY - paddingY,
+                width: combinedFrame.width + (paddingX * 2),
+                height: combinedFrame.height + (paddingY * 2)
+            )
+        } else {
+            referenceFrame = targetFrame.insetBy(dx: -spotlightRadius, dy: -spotlightRadius)
+        }
+
+        let spaceBelow = self.bounds.height - referenceFrame.maxY - padding - contentHeight - triangleHeight - triangleMargin
 
         if spaceBelow < 0 {
             arrowPosition = .bottom
-            contentView.frame.origin.y = targetFrame.minY - contentHeight - padding - triangleHeight
+            contentView.frame.origin.y = referenceFrame.minY - contentHeight - triangleMargin - triangleHeight
         } else {
             arrowPosition = .top
-            contentView.frame.origin.y = targetFrame.maxY + padding + triangleHeight
+            contentView.frame.origin.y = referenceFrame.maxY + triangleHeight + triangleMargin
         }
 
-        let desiredX = targetFrame.midX - contentView.frame.width / 2
-        contentView.frame.origin.x = max(16, min(self.bounds.width - contentView.frame.width - 16, desiredX))
+        let desiredX = referenceFrame.midX - contentView.frame.width / 2
+        contentView.frame.origin.x = max(containerMargin, min(self.bounds.width - contentView.frame.width - containerMargin, desiredX))
 
         self.bringSubviewToFront(contentView)
     }
@@ -368,56 +649,6 @@ class Coachmark: UIView {
         var frame = contentView.frame
         frame.size.height = totalHeight
         contentView.frame = frame
-    }
-
-    private func createSpotlight() {
-        spotlightLayer?.removeFromSuperlayer()
-
-        let spotlightLayer = CAShapeLayer()
-        self.layer.insertSublayer(spotlightLayer, at: 0)
-        self.spotlightLayer = spotlightLayer
-
-        let path = UIBezierPath(rect: self.bounds)
-
-        if spotlightFrame == .zero && targetFrame != .zero {
-            spotlightFrame = CGRect(
-                x: targetFrame.midX - 1,
-                y: targetFrame.midY - 1,
-                width: 2,
-                height: 2
-            )
-        }
-
-        let spot = UIBezierPath(ovalIn: spotlightFrame)
-        path.append(spot)
-        path.usesEvenOddFillRule = true
-
-        spotlightLayer.path = path.cgPath
-        spotlightLayer.fillRule = .evenOdd
-        spotlightLayer.fillColor = dimColor.cgColor
-        spotlightLayer.frame = self.bounds
-    }
-
-    private func updateSpotlightPosition() {
-        guard let targetView = targetView, let spotlightLayer = spotlightLayer else { return }
-
-        if let window = self.window {
-            targetFrame = targetView.convert(targetView.bounds, to: window)
-        }
-
-        if spotlightLayer.animation(forKey: "pathAnimation") == nil &&
-           spotlightLayer.animation(forKey: "closePathAnimation") == nil {
-            let path = UIBezierPath(rect: self.bounds)
-
-            let spotlightRect = targetFrame.insetBy(dx: -spotlightRadius, dy: -spotlightRadius)
-            let spotlightPath = UIBezierPath(roundedRect: spotlightRect, cornerRadius: spotlightRadius)
-
-            path.append(spotlightPath)
-            path.usesEvenOddFillRule = true
-
-            spotlightLayer.path = path.cgPath
-            spotlightLayer.frame = self.bounds
-        }
     }
 
     private func createTriangleArrow() {
@@ -468,10 +699,17 @@ class Coachmark: UIView {
     private func updateTrianglePosition() {
         guard let contentView = self.contentView, let triangleView = self.triangleView else { return }
 
-        let targetCenterX = targetFrame.midX
+        let targetCenterX: CGFloat
+        
+        if self.endTargetView != nil {
+            let combinedFrame = targetFrame.union(endTargetFrame)
+            targetCenterX = combinedFrame.midX
+        } else {
+            targetCenterX = targetFrame.midX
+        }
 
-        let distanceToLeftEdge = abs(targetCenterX - contentView.frame.minX)
-        let distanceToRightEdge = abs(contentView.frame.maxX - targetCenterX)
+        let distanceToLeftEdge = abs(targetCenterX - 16)
+        let distanceToRightEdge = abs(16 - targetCenterX)
 
         var triangleX: CGFloat
 
@@ -491,6 +729,7 @@ class Coachmark: UIView {
         triangleX = max(contentView.frame.minX + triangleWidth/2, min(triangleX, contentView.frame.maxX - triangleWidth * 1.5))
 
         let triangleY: CGFloat
+        
         if arrowPosition == .top {
             triangleY = contentView.frame.minY - triangleHeight
         } else {
@@ -504,97 +743,6 @@ class Coachmark: UIView {
         self.bringSubviewToFront(triangleView)
     }
 
-    private func animateSpotlight(completion: (() -> Void)? = nil) {
-        let path = UIBezierPath(rect: self.bounds)
-        let spotPath = UIBezierPath(ovalIn: spotlightFrame)
-        path.append(spotPath)
-        path.usesEvenOddFillRule = true
-
-        spotlightLayer?.path = path.cgPath
-
-        CATransaction.begin()
-        CATransaction.setCompletionBlock {
-            completion?()
-        }
-
-        let animation = CABasicAnimation(keyPath: "path")
-        animation.duration = 0.5
-        animation.timingFunction = CAMediaTimingFunction(controlPoints: 0.215, 0.610, 0.355, 1.000)
-
-        animation.fromValue = path.cgPath
-
-        let finalPath = UIBezierPath(rect: self.bounds)
-        let spotlightRect = targetFrame.insetBy(dx: -spotlightRadius, dy: -spotlightRadius)
-        let finalSpotPath = UIBezierPath(roundedRect: spotlightRect, cornerRadius: spotlightRadius)
-        finalPath.append(finalSpotPath)
-        finalPath.usesEvenOddFillRule = true
-
-        animation.toValue = finalPath.cgPath
-
-        spotlightLayer?.path = finalPath.cgPath
-
-        spotlightLayer?.add(animation, forKey: "pathAnimation")
-
-        CATransaction.commit()
-    }
-
-    private func animateSpotlightClose(completion: (() -> Void)? = nil) {
-        guard let currentPath = spotlightLayer?.path else {
-            completion?()
-            return
-        }
-
-        CATransaction.begin()
-        CATransaction.setCompletionBlock {
-            completion?()
-        }
-
-        let animation = CABasicAnimation(keyPath: "path")
-        animation.duration = 0.4
-        animation.timingFunction = CAMediaTimingFunction(controlPoints: 0.550, 0.055, 0.675, 0.190)
-
-        animation.fromValue = currentPath
-
-        let finalPath = UIBezierPath(rect: self.bounds)
-        let centerPoint = CGPoint(x: targetFrame.midX, y: targetFrame.midY)
-        let finalSpotPath = UIBezierPath(arcCenter: centerPoint,
-                                         radius: 0,
-                                         startAngle: 0,
-                                         endAngle: 2 * CGFloat.pi,
-                                         clockwise: true)
-
-        finalPath.append(finalSpotPath)
-        finalPath.usesEvenOddFillRule = true
-
-        animation.toValue = finalPath.cgPath
-
-        spotlightLayer?.path = finalPath.cgPath
-        spotlightLayer?.add(animation, forKey: "closePathAnimation")
-
-        CATransaction.commit()
-    }
-
-    private func updateNavigationButtons() {
-        if currentStep == totalSteps {
-            let doneText = "Tutup"
-            let attributedNext = NSAttributedString(string: doneText, attributes: [
-                .font: Font.Button.Small.font,
-                .foregroundColor: UIColor.white
-            ])
-            btnNext.setAttributedTitle(attributedNext, for: .normal)
-
-        } else {
-            let nextText = "Berikutnya"
-            let attributedNext = NSAttributedString(string: nextText, attributes: [
-                .font: Font.Button.Small.font,
-                .foregroundColor: UIColor.white
-            ])
-            btnNext.setAttributedTitle(attributedNext, for: .normal)
-        }
-
-        btnSkip.isHidden = (currentStep == totalSteps)
-    }
-
     private func moveToNextStep() {
         if currentStep < totalSteps {
             currentStep += 1
@@ -603,13 +751,33 @@ class Coachmark: UIView {
             dismiss(animated: true)
         }
     }
-
+    
     @objc private func handleBackgroundTap(_ gesture: UITapGestureRecognizer) {
         let location = gesture.location(in: self)
 
-        let spotlightRect = targetFrame.insetBy(dx: -spotlightRadius, dy: -spotlightRadius)
-        if !spotlightRect.contains(location) {
-            // Tapped outside the spotlight - decide what to do
+        var tappedOutside = true
+        
+        if self.endTargetView != nil {
+            let unifiedFrame = targetFrame.union(endTargetFrame)
+            let paddingX: CGFloat = spotlightRadius + 8
+            let paddingY: CGFloat = spotlightRadius + 8
+            
+            let unifiedSpotlightRect = CGRect(
+                x: unifiedFrame.minX - paddingX,
+                y: unifiedFrame.minY - paddingY,
+                width: unifiedFrame.width + (paddingX * 2),
+                height: unifiedFrame.height + (paddingY * 2)
+            )
+            
+            tappedOutside = !unifiedSpotlightRect.contains(location)
+        } else {
+            let spotlightRect = targetFrame.insetBy(dx: -spotlightRadius, dy: -spotlightRadius)
+            tappedOutside = !spotlightRect.contains(location)
+        }
+
+        if tappedOutside {
+            // Tapped outside spotlight - decide what to do
+            // You can dismiss or move to next step here
         }
     }
 
@@ -625,3 +793,4 @@ class Coachmark: UIView {
         }
     }
 }
+

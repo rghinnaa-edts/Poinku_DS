@@ -82,25 +82,21 @@ class Tabs: UIView {
         let button = UIButton()
         button.tag = index
         
-        // Create icon image view
         let iconImage = UIImage(named: tab.icon)?.withRenderingMode(.alwaysTemplate)
         let iconImageView = UIImageView(image: iconImage)
         iconImageView.tintColor = .white
         iconImageView.contentMode = .scaleAspectFit
         
-        // Create title label
         let titleLabel = UILabel()
         titleLabel.text = tab.title
         titleLabel.font = UIFont(name: "Arial", size: 16) // Replace with your actual font
         titleLabel.textColor = .blue
         
-        // Stack view for icon and title
         let stackView = UIStackView(arrangedSubviews: [iconImageView, titleLabel])
         stackView.axis = .horizontal
         stackView.spacing = 4
         stackView.alignment = .center
         
-        // Add stack view to button
         button.addSubview(stackView)
         stackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([

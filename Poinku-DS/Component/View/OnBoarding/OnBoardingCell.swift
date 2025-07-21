@@ -13,10 +13,8 @@ class OnBoardingCell: UICollectionViewCell {
     
     @IBOutlet var ivSlide: UIImageView!
     
-    func setup(_ slide: OnBoardingSlide) {
-        if let image = slide.image {
-            ivSlide.image = image
-            ivSlide.contentMode = .scaleAspectFill
-        }
+    func setup(_ image: UIImage?) {
+        ivSlide.image = image
+        ivSlide.contentMode = .scaleAspectFill
     }
 }

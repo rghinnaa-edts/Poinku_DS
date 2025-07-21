@@ -25,28 +25,21 @@ class TableViewController: UITableViewController {
         "Stamp Page",
         "Poin Loyalty Page",
         "OnBoarding Page",
-        "Profile Page"
+        "Profile Page",
+        "Register Page",
+        "Home Page"
     ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
-    // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 2
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         if section == 0 {
             return componentList.count
         } else {
@@ -72,50 +65,77 @@ class TableViewController: UITableViewController {
     
     private func setupUI() {
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+                
+        let selectedItem: String
+        if indexPath.section == 0 {
+            selectedItem = componentList[indexPath.row]
+        } else {
+            selectedItem = pageList[indexPath.row]
+        }
+        
+        navigateToPage(for: selectedItem)
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+    private func navigateToPage(for item: String) {
+        
+        switch item {
+        case "Card":
+            let vc = UIStoryboard(name: "CardViewController", bundle: nil).instantiateViewController(withIdentifier: "Card")
+            navigationController?.pushViewController(vc, animated: true)
+        break
+        case "Ribbon":
+            let vc = UIStoryboard(name: "RibbonViewController", bundle: nil).instantiateViewController(withIdentifier: "Ribbon")
+            navigationController?.pushViewController(vc, animated: true)
+        break
+        case "Scrolling Animation":
+            let vc = UIStoryboard(name: "ScrollingViewController", bundle: nil).instantiateViewController(withIdentifier: "Scrolling")
+            navigationController?.pushViewController(vc, animated: true)
+        break
+        case "Skeleton":
+            let vc = UIStoryboard(name: "SkeletonViewController", bundle: nil).instantiateViewController(withIdentifier: "Skeleton")
+            navigationController?.pushViewController(vc, animated: true)
+        break
+        case "Coachmark":
+            let vc = UIStoryboard(name: "CoachmarkViewController", bundle: nil).instantiateViewController(withIdentifier: "Coachmark")
+            navigationController?.pushViewController(vc, animated: true)
+        break
+        case "MGM Card Animation":
+            let vc = UIStoryboard(name: "MGMViewController", bundle: nil).instantiateViewController(withIdentifier: "MGMCardPage")
+            navigationController?.pushViewController(vc, animated: true)
+        break
+        case "Stamp Page":
+            let vc = UIStoryboard(name: "StampPageViewController", bundle: nil).instantiateViewController(withIdentifier: "StampPage")
+            navigationController?.pushViewController(vc, animated: true)
+        break
+        case "Poin Loyalty Page":
+            let vc = UIStoryboard(name: "PoinLoyaltyPageViewController", bundle: nil).instantiateViewController(withIdentifier: "PoinLoyaltyPage")
+            navigationController?.pushViewController(vc, animated: true)
+        break
+        case "OnBoarding Page":
+            let vc = UIStoryboard(name: "OnBoardingViewController", bundle: nil).instantiateViewController(withIdentifier: "OnBoardingPage")
+            navigationController?.pushViewController(vc, animated: true)
+        break
+        case "Profile Page":
+            let vc = UIStoryboard(name: "ProfileViewController", bundle: nil).instantiateViewController(withIdentifier: "ProfilePage")
+            navigationController?.pushViewController(vc, animated: true)
+        break
+        case "Register Page":
+            let vc = UIStoryboard(name: "Register1ViewController", bundle: nil).instantiateViewController(withIdentifier: "Register1Page")
+            navigationController?.pushViewController(vc, animated: true)
+        break
+        case "Home Page":
+            let vc = UIStoryboard(name: "HomeViewController", bundle: nil).instantiateViewController(withIdentifier: "HomePage")
+            navigationController?.pushViewController(vc, animated: true)
+        break
+        default:
+            let vc = UIStoryboard(name: "DoubleArcViewController", bundle: nil).instantiateViewController(withIdentifier: "DoubleArc")
+            navigationController?.pushViewController(vc, animated: true)
+        break
+        }
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

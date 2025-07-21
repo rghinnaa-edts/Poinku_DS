@@ -9,7 +9,7 @@ import UIKit
 
 class OnBoardingViewController: UIViewController {
     
-    @IBOutlet var onBoarding: OnBoarding!
+    @IBOutlet var onBoarding: OnBoarding2!
     
     @IBOutlet var btnRegister: UIButton!
     @IBOutlet var btnLogin: UIButton!
@@ -17,8 +17,6 @@ class OnBoardingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        edgesForExtendedLayout = .top
-        configureEdgeToEdgeUI()
         setupUI()
         setupSlides()
     }
@@ -33,45 +31,60 @@ class OnBoardingViewController: UIViewController {
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+        return .default
     }
     
-    private func configureEdgeToEdgeUI() {
-        onBoarding.collectionView.contentInsetAdjustmentBehavior = .never
-        
-        if let constraints = updateConstraintsForEdgeToEdge() {
-            NSLayoutConstraint.activate(constraints)
-        }
-        
-        setNeedsStatusBarAppearanceUpdate()
-    }
-    
-    private func updateConstraintsForEdgeToEdge() -> [NSLayoutConstraint]? {
-        guard onBoarding.collectionView.translatesAutoresizingMaskIntoConstraints == false else {
-            return nil
-        }
-        
-        return [
-            onBoarding.collectionView.topAnchor.constraint(equalTo: view.topAnchor),
-            onBoarding.collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            onBoarding.collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-        ]
-    }
+//    private func configureEdgeToEdgeUI() {
+//        onBoarding.collectionView.contentInsetAdjustmentBehavior = .never
+//        
+//        if let constraints = updateConstraintsForEdgeToEdge() {
+//            NSLayoutConstraint.activate(constraints)
+//        }
+//        
+//        setNeedsStatusBarAppearanceUpdate()
+//    }
+//    
+//    private func updateConstraintsForEdgeToEdge() -> [NSLayoutConstraint]? {
+//        guard onBoarding.collectionView.translatesAutoresizingMaskIntoConstraints == false else {
+//            return nil
+//        }
+//        
+//        return [
+//            onBoarding.collectionView.topAnchor.constraint(equalTo: view.topAnchor),
+//            onBoarding.collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+//            onBoarding.collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+//        ]
+//    }
     
     private func setupSlides() {
         onBoarding.slides = [
-            OnBoardingSlide(
-                image: UIImage(named: "onboard1"),
+            OnBoarding2Slide(
+                imageIllustration: UIImage(named: "illustration-onboard1"),
+                imageBackground: UIImage(named: "bg-onboard1"),
                 title: "Kumpulin Poin, Dapat Hadiah!",
                 description: "Kumpulin Poin & Stamp dari setiap transaksi, tukarkan dengan hadiah yang cuma ada di sini!"),
-            OnBoardingSlide(
-                image: UIImage(named: "onboard2"),
+            OnBoarding2Slide(
+                imageIllustration: UIImage(named: "illustration-onboard2"),
+                imageBackground: UIImage(named: "bg-onboard2"),
                 title: "Member Lebih Untung!",
                 description: "Nikmati berbagai Promo Khusus Member, Diskon, Bonus, sampai Belanja Gratis, dijamin untung banget!"),
-            OnBoardingSlide(
-                image: UIImage(named: "onboard3"),
+            OnBoarding2Slide(
+                imageIllustration: UIImage(named: "illustration-onboard3"),
+                imageBackground: UIImage(named: "bg-onboard3"),
                 title: "Semua Ada di Poinku",
                 description: "Cek katalog promo terbaru, info event seru, sampai cek struk belanja, semua dalam satu aplikasi!")
+//            OnBoardingSlide(
+//                image: UIImage(named: "onboard1"),
+//                title: "Kumpulin Poin, Dapat Hadiah!",
+//                description: "Kumpulin Poin & Stamp dari setiap transaksi, tukarkan dengan hadiah yang cuma ada di sini!"),
+//            OnBoardingSlide(
+//                image: UIImage(named: "onboard2"),
+//                title: "Member Lebih Untung!",
+//                description: "Nikmati berbagai Promo Khusus Member, Diskon, Bonus, sampai Belanja Gratis, dijamin untung banget!"),
+//            OnBoardingSlide(
+//                image: UIImage(named: "onboard3"),
+//                title: "Semua Ada di Poinku",
+//                description: "Cek katalog promo terbaru, info event seru, sampai cek struk belanja, semua dalam satu aplikasi!")
         ]
     }
     

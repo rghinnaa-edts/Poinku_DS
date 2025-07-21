@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,12 +18,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TJd-jY-qJ8">
-                                <rect key="frame" x="0.0" y="748" width="393" height="104"/>
+                                <rect key="frame" x="0.0" y="746" width="393" height="106"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FN8-7z-Y01">
-                                        <rect key="frame" x="12" y="52" width="369" height="40"/>
+                                        <rect key="frame" x="16" y="59" width="361" height="35"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="Dmw-3m-wKE"/>
+                                            <constraint firstAttribute="height" constant="35" id="A0x-2r-T4y"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Button"/>
@@ -32,9 +32,9 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pql-Uc-UGS">
-                                        <rect key="frame" x="12" y="0.0" width="369" height="40"/>
+                                        <rect key="frame" x="16" y="12" width="361" height="35"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="siT-zB-97v"/>
+                                            <constraint firstAttribute="height" constant="35" id="KDY-Np-VL3"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Button"/>
@@ -45,17 +45,17 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="pql-Uc-UGS" firstAttribute="top" secondItem="TJd-jY-qJ8" secondAttribute="top" id="Bwz-W1-vt3"/>
-                                    <constraint firstItem="pql-Uc-UGS" firstAttribute="leading" secondItem="TJd-jY-qJ8" secondAttribute="leading" constant="12" id="GkX-8f-AgA"/>
-                                    <constraint firstItem="FN8-7z-Y01" firstAttribute="top" secondItem="pql-Uc-UGS" secondAttribute="bottom" constant="12" id="cK2-Dy-uSz"/>
-                                    <constraint firstAttribute="trailing" secondItem="FN8-7z-Y01" secondAttribute="trailing" constant="12" id="dTN-qU-Edd"/>
-                                    <constraint firstAttribute="trailing" secondItem="pql-Uc-UGS" secondAttribute="trailing" constant="12" id="nJu-Sr-Djf"/>
-                                    <constraint firstItem="FN8-7z-Y01" firstAttribute="leading" secondItem="TJd-jY-qJ8" secondAttribute="leading" constant="12" id="oS5-x4-PsC"/>
-                                    <constraint firstAttribute="bottom" secondItem="FN8-7z-Y01" secondAttribute="bottom" constant="12" id="rxA-5K-Kj0"/>
+                                    <constraint firstAttribute="trailing" secondItem="FN8-7z-Y01" secondAttribute="trailing" constant="16" id="KYs-uO-PIT"/>
+                                    <constraint firstItem="pql-Uc-UGS" firstAttribute="leading" secondItem="TJd-jY-qJ8" secondAttribute="leading" constant="16" id="QwV-Zk-fdU"/>
+                                    <constraint firstAttribute="bottom" secondItem="FN8-7z-Y01" secondAttribute="bottom" constant="12" id="Wsz-Ai-X12"/>
+                                    <constraint firstItem="pql-Uc-UGS" firstAttribute="top" secondItem="TJd-jY-qJ8" secondAttribute="top" constant="12" id="bSL-Ll-VKt"/>
+                                    <constraint firstAttribute="trailing" secondItem="pql-Uc-UGS" secondAttribute="trailing" constant="16" id="cDx-4b-x1W"/>
+                                    <constraint firstItem="FN8-7z-Y01" firstAttribute="top" secondItem="pql-Uc-UGS" secondAttribute="bottom" constant="12" id="cYn-3j-Wic"/>
+                                    <constraint firstItem="FN8-7z-Y01" firstAttribute="leading" secondItem="TJd-jY-qJ8" secondAttribute="leading" constant="16" id="kRt-hB-T6H"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="24x-g9-Bpb" customClass="OnBoarding" customModule="Poinku_DS" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="59" width="393" height="689"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="24x-g9-Bpb" customClass="OnBoarding2" customModule="Poinku_DS" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="118" width="393" height="628"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                         </subviews>

@@ -18,6 +18,10 @@ class PoinLoyaltyPageViewController: UIViewController {
     @IBOutlet var btnSearch: UIButton!
     @IBOutlet var btnHelp: UIButton!
     
+    @IBOutlet var viewCategory: UIView!
+    @IBOutlet var vTab: TabDefault!
+    @IBOutlet var btnAllCategory: UIButton!
+    
     @IBOutlet var viewChip: UIView!
     @IBOutlet var chipShort: UIView!
     @IBOutlet var chipDivider: UIView!
@@ -38,10 +42,12 @@ class PoinLoyaltyPageViewController: UIViewController {
     @IBOutlet var lblSection: UILabel!
     @IBOutlet var collectionViewProduct: UICollectionView!
     
-    var short: [ShortChip] = []
     private var viewPoinTopConstraints: [NSLayoutConstraint] = []
     private var tapGestureRecognizer: UITapGestureRecognizer?
     private var originalSearchBarAnchorPoint: CGPoint = CGPoint(x: 0.5, y: 0.5)
+    
+    var short: [ShortChip] = []
+    var tabItems: [TabDefaultModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,6 +77,19 @@ class PoinLoyaltyPageViewController: UIViewController {
         lblSection.text = "Tukar Poin Loyalti ke Kupon-kupon Ini"
         lblSection.textColor = UIColor.Grey.grey70
         lblSection.font = Font.H3.font
+        
+        tabItems = [
+            TabDefaultModel(id: "1", title: "Semua"),
+            TabDefaultModel(id: "2", title: "Penawaran Khusus"),
+            TabDefaultModel(id: "3", title: "Makanan"),
+        ]
+        
+        setupTab()
+        setupBtnCategory()
+        
+        DispatchQueue.main.async {
+            self.showCoachmark()
+        }
     }
     
     private func setupToolbar() {
@@ -92,6 +111,25 @@ class PoinLoyaltyPageViewController: UIViewController {
         }
     }
     
+    private func setupTab() {
+        vTab.delegate = self
+        
+        vTab.registerCellType(TabDefaultCell.self, withIdentifier: "TabDefaultCell")
+        vTab.setData(tabItems)
+        
+        vTab.enableDynamicWidth()
+        vTab.selectDefaultChip()
+    }
+    
+    private func setupBtnCategory() {
+        btnAllCategory.setTitle("", for: .normal)
+        let icon = UIImage(named: "ic-chevron-down")?.withRenderingMode(.alwaysTemplate)
+        btnAllCategory.setImage(icon, for: .normal)
+        btnAllCategory.backgroundColor = .primaryHighlightWeak
+        btnAllCategory.layer.cornerRadius = 8
+        btnAllCategory.layer.borderWidth = 1
+        btnAllCategory.layer.borderColor = UIColor.blue30.cgColor
+    }
     
     private func setupChip() {
         viewChip.backgroundColor = .white
@@ -103,13 +141,6 @@ class PoinLoyaltyPageViewController: UIViewController {
         chipShort.layer.borderColor = UIColor.blue30.cgColor
         chipShort.layer.cornerRadius = 12
         chipShort.backgroundColor = .primaryHighlightWeak
-        
-//        chipShort.text = "Urutkan"
-//        chipShort.image = UIImage(named: "sort")
-//        chipShort.isActive = true
-//        chipShort.textColorActive = UIColor.Blue.blue30
-//        chipShort.activeColor = UIColor.Support.primaryHighlightWeak
-//        chipShort.borderActiveColor = UIColor.Blue.blue30.cgColor
         
         chipDivider.backgroundColor = UIColor.Grey.grey30
     }
@@ -255,6 +286,36 @@ class PoinLoyaltyPageViewController: UIViewController {
         })
     }
     
+    private func showCoachmark() {
+        let coachmark = Coachmark(frame: .zero)
+
+        coachmark.configureSteps(steps: [
+            Coachmark.StepConfiguration(
+                title: "Lihat Kategori Kupon Kesukaanmu",
+                description: "Pilih kategori utama yang paling sesuai dengan kupon yang ingin kamu cari.",
+                targetView: vTab,
+                isBtnSkipHide: true
+            ),
+            
+            Coachmark.StepConfiguration(
+                title: "Lihat Semua Kategori yang Ada",
+                description: "Lihat semua pilihan kategori kupon dan cari apa yang kamu mau.",
+                targetView: btnAllCategory,
+                isBtnSkipHide: true,
+                offsetMargin: 6
+            ),
+            
+            Coachmark.StepConfiguration(
+                title: "Lihat Kategori Lebih Spesifik",
+                description: "Filter pencarian dalam kategori yang kamu pilih.",
+                targetView: collectionChip,
+                isBtnSkipHide: true
+            )
+        ])
+
+        coachmark.show()
+    }
+    
     @IBAction func btnSearch(_ sender: Any) {
         originalSearchBarAnchorPoint = searchBar.layer.anchorPoint
         
@@ -307,6 +368,12 @@ class PoinLoyaltyPageViewController: UIViewController {
 struct ShortChip {
     let id: String
     let name: String
+}
+
+extension PoinLoyaltyPageViewController: TabDefaultDelegate {
+    func didSelectTabDefault(at index: Int, withId id: String) {
+        
+    }
 }
 
 extension PoinLoyaltyPageViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
