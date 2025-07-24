@@ -46,7 +46,6 @@ class PoinLoyaltyPageViewController: UIViewController {
     
     private var lastScrollOffset: CGFloat = 0
     private var isViewChipVisible = true
-    private var viewChipTopConstraint: NSLayoutConstraint?
     
     var short: [ShortChip] = []
     var tabItems: [TabDefaultModel] = []
