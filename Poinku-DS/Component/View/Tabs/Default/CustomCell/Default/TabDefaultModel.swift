@@ -8,4 +8,5 @@
 struct TabDefaultModel: TabDefaultModelProtocol {
     var id: String
     var title: String
+    var icon: String = ""
 }

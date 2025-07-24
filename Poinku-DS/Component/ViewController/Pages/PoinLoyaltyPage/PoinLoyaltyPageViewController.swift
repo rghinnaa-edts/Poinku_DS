@@ -23,8 +23,6 @@ class PoinLoyaltyPageViewController: UIViewController {
     @IBOutlet var btnAllCategory: UIButton!
     
     @IBOutlet var viewChip: UIView!
-    @IBOutlet var chipShort: UIView!
-    @IBOutlet var chipDivider: UIView!
     @IBOutlet var collectionChip: UICollectionView!
     
     @IBOutlet var scrollView: UIScrollView!
@@ -45,6 +43,10 @@ class PoinLoyaltyPageViewController: UIViewController {
     private var viewPoinTopConstraints: [NSLayoutConstraint] = []
     private var tapGestureRecognizer: UITapGestureRecognizer?
     private var originalSearchBarAnchorPoint: CGPoint = CGPoint(x: 0.5, y: 0.5)
+    
+    private var lastScrollOffset: CGFloat = 0
+    private var isViewChipVisible = true
+    private var viewChipTopConstraint: NSLayoutConstraint?
     
     var short: [ShortChip] = []
     var tabItems: [TabDefaultModel] = []
@@ -78,12 +80,6 @@ class PoinLoyaltyPageViewController: UIViewController {
         lblSection.textColor = UIColor.Grey.grey70
         lblSection.font = Font.H3.font
         
-        tabItems = [
-            TabDefaultModel(id: "1", title: "Semua"),
-            TabDefaultModel(id: "2", title: "Penawaran Khusus"),
-            TabDefaultModel(id: "3", title: "Makanan"),
-        ]
-        
         setupTab()
         setupBtnCategory()
         
@@ -114,6 +110,12 @@ class PoinLoyaltyPageViewController: UIViewController {
     private func setupTab() {
         vTab.delegate = self
         
+        tabItems = [
+            TabDefaultModel(id: "1", title: "Semua", icon: "bundling"),
+            TabDefaultModel(id: "2", title: "Penawaran Khusus", icon: "tag-alt"),
+            TabDefaultModel(id: "3", title: "Makanan", icon: "food"),
+        ]
+        
         vTab.registerCellType(TabDefaultCell.self, withIdentifier: "TabDefaultCell")
         vTab.setData(tabItems)
         
@@ -136,20 +138,13 @@ class PoinLoyaltyPageViewController: UIViewController {
         viewChip.layer.shadowOpacity = 0.15
         viewChip.layer.shadowOffset = CGSize(width: 0.0, height: 5.0)
         viewChip.layer.shadowRadius = 3.0
-        
-        chipShort.layer.borderWidth = 1
-        chipShort.layer.borderColor = UIColor.blue30.cgColor
-        chipShort.layer.cornerRadius = 12
-        chipShort.backgroundColor = .primaryHighlightWeak
-        
-        chipDivider.backgroundColor = UIColor.Grey.grey30
     }
     
     func setupCollectionChip() {
         let shortFlowLayout = UICollectionViewFlowLayout()
         shortFlowLayout.scrollDirection = .horizontal
         shortFlowLayout.minimumLineSpacing = 8
-        shortFlowLayout.sectionInset = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 16)
+        shortFlowLayout.sectionInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         shortFlowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         collectionChip.collectionViewLayout = shortFlowLayout
         collectionChip.backgroundColor = .clear
@@ -219,9 +214,10 @@ class PoinLoyaltyPageViewController: UIViewController {
     
     func loadChipShort() {
         short = [
-            ShortChip(id: "1", name: "Semua"),
-            ShortChip(id: "2", name: "Food & Beverage"),
-            ShortChip(id: "3", name: "Detergent")
+            ShortChip(id: "1", name: "Yummy Choice"),
+            ShortChip(id: "2", name: "Snack"),
+            ShortChip(id: "3", name: "Merchant"),
+            ShortChip(id: "3", name: "Voucher")
         ]
         
         collectionChip.reloadData()
@@ -454,39 +450,90 @@ extension PoinLoyaltyPageViewController: StaggeredLayoutDelegate {
 extension PoinLoyaltyPageViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let scrollOffset = scrollView.contentOffset.y
+        let scrollPosition = scrollOffset - lastScrollOffset
         
-        let transitionStartOffset: CGFloat = 0
-        let transitionEndOffset: CGFloat = 100
+        setupViewChipVisibility(scrollOffset: scrollOffset, scrollPosition: scrollPosition)
         
-        let progress = max(0, min(1, scrollOffset / transitionEndOffset))
+        let transitionStart: CGFloat = 0
+        let transitionEnd: CGFloat = 100
+        
+        let progress = max(0, min(1, scrollOffset / transitionEnd))
         
         UIView.animate(withDuration: 0.1) {
-            
             self.viewPoin.alpha = 1 - progress
             self.viewPoinTop.alpha = progress
-            self.viewChip.layer.shadowOpacity = 0
             
-            let slideTransform = CGAffineTransform(
-                translationX: 0,
-                y: -self.viewPoinTop.frame.height * (1 - progress)
-            )
-            
-            NSLayoutConstraint.activate(self.viewPoinTopConstraints)
-            self.viewPoinTop.transform = slideTransform
+            if scrollOffset > transitionStart {
+                self.viewChip.layer.shadowOpacity = 0
+            } else {
+                self.viewChip.layer.shadowOpacity = 0.15
+            }
         }
         
-        if scrollOffset <= transitionStartOffset {
+        if scrollOffset <= transitionStart {
             viewPoinTop.isHidden = true
             NSLayoutConstraint.deactivate(viewPoinTopConstraints)
-            
-            viewChip.layer.shadowOpacity = 0.15
-        } else if scrollOffset >= transitionEndOffset {
-            viewChip.layer.shadowOpacity = 0
+        } else if scrollOffset >= transitionEnd {
+            viewPoinTop.isHidden = false
             NSLayoutConstraint.activate(viewPoinTopConstraints)
+            
+            let chipTransform = viewChip.transform
+            let chipY = chipTransform.ty
+            
+            viewPoinTop.transform = CGAffineTransform(translationX: 0, y: chipY)
         } else {
-            viewChip.layer.shadowOpacity = 0
             viewPoin.isHidden = false
             viewPoinTop.isHidden = false
+            NSLayoutConstraint.activate(viewPoinTopConstraints)
+            
+            let chipTransform = viewChip.transform
+            let chipY = chipTransform.ty
+            
+            let targetY = chipY * progress
+            viewPoinTop.transform = CGAffineTransform(translationX: 0, y: targetY)
+        }
+        
+        lastScrollOffset = scrollOffset
+    }
+    
+    private func setupViewChipVisibility(scrollOffset: CGFloat, scrollPosition: CGFloat) {
+        let scrollThreshold: CGFloat = 10
+        
+        guard abs(scrollPosition) > scrollThreshold && scrollOffset > 50 else { return }
+        
+        if scrollPosition > 0 && isViewChipVisible {
+            isViewChipVisible = false
+            
+            UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
+                self.viewChip.transform = CGAffineTransform(translationX: 0, y: -self.viewChip.frame.height)
+                
+                if !self.viewPoinTop.isHidden && self.viewPoinTop.alpha > 0 {
+                    self.viewPoinTop.transform = CGAffineTransform(translationX: 0, y: -self.viewChip.frame.height)
+                }
+                
+                self.view.layoutIfNeeded()
+            })
+        } else if scrollPosition < 0 && !isViewChipVisible {
+            isViewChipVisible = true
+            
+            UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
+                self.viewChip.transform = .identity
+                
+                if !self.viewPoinTop.isHidden && self.viewPoinTop.alpha > 0 {
+                    let scrollOffset = self.scrollView.contentOffset.y
+                    let endOffset: CGFloat = 100
+                    
+                    if scrollOffset >= endOffset {
+                        self.viewPoinTop.transform = .identity
+                    } else {
+                        let progress = max(0, min(1, scrollOffset / endOffset))
+                        let targetY = 0 * progress
+                        self.viewPoinTop.transform = CGAffineTransform(translationX: 0, y: targetY)
+                    }
+                }
+                
+                self.view.layoutIfNeeded()
+            })
         }
     }
 }

@@ -12,6 +12,10 @@ class TabDefaultCell: UICollectionViewCell {
     @IBOutlet var containerView: UIView!
     @IBOutlet var lblTab: UILabel!
     @IBOutlet var vIndicator: UIView!
+    @IBOutlet var ivIcon: UIImageView!
+    
+    private var lblTabLeadingToIcon: NSLayoutConstraint?
+    private var lblTabLeadingToSuperview: NSLayoutConstraint?
     
     var isSelectedState: Bool = false {
         didSet {
@@ -27,6 +31,21 @@ class TabDefaultCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupTab()
+    }
+    
+    func loadData(_ data: TabDefaultModel) {
+        lblTab.text = data.title
+        
+        let hasIcon = !data.icon.isEmpty
+                
+        if hasIcon {
+            ivIcon.isHidden = false
+            ivIcon.image = UIImage(named: data.icon)?.withRenderingMode(.alwaysTemplate)
+        } else {
+            ivIcon.isHidden = true
+        }
+        
+        updateLabelConstraints(hasIcon: hasIcon)
     }
     
     private func setupTab() {
@@ -46,23 +65,41 @@ class TabDefaultCell: UICollectionViewCell {
     
     private func setupUI() {
         setupBackground()
-        
-        vIndicator.layer.cornerRadius = 2
     }
     
     private func setupBackground() {
         vIndicator.isHidden = !isSelectedState
         
         if isSelectedState {
-            lblTab.textColor = UIColor.blue50
+            lblTab.textColor = UIColor.blue30
+            ivIcon.tintColor = UIColor.blue30
         } else {
             lblTab.textColor = UIColor.grey40
+            ivIcon.tintColor = UIColor.grey40
         }
     }
     
-    func loadData(_ data: TabDefaultModel) {
-        lblTab.text = data.title
+    private func setupConstraints() {
+        lblTab.translatesAutoresizingMaskIntoConstraints = false
+        
+        lblTabLeadingToIcon = lblTab.leadingAnchor.constraint(equalTo: ivIcon.trailingAnchor, constant: 8)
+        lblTabLeadingToSuperview = lblTab.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16)
+        
+        lblTabLeadingToIcon?.priority = UILayoutPriority(999)
+        lblTabLeadingToSuperview?.priority = UILayoutPriority(999)
     }
+    
+    private func updateLabelConstraints(hasIcon: Bool) {
+        lblTabLeadingToIcon?.isActive = false
+        lblTabLeadingToSuperview?.isActive = false
+        
+        if hasIcon {
+            lblTabLeadingToIcon?.isActive = true
+        } else {
+            lblTabLeadingToSuperview?.isActive = true
+        }
+    }
+    
 }
 
 extension TabDefaultCell: TabDefaultCellProtocol {
@@ -72,7 +109,8 @@ extension TabDefaultCell: TabDefaultCellProtocol {
         } else {
             let data = TabDefaultModel(
                 id: item.id,
-                title: ""
+                title: "",
+                icon: "",
             )
             loadData(data)
         }
