@@ -2,7 +2,7 @@
 The `Coachmark` component is a visual overlay element that helps guide users through the app's features and functionality.
 
 ## Features
--  Customizable text title, description, spotlight radius, button color
+-  Customizable text title, description, spotlight radius, button color, hide/show button, margin
 -  Option to adjust the text appearance with a custom style
 -  Provides step-by-step coachmark by using Arrays
 -  Provides an option to attach/anchor to a specific view in the layout
@@ -16,13 +16,18 @@ The `Coachmark` component is a visual overlay element that helps guide users thr
   `Coachmark.StepConfiguration(title: String, description: String, targetView: UIView, spotlightRadius: CGFloat, tintColor: UIView)`
 
 #### Parameters:
-| Parameters              | Description                                             | Default Value                             |
-|-------------------------|---------------------------------------------------------|-------------------------------------------|
-| `title`                 | Title of the coachmark                                  | `required`                                |
-| `description`           | Description of the coachmark                            | `required`                                |
-| `targetView`            | Relative view for coachmark's spotlight anchor          | `required`                                |
-| `spotlightRadius`       | Radius of coachmark's spotlight                         | `8`                                       |
-| `tintColor`             | Color of the button                                     | `UIColor.blue30`                          |
+| Parameters              | Description                                                | Default Value                             |
+|-------------------------|------------------------------------------------------------|-------------------------------------------|
+| `title`                 | Title of the coachmark                                     | `required`                                |
+| `description`           | Description of the coachmark                               | `required`                                |
+| `targetView`            | Relative view for coachmark's spotlight anchor             | `required`                                |
+| `spotlightRadius`       | Radius of coachmark's spotlight                            | `8`                                       |
+| `tintColor`             | Color of the button                                        | `UIColor.blue30`                          |
+| `isBtnSkipHide`         | Hide the Button Skip                                       | `false`                                   |
+| `isBtnNextHide`         | Hide the Button Next                                       | `false`                                   |
+| `btnSkipText`           | Change Text of Button Skip                                 | `"Tutup"`                                 |
+| `btnNextText`           | Change Text of Button Next                                 | `"Berikutnya"`                            |
+| `offsetMargin`          | Horizontal Margin of coachmark to parent view (left/right) | `16`                                      |
 
 ## Installation
 To use the `Coachmark` component, please follow this step.
