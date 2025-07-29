@@ -13,6 +13,8 @@ class Coachmark: UIView {
     @IBOutlet var lblTitle: UILabel!
     @IBOutlet var lblDescription: UILabel!
     @IBOutlet var lblTotal: UILabel!
+    @IBOutlet var lblCurrentStep: UILabel!
+    @IBOutlet var lblTotalStep: UILabel!
     @IBOutlet var btnSkip: UIButton!
     @IBOutlet var btnNext: UIButton!
    
@@ -59,8 +61,8 @@ class Coachmark: UIView {
             self.tintColor = tintColor
             self.isBtnSkipHide = isBtnSkipHide
             self.isBtnNextHide = isBtnNextHide
-            self.btnNextText = btnNextText
             self.btnSkipText = btnSkipText
+            self.btnNextText = btnNextText
             self.offsetMargin = offsetMargin
         }
     }
@@ -237,6 +239,12 @@ class Coachmark: UIView {
 
         lblTotal.font = Font.Body.B3.Small.font
         lblTotal.textColor = UIColor.Grey.grey50
+        
+        lblCurrentStep.font = Font.Body.B3.Small.font
+        lblCurrentStep.textColor = UIColor.Grey.grey50
+        
+        lblTotalStep.font = Font.Body.B3.Small.font
+        lblTotalStep.textColor = UIColor.Grey.grey50
 
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleBackgroundTap(_:)))
         self.addGestureRecognizer(tapGesture)
@@ -262,8 +270,9 @@ class Coachmark: UIView {
 
         self.lblTitle.text = stepConfig.title
         self.lblDescription.text = stepConfig.description
-        self.lblTotal.text = "\(currentStep)/\(totalSteps)"
-
+        self.lblCurrentStep.text = "\(currentStep)"
+        self.lblTotalStep.text = "\(totalSteps)"
+        
         let oldTargetView = self.targetView
         let oldEndTargetView = self.endTargetView
         

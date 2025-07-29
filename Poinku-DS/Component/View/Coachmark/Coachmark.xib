@@ -13,9 +13,11 @@
             <connections>
                 <outlet property="btnNext" destination="WGR-B5-qYp" id="mG5-BI-gEz"/>
                 <outlet property="btnSkip" destination="Eyr-f7-XtR" id="Exi-gb-Soi"/>
+                <outlet property="lblCurrentStep" destination="18W-Aw-hLy" id="kMm-Pq-fBh"/>
                 <outlet property="lblDescription" destination="pCw-ZZ-grU" id="04c-2X-Yfp"/>
                 <outlet property="lblTitle" destination="u3n-Lg-8T7" id="zE5-9P-Jyu"/>
-                <outlet property="lblTotal" destination="OXI-Yp-UiV" id="tEe-T1-tmf"/>
+                <outlet property="lblTotal" destination="M4g-8V-Sx2" id="Yuu-cE-GAN"/>
+                <outlet property="lblTotalStep" destination="Dsg-jw-pza" id="fzT-aZ-fZA"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -56,8 +58,20 @@
                         <action selector="skipButtonTapped:" destination="-1" eventType="touchUpInside" id="0oe-9R-axJ"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1/3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OXI-Yp-UiV">
-                    <rect key="frame" x="16" y="112.33333333333333" width="22.666666666666671" height="20.333333333333329"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="18W-Aw-hLy">
+                    <rect key="frame" x="12" y="112.33333333333333" width="7.6666666666666679" height="20.333333333333329"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M4g-8V-Sx2">
+                    <rect key="frame" x="21.666666666666668" y="112.33333333333333" width="5" height="20.333333333333329"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dsg-jw-pza">
+                    <rect key="frame" x="28.666666666666668" y="112.33333333333333" width="10.333333333333332" height="20.333333333333329"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -69,11 +83,15 @@
                 <constraint firstItem="Eyr-f7-XtR" firstAttribute="top" secondItem="pTd-5X-3Y6" secondAttribute="bottom" constant="8" id="1he-VK-8yU"/>
                 <constraint firstItem="pTd-5X-3Y6" firstAttribute="leading" secondItem="gbu-Js-jLS" secondAttribute="leading" constant="12" id="5bC-oQ-bKo"/>
                 <constraint firstAttribute="trailing" secondItem="pTd-5X-3Y6" secondAttribute="trailing" constant="12" id="8J0-br-B0l"/>
-                <constraint firstItem="OXI-Yp-UiV" firstAttribute="centerY" secondItem="Eyr-f7-XtR" secondAttribute="centerY" id="J6M-gP-kTH"/>
-                <constraint firstItem="OXI-Yp-UiV" firstAttribute="leading" secondItem="lDk-Df-MvT" secondAttribute="leading" constant="16" id="O92-JI-RHt"/>
+                <constraint firstItem="Dsg-jw-pza" firstAttribute="leading" secondItem="M4g-8V-Sx2" secondAttribute="trailing" constant="2" id="ATp-ZX-YtK"/>
                 <constraint firstItem="lDk-Df-MvT" firstAttribute="trailing" secondItem="WGR-B5-qYp" secondAttribute="trailing" constant="12" id="THE-sa-D2G"/>
+                <constraint firstItem="Dsg-jw-pza" firstAttribute="centerY" secondItem="M4g-8V-Sx2" secondAttribute="centerY" id="Y2P-jI-tek"/>
+                <constraint firstItem="18W-Aw-hLy" firstAttribute="centerY" secondItem="WGR-B5-qYp" secondAttribute="centerY" id="Z9g-9c-LSg"/>
                 <constraint firstItem="pTd-5X-3Y6" firstAttribute="top" secondItem="gbu-Js-jLS" secondAttribute="top" constant="12" id="ZSv-W6-DCI"/>
+                <constraint firstItem="18W-Aw-hLy" firstAttribute="leading" secondItem="gbu-Js-jLS" secondAttribute="leading" constant="12" id="fqF-1R-mSC"/>
+                <constraint firstItem="M4g-8V-Sx2" firstAttribute="centerY" secondItem="18W-Aw-hLy" secondAttribute="centerY" id="nrc-Ef-bSQ"/>
                 <constraint firstItem="WGR-B5-qYp" firstAttribute="leading" secondItem="Eyr-f7-XtR" secondAttribute="trailing" constant="8" id="qYD-z8-FdQ"/>
+                <constraint firstItem="M4g-8V-Sx2" firstAttribute="leading" secondItem="18W-Aw-hLy" secondAttribute="trailing" constant="2" id="qlA-VH-iK1"/>
                 <constraint firstItem="WGR-B5-qYp" firstAttribute="top" secondItem="pTd-5X-3Y6" secondAttribute="bottom" constant="8" id="yzc-V6-UTi"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
