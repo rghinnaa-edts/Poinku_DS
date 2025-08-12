@@ -25,8 +25,8 @@ class RibbonViewController: UIViewController {
     func ribbonView1() {
         let ribbonView = RibbonView()
         ribbonView.ribbonText = "x2"
-        ribbonView.triangleColor = UIColor.Blue.blue50
-        ribbonView.containerColor = UIColor.Blue.blue30
+        ribbonView.triangleColor = UIColor.blue50
+        ribbonView.containerColor = UIColor.blue30
         ribbonView.textColor = .white
         ribbonView.gravity = .start
 
@@ -39,9 +39,9 @@ class RibbonViewController: UIViewController {
     func ribbonView2() {
         let ribbonView2 = RibbonView()
         ribbonView2.ribbonText = "Baru!"
-        ribbonView2.triangleColor = UIColor.Orange.orange50
-        ribbonView2.containerStartColor = UIColor.Yellow.yellow30
-        ribbonView2.containerEndColor = UIColor.Orange.orange30
+        ribbonView2.triangleColor = UIColor.orange50
+        ribbonView2.containerStartColor = UIColor.yellow30
+        ribbonView2.containerEndColor = UIColor.orange30
         ribbonView2.textColor = .white
         ribbonView2.gravity = .end
 
@@ -55,9 +55,9 @@ class RibbonViewController: UIViewController {
     func ribbonView3() {
         let ribbonView3 = RibbonView()
         ribbonView3.ribbonText = "Hot Product!"
-        ribbonView3.triangleColor = UIColor.Red.red50
-        ribbonView3.containerStartColor = UIColor.Red.red20
-        ribbonView3.containerEndColor = UIColor.Red.red50
+        ribbonView3.triangleColor = UIColor.red50
+        ribbonView3.containerStartColor = UIColor.red20
+        ribbonView3.containerEndColor = UIColor.red50
         ribbonView3.textColor = .white
         ribbonView3.gravity = .start
 

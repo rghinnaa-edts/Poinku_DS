@@ -99,4 +99,4 @@ this is for hide the search bar
 ```
 * * *
 
-For further customization or to extend this animation, you can ask UX Engineer or Inherit the `Search Bar` and override its methods or add additional functionality as required.
+For further customization or to extend this animation, you can ask UX Engineer or Inherit the `Search Bar` and override its methods or add additional functionality as requi

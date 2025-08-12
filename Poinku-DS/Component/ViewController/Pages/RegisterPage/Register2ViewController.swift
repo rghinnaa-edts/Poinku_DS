@@ -29,11 +29,11 @@ class Register2ViewController: UIViewController {
         btnVerif.isEnabled = isEnabled
         
         if isEnabled {
-            btnVerif.backgroundColor = UIColor.Blue.blue30
-            btnVerif.tintColor = UIColor.Blue.blue30
+            btnVerif.backgroundColor = UIColor.blue30
+            btnVerif.tintColor = UIColor.blue30
         } else {
-            btnVerif.backgroundColor = UIColor.Grey.grey30
-            btnVerif.tintColor = UIColor.Grey.grey30
+            btnVerif.backgroundColor = UIColor.grey30
+            btnVerif.tintColor = UIColor.grey30
         }
         
         let attrLogin = NSAttributedString(string: "Konfirmasi", attributes: [

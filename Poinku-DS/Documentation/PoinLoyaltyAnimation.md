@@ -127,4 +127,4 @@ To use the `Poin Loyalty Animation`, please follow this step.
 ```
 * * *
 
-For further customization or to extend this animation, you can ask UX Engineer or Inherit the `Poin Loyalty Animation` and override its methods or add additional functionality as required.
+For further customization or to extend this animation, you can ask UX Engineer or Inherit the `Poin Loyalty Animation` and override its methods or add additional functionality as requi

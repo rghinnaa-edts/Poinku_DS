@@ -50,7 +50,7 @@ class Chip: UIView {
         }
     }
     
-    var textColorInactive: UIColor = UIColor.Grey.grey80 {
+    var textColorInactive: UIColor = UIColor.grey80 {
         didSet {
             if !isActive {
                 setupUI()
@@ -58,7 +58,7 @@ class Chip: UIView {
         }
     }
     
-    var activeColor: UIColor = UIColor.Blue.blue30 {
+    var activeColor: UIColor = UIColor.blue30 {
         didSet {
             if isActive {
                 setupUI()
@@ -66,7 +66,7 @@ class Chip: UIView {
         }
     }
     
-    var inactiveColor: UIColor = UIColor.Grey.grey20 {
+    var inactiveColor: UIColor = UIColor.grey20 {
         didSet {
             if !isActive {
                 setupUI()
@@ -74,7 +74,7 @@ class Chip: UIView {
         }
     }
     
-    var borderActiveColor: CGColor = UIColor.Blue.blue40.cgColor {
+    var borderActiveColor: CGColor = UIColor.blue40.cgColor {
         didSet {
             if isActive {
                 setupUI()

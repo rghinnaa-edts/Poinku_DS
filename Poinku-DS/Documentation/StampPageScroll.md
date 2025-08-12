@@ -198,4 +198,4 @@ extension StampPageViewController: UICollectionViewDelegate, UICollectionViewDat
 
 * * *
 
-For further customization or to extend this scroll behavior, you can ask UX Engineer or Inherit the `Stamp Page Scroll Behavior` and override its methods or add additional functionality as required.
+For further customization or to extend this scroll behavior, you can ask UX Engineer or Inherit the `Stamp Page Scroll Behavior` and override its methods or add additional functionality as requi

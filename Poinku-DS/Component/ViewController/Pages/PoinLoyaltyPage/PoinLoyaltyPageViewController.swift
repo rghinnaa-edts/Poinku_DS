@@ -76,7 +76,7 @@ class PoinLoyaltyPageViewController: UIViewController {
         setupCollectionProduct()
         
         lblSection.text = "Tukar Poin Loyalti ke Kupon-kupon Ini"
-        lblSection.textColor = UIColor.Grey.grey70
+        lblSection.textColor = UIColor.grey70
         lblSection.font = Font.H3.font
         
         setupTab()
@@ -171,11 +171,11 @@ class PoinLoyaltyPageViewController: UIViewController {
         ivPoinTop.image = UIImage(named: "poin-loyalty")
         
         lblTitleTop.text = "Kamu punya:"
-        lblTitleTop.textColor = UIColor.Grey.grey50
+        lblTitleTop.textColor = UIColor.grey50
         lblTitleTop.font = Font.Body.B3.Small.font
         
         lblPoinTop.text = "2480 Poin Loyalty"
-        lblPoinTop.textColor = UIColor.Grey.grey70
+        lblPoinTop.textColor = UIColor.grey70
         lblPoinTop.font = Font.Body.B3.Medium.font
     }
     
@@ -189,11 +189,11 @@ class PoinLoyaltyPageViewController: UIViewController {
         ivPoin.image = UIImage(named: "poin-loyalty")
         
         lblTitlePoin.text = "Kamu punya:"
-        lblTitlePoin.textColor = UIColor.Grey.grey50
+        lblTitlePoin.textColor = UIColor.grey50
         lblTitlePoin.font = Font.Body.B3.Small.font
         
         lblPoin.text = "2480 Poin Loyalty"
-        lblPoin.textColor = UIColor.Grey.grey70
+        lblPoin.textColor = UIColor.grey70
         lblPoin.font = Font.H3.font
     }
     
@@ -289,7 +289,8 @@ class PoinLoyaltyPageViewController: UIViewController {
                 title: "Lihat Kategori Kupon Kesukaanmu",
                 description: "Pilih kategori utama yang paling sesuai dengan kupon yang ingin kamu cari.",
                 targetView: vTab,
-                isBtnSkipHide: true
+                isBtnSkipHide: true,
+                isListTarget: true
             ),
             
             Coachmark.StepConfiguration(
@@ -304,7 +305,9 @@ class PoinLoyaltyPageViewController: UIViewController {
                 title: "Lihat Kategori Lebih Spesifik",
                 description: "Filter pencarian dalam kategori yang kamu pilih.",
                 targetView: collectionChip,
-                isBtnSkipHide: true
+                isBtnSkipHide: true,
+                isListTarget: true,
+                listSpacing: 16
             )
         ])
 

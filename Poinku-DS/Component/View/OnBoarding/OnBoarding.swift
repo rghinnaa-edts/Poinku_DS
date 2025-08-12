@@ -104,7 +104,7 @@ class OnBoarding: UIView {
          
          pageControl.numberOfPages = slides.count
          pageControl.currentPage = 0
-         pageControl.activeColor = UIColor.Blue.blue30
+         pageControl.activeColor = UIColor.blue30
          pageControl.inactiveColor = UIColor.lightGray.withAlphaComponent(0.5)
          
          vContentContainer.backgroundColor = .white

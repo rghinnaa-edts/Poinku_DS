@@ -95,16 +95,16 @@ class OnBoardingViewController: UIViewController {
         ])
         btnRegister.setAttributedTitle(attrRegister, for: .normal)
         btnRegister.contentEdgeInsets = UIEdgeInsets(top: 6, left: 8, bottom: 6, right: 8)
-        btnRegister.backgroundColor = UIColor.Blue.blue30
-        btnRegister.tintColor = UIColor.Blue.blue30
+        btnRegister.backgroundColor = UIColor.blue30
+        btnRegister.tintColor = UIColor.blue30
         btnRegister.layer.cornerRadius = 8
         
         let attrLogin = NSAttributedString(string: "Masuk", attributes: [
             .font: Font.Button.Big.font,
-            .foregroundColor: UIColor.Blue.blue30
+            .foregroundColor: UIColor.blue30
         ])
         btnLogin.setAttributedTitle(attrLogin, for: .normal)
-        btnLogin.layer.borderColor = UIColor.Blue.blue30.cgColor
+        btnLogin.layer.borderColor = UIColor.blue30.cgColor
         btnLogin.layer.borderWidth = 1
         btnLogin.layer.cornerRadius = 8
         btnLogin.clipsToBounds = true

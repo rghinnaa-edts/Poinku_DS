@@ -56,7 +56,7 @@ class SearchBar: UISearchBar {
             
             let searchIconView = UIImageView(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
             searchIconView.contentMode = .scaleAspectFit
-            searchIconView.tintColor = UIColor.Grey.grey60
+            searchIconView.tintColor = UIColor.grey60
             searchIconView.image = UIImage(named: "search")?.withRenderingMode(.alwaysTemplate)
 
             let containerView = UIView(frame: CGRect(x: 0, y: 0, width: 24, height: textField.frame.height))
@@ -76,7 +76,7 @@ class SearchBar: UISearchBar {
                 
                 clearButton?.setImage(resizedImage, for: .normal)
                 
-                clearButton?.tintColor = UIColor.Grey.grey60
+                clearButton?.tintColor = UIColor.grey60
             }
             
             textField.leftView = containerView
@@ -84,7 +84,7 @@ class SearchBar: UISearchBar {
             
             textField.layer.borderWidth = 1
             textField.layer.cornerRadius = 8
-            textField.layer.borderColor = UIColor.Grey.grey30.cgColor
+            textField.layer.borderColor = UIColor.grey30.cgColor
             
             textField.clipsToBounds = true
             textField.backgroundColor = fieldBackgroundColor
@@ -242,13 +242,13 @@ class SearchBar: UISearchBar {
 extension SearchBar: UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         if let textField = getSearchTextField() {
-            textField.layer.borderColor = UIColor.Blue.blue10.cgColor
+            textField.layer.borderColor = UIColor.blue10.cgColor
         }
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         if let textField = getSearchTextField() {
-            textField.layer.borderColor = UIColor.Grey.grey30.cgColor
+            textField.layer.borderColor = UIColor.grey30.cgColor
         }
     }
     
@@ -262,7 +262,7 @@ extension SearchBar: UISearchBarDelegate {
         searchBar.text = ""
         
         if let textField = getSearchTextField() {
-            textField.layer.borderColor = UIColor.Grey.grey30.cgColor
+            textField.layer.borderColor = UIColor.grey30.cgColor
         }
     }
 }

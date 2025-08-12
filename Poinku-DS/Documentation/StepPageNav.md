@@ -39,4 +39,4 @@ You can see the example of implementation at `Poinku-DS/Component/ViewController
 
 * * *
 
-For further customization or to extend this component, you can ask UX Engineer or Inherit the `Step Page Navigation` and override its methods or add additional functionality as required.
+For further customization or to extend this component, you can ask UX Engineer or Inherit the `Step Page Navigation` and override its methods or add additional functionality as requi

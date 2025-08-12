@@ -66,8 +66,8 @@ class VerificationViewController: UIViewController {
         btnVerifWhatsapp.setAttributedTitle(attrWA, for: .normal)
         
         btnVerifWhatsapp.contentEdgeInsets = UIEdgeInsets(top: 6, left: 8, bottom: 6, right: 8)
-        btnVerifWhatsapp.backgroundColor = UIColor.Blue.blue30
-        btnVerifWhatsapp.tintColor = UIColor.Blue.blue30
+        btnVerifWhatsapp.backgroundColor = UIColor.blue30
+        btnVerifWhatsapp.tintColor = UIColor.blue30
         btnVerifWhatsapp.layer.cornerRadius = 8
         
         lblVerifOption.text = "atau verifikasi dengan"
@@ -76,15 +76,15 @@ class VerificationViewController: UIViewController {
         
         lblResend.text = "Kirim ulang kode verifikasi"
         lblResend.font = Font.Body.B3.Small.font
-        lblResend.textColor = UIColor.Grey.grey50
+        lblResend.textColor = UIColor.grey50
         
         lblCounter.text = "00:30"
         lblCounter.font = Font.Body.B3.Large.font
-        lblCounter.textColor = UIColor.Grey.grey80
+        lblCounter.textColor = UIColor.grey80
         
         lblChangePhone.text = "Gant Nomor Handphone"
         lblChangePhone.font = Font.Button.Small.font
-        lblChangePhone.textColor = UIColor.Blue.blue30
+        lblChangePhone.textColor = UIColor.blue30
         
         startCountdownTimer()
         setupButton(isEnabled: false)
@@ -126,31 +126,31 @@ class VerificationViewController: UIViewController {
         if isEnabled {
             let attrCall = NSAttributedString(string: verifCall, attributes: [
                 .font: Font.Button.Big.font,
-                .foregroundColor: UIColor.Blue.blue30
+                .foregroundColor: UIColor.blue30
             ])
             btnVerifCall.setAttributedTitle(attrCall, for: .normal)
-            btnVerifCall.layer.borderColor = UIColor.Blue.blue30.cgColor
+            btnVerifCall.layer.borderColor = UIColor.blue30.cgColor
             
             let attrMessage = NSAttributedString(string: verifMessage, attributes: [
                 .font: Font.Button.Big.font,
-                .foregroundColor: UIColor.Blue.blue30
+                .foregroundColor: UIColor.blue30
             ])
             btnVerifMessage.setAttributedTitle(attrMessage, for: .normal)
-            btnVerifMessage.layer.borderColor = UIColor.Blue.blue30.cgColor
+            btnVerifMessage.layer.borderColor = UIColor.blue30.cgColor
         } else {
             let attrCall = NSAttributedString(string: verifCall, attributes: [
                 .font: Font.Button.Big.font,
-                .foregroundColor: UIColor.Grey.grey30
+                .foregroundColor: UIColor.grey30
             ])
             btnVerifCall.setAttributedTitle(attrCall, for: .normal)
-            btnVerifCall.layer.borderColor = UIColor.Grey.grey30.cgColor
+            btnVerifCall.layer.borderColor = UIColor.grey30.cgColor
             
             let attrMessage = NSAttributedString(string: verifMessage, attributes: [
                 .font: Font.Button.Big.font,
-                .foregroundColor: UIColor.Grey.grey30
+                .foregroundColor: UIColor.grey30
             ])
             btnVerifMessage.setAttributedTitle(attrMessage, for: .normal)
-            btnVerifMessage.layer.borderColor = UIColor.Grey.grey30.cgColor
+            btnVerifMessage.layer.borderColor = UIColor.grey30.cgColor
         }
         
         btnVerifCall.layer.borderWidth = 1

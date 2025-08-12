@@ -49,7 +49,7 @@ class ProfileViewController: UIViewController {
         setupCollectionProfileSetting()
         setupProfileSetting()
         
-        vMember.backgroundColor = UIColor.Yellow.yellow30
+        vMember.backgroundColor = UIColor.yellow30
         vMember.layer.cornerRadius = 8
         
         vGoogleWallet.backgroundColor = UIColor.black

@@ -81,13 +81,13 @@ class StampCardSmall: UICollectionViewCell {
         
         stampCard.backgroundColor = .white
         stampCard.layer.borderWidth = 1
-        stampCard.layer.borderColor = UIColor.Blue.blue30.cgColor
+        stampCard.layer.borderColor = UIColor.blue30.cgColor
         
-        lblStampCard.textColor = UIColor.Grey.grey70
+        lblStampCard.textColor = UIColor.grey70
         lblStampCard.font = Font.Body.B3.Small.font
         
         btnExchange.titleLabel?.text = "Tukar Stamp"
-        btnExchange.backgroundColor = UIColor.Blue.blue30
+        btnExchange.backgroundColor = UIColor.blue30
         btnExchange.layer.cornerRadius = 4
         btnExchange.titleLabel?.textColor = .white
         btnExchange.titleLabel?.font = Font.Button.Small.font
@@ -109,21 +109,21 @@ class StampCardSmall: UICollectionViewCell {
         ivQuantity.image = ivQuantity.image?.withRenderingMode(.alwaysTemplate)
         
         ivQuantity.tintColor = if quantity < 10 && quantity > 0 {
-            UIColor.Support.warningStrong
+            UIColor.warningStrong
         } else {
-            UIColor.Support.errorStrong
+            UIColor.errorStrong
         }
         
         vQuantity.backgroundColor = if quantity < 10 && quantity > 0 {
-            UIColor.Support.warningWeak
+            UIColor.warningWeak
         } else {
-            UIColor.Support.errorWeak
+            UIColor.errorWeak
         }
         
         lblQuantity.textColor = if quantity < 10 && quantity > 0 {
-            UIColor.Support.warningStrong
+            UIColor.warningStrong
         } else {
-            UIColor.Support.errorStrong
+            UIColor.errorStrong
         }
         
         lblQuantity.text = if quantity < 10 && quantity > 0 {
@@ -135,12 +135,12 @@ class StampCardSmall: UICollectionViewCell {
     }
     
     private func UIStamp() {
-        vStamp.backgroundColor = UIColor.Support.highlightWeak
+        vStamp.backgroundColor = UIColor.highlightWeak
         vStamp.layer.cornerRadius = 8
         vStamp.layer.borderWidth = 1
-        vStamp.layer.borderColor = UIColor.Support.warningStrong.cgColor
+        vStamp.layer.borderColor = UIColor.warningStrong.cgColor
         
-        lblStamp.textColor = UIColor.Support.warningStrong
+        lblStamp.textColor = UIColor.warningStrong
         lblStamp.font = Font.B4.Small.font
         lblStamp.text = "24 Stamp"
     }
@@ -148,9 +148,9 @@ class StampCardSmall: UICollectionViewCell {
     private func UIRibbonHotProduct() {
         let ribbonView = RibbonView()
         ribbonView.ribbonText = "Hot Product!"
-        ribbonView.triangleColor = UIColor.Red.red50
-        ribbonView.containerStartColor = UIColor.Red.red20
-        ribbonView.containerEndColor = UIColor.Red.red50
+        ribbonView.triangleColor = UIColor.red50
+        ribbonView.containerStartColor = UIColor.red20
+        ribbonView.containerEndColor = UIColor.red50
         ribbonView.textColor = .white
         ribbonView.gravity = .start
 
@@ -163,9 +163,9 @@ class StampCardSmall: UICollectionViewCell {
     private func UIRibbonNew() {
         let ribbonView = RibbonView()
         ribbonView.ribbonText = "Baru!"
-        ribbonView.triangleColor = UIColor.Orange.orange30
-        ribbonView.containerStartColor = UIColor.Yellow.yellow30
-        ribbonView.containerEndColor = UIColor.Orange.orange30
+        ribbonView.triangleColor = UIColor.orange30
+        ribbonView.containerStartColor = UIColor.yellow30
+        ribbonView.containerEndColor = UIColor.orange30
         ribbonView.textColor = .white
         ribbonView.gravity = .end
 

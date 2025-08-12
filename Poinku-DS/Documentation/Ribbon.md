@@ -92,4 +92,4 @@ The `Ribbon` component uses custom drawing with `Path` and `Paint` objects to re
 
 * * *
 
-For further customization or to extend this component, you can ask UX Engineer or Inherit the `Ribbon` and override its methods or add additional functionality as required.
+For further customization or to extend this component, you can ask UX Engineer or Inherit the `Ribbon` and override its methods or add additional functionality as requi

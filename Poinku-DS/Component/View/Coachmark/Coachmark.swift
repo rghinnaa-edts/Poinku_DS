@@ -51,8 +51,10 @@ class Coachmark: UIView {
         let btnSkipText: String
         let btnNextText: String
         let offsetMargin: CGFloat
+        let isListTarget: Bool
+        let listSpacing: CGFloat
 
-        init(title: String, description: String, targetView: UIView, endTargetView: UIView? = nil, spotlightRadius: CGFloat = 4, tintColor: UIColor = UIColor.Blue.blue30, isBtnNextHide: Bool = false, isBtnSkipHide: Bool = false, btnSkipText: String = "Tutup", btnNextText: String = "Berikutnya", offsetMargin: CGFloat = 16) {
+        init(title: String, description: String, targetView: UIView, endTargetView: UIView? = nil, spotlightRadius: CGFloat = 4, tintColor: UIColor = UIColor.blue30, isBtnNextHide: Bool = false, isBtnSkipHide: Bool = false, btnSkipText: String = "Tutup", btnNextText: String = "Berikutnya", offsetMargin: CGFloat = 16, isListTarget: Bool = false, listSpacing: CGFloat = 8) {
             self.title = title
             self.description = description
             self.targetView = targetView
@@ -64,6 +66,8 @@ class Coachmark: UIView {
             self.btnSkipText = btnSkipText
             self.btnNextText = btnNextText
             self.offsetMargin = offsetMargin
+            self.isListTarget = isListTarget
+            self.listSpacing = listSpacing
         }
     }
 
@@ -232,19 +236,19 @@ class Coachmark: UIView {
 
     private func setupUI() {
         lblTitle.font = Font.H3.font
-        lblTitle.textColor = UIColor.Grey.grey80
+        lblTitle.textColor = UIColor.grey80
 
         lblDescription.font = Font.Paragraph.P2.Small.font
-        lblDescription.textColor = UIColor.Grey.grey70
+        lblDescription.textColor = UIColor.grey70
 
         lblTotal.font = Font.Body.B3.Small.font
-        lblTotal.textColor = UIColor.Grey.grey50
+        lblTotal.textColor = UIColor.grey50
         
         lblCurrentStep.font = Font.Body.B3.Small.font
-        lblCurrentStep.textColor = UIColor.Grey.grey50
+        lblCurrentStep.textColor = UIColor.grey50
         
         lblTotalStep.font = Font.Body.B3.Small.font
-        lblTotalStep.textColor = UIColor.Grey.grey50
+        lblTotalStep.textColor = UIColor.grey50
 
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleBackgroundTap(_:)))
         self.addGestureRecognizer(tapGesture)
@@ -260,6 +264,11 @@ class Coachmark: UIView {
             frame.size.width = desiredWidth
             contentView.frame = frame
         }
+    }
+
+    private func getCurrentStepConfig() -> StepConfiguration? {
+        guard currentStep > 0, currentStep <= stepConfigurations.count else { return nil }
+        return stepConfigurations[currentStep - 1]
     }
 
     private func updateCurrentStepUI() {
@@ -382,6 +391,28 @@ class Coachmark: UIView {
         return unifiedSpotlightFrame
     }
 
+    private func createListSpotlightFrame() -> CGRect {
+        guard let stepConfig = getCurrentStepConfig(), stepConfig.isListTarget else {
+            return targetFrame.insetBy(dx: -spotlightRadius, dy: -spotlightRadius)
+        }
+        
+        guard let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) else {
+            return targetFrame.insetBy(dx: -spotlightRadius, dy: -spotlightRadius)
+        }
+        
+        let listSpacing = stepConfig.listSpacing
+        let containerFrame = targetFrame
+        
+        let listSpotlightFrame = CGRect(
+            x: containerFrame.minX + listSpacing,
+            y: containerFrame.minY - spotlightRadius,
+            width: containerFrame.width - (listSpacing * 2),
+            height: containerFrame.height + (spotlightRadius * 2)
+        )
+        
+        return listSpotlightFrame
+    }
+
     private func updateSpotlight(previousTarget: UIView?, previousEndTarget: UIView?) {
         guard let spotlightLayer = self.spotlightLayer, let targetView = self.targetView else { return }
 
@@ -406,7 +437,7 @@ class Coachmark: UIView {
                 let finalSpotPath = UIBezierPath(roundedRect: unifiedSpotlightRect, cornerRadius: spotlightRadius)
                 path.append(finalSpotPath)
             } else {
-                let spotlightRect = targetFrame.insetBy(dx: -spotlightRadius, dy: -spotlightRadius)
+                let spotlightRect = createListSpotlightFrame()
                 let finalSpotPath = UIBezierPath(roundedRect: spotlightRect, cornerRadius: spotlightRadius)
                 path.append(finalSpotPath)
             }
@@ -459,7 +490,7 @@ class Coachmark: UIView {
                 let spotlightPath = UIBezierPath(roundedRect: unifiedSpotlightRect, cornerRadius: spotlightRadius)
                 path.append(spotlightPath)
             } else {
-                let spotlightRect = targetFrame.insetBy(dx: -spotlightRadius, dy: -spotlightRadius)
+                let spotlightRect = createListSpotlightFrame()
                 let spotlightPath = UIBezierPath(roundedRect: spotlightRect, cornerRadius: spotlightRadius)
                 path.append(spotlightPath)
             }
@@ -516,7 +547,7 @@ class Coachmark: UIView {
             let finalSpotPath = UIBezierPath(roundedRect: unifiedSpotlightRect, cornerRadius: spotlightRadius)
             finalPath.append(finalSpotPath)
         } else {
-            let spotlightRect = targetFrame.insetBy(dx: -spotlightRadius, dy: -spotlightRadius)
+            let spotlightRect = createListSpotlightFrame()
             let finalSpotPath = UIBezierPath(roundedRect: spotlightRect, cornerRadius: spotlightRadius)
             finalPath.append(finalSpotPath)
         }
@@ -602,7 +633,7 @@ class Coachmark: UIView {
                 height: combinedFrame.height + (paddingY * 2)
             )
         } else {
-            referenceFrame = targetFrame.insetBy(dx: -spotlightRadius, dy: -spotlightRadius)
+            referenceFrame = createListSpotlightFrame()
         }
 
         let spaceBelow = self.bounds.height - referenceFrame.maxY - padding - contentHeight - triangleHeight - triangleMargin
@@ -714,7 +745,12 @@ class Coachmark: UIView {
             let combinedFrame = targetFrame.union(endTargetFrame)
             targetCenterX = combinedFrame.midX
         } else {
-            targetCenterX = targetFrame.midX
+            if let stepConfig = getCurrentStepConfig(), stepConfig.isListTarget {
+                let listFrame = createListSpotlightFrame()
+                targetCenterX = listFrame.midX
+            } else {
+                targetCenterX = targetFrame.midX
+            }
         }
 
         let distanceToLeftEdge = abs(targetCenterX - 16)
@@ -780,7 +816,7 @@ class Coachmark: UIView {
             
             tappedOutside = !unifiedSpotlightRect.contains(location)
         } else {
-            let spotlightRect = targetFrame.insetBy(dx: -spotlightRadius, dy: -spotlightRadius)
+            let spotlightRect = createListSpotlightFrame()
             tappedOutside = !spotlightRect.contains(location)
         }
 

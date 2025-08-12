@@ -55,11 +55,11 @@ class Register1ViewController: UIViewController {
         btnLogin.isEnabled = isEnabled
         
         if isEnabled {
-            btnLogin.backgroundColor = UIColor.Blue.blue30
-            btnLogin.tintColor = UIColor.Blue.blue30
+            btnLogin.backgroundColor = UIColor.blue30
+            btnLogin.tintColor = UIColor.blue30
         } else {
-            btnLogin.backgroundColor = UIColor.Grey.grey30
-            btnLogin.tintColor = UIColor.Grey.grey30
+            btnLogin.backgroundColor = UIColor.grey30
+            btnLogin.tintColor = UIColor.grey30
         }
         
         let attrLogin = NSAttributedString(string: "Masuk", attributes: [

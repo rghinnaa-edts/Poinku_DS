@@ -74,4 +74,4 @@ For now, It's available only when you add the coachmark class file of swift and 
 ```
 * * *
 
-For further customization or to extend this component, you can ask UX Engineer or Inherit the `Coachmark` and override its methods or add additional functionality as required.
+For further customization or to extend this component, you can ask UX Engineer or Inherit the `Coachmark` and override its methods or add additional functionality as requi

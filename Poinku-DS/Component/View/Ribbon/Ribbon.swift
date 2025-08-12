@@ -22,13 +22,13 @@ class RibbonView: UIView {
         case defaultV
     }
     
-    @IBInspectable var triangleColor: UIColor = UIColor.Blue.blue50 {
+    @IBInspectable var triangleColor: UIColor = UIColor.blue50 {
         didSet {
             setNeedsDisplay()
         }
     }
     
-    @IBInspectable var containerColor: UIColor = UIColor.Blue.blue30 {
+    @IBInspectable var containerColor: UIColor = UIColor.blue30 {
         didSet {
             setNeedsDisplay()
         }
