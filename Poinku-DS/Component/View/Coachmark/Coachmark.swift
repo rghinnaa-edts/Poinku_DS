@@ -396,10 +396,6 @@ class Coachmark: UIView {
             return targetFrame.insetBy(dx: -spotlightRadius, dy: -spotlightRadius)
         }
         
-        guard let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) else {
-            return targetFrame.insetBy(dx: -spotlightRadius, dy: -spotlightRadius)
-        }
-        
         let listSpacing = stepConfig.listSpacing
         let containerFrame = targetFrame
         
