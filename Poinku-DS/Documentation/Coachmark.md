@@ -28,6 +28,8 @@ The `Coachmark` component is a visual overlay element that helps guide users thr
 | `btnSkipText`           | Change Text of Button Skip                                 | `"Tutup"`                                 |
 | `btnNextText`           | Change Text of Button Next                                 | `"Berikutnya"`                            |
 | `offsetMargin`          | Horizontal Margin of coachmark to parent view (left/right) | `16`                                      |
+| `isListTarget`          | Identify if the target is a list                           | `false`                                   |
+| `listSpacing`           | Spacing/gap of target's spotlight                          | `8`                                       |
 
 ## Installation
 To use the `Coachmark` component, please follow this step.
