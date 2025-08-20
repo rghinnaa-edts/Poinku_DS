@@ -53,8 +53,10 @@ public class Coachmark: UIView {
         let offsetMargin: CGFloat
         let isListTarget: Bool
         let listSpacing: CGFloat
+        let listSpacingLeft: CGFloat?
+        let listSpacingRight: CGFloat?
 
-        init(title: String, description: String, targetView: UIView, endTargetView: UIView? = nil, spotlightRadius: CGFloat = 4, tintColor: UIColor = UIColor.blue30, isBtnNextHide: Bool = false, isBtnSkipHide: Bool = false, btnSkipText: String = "Tutup", btnNextText: String = "Berikutnya", offsetMargin: CGFloat = 16, isListTarget: Bool = false, listSpacing: CGFloat = 8) {
+        init(title: String, description: String, targetView: UIView, endTargetView: UIView? = nil, spotlightRadius: CGFloat = 4, tintColor: UIColor = UIColor.blue30, isBtnNextHide: Bool = false, isBtnSkipHide: Bool = false, btnSkipText: String = "Tutup", btnNextText: String = "Berikutnya", offsetMargin: CGFloat = 16, isListTarget: Bool = false, listSpacing: CGFloat = 8, listSpacingLeft: CGFloat? = nil, listSpacingRight: CGFloat? = nil) {
             self.title = title
             self.description = description
             self.targetView = targetView
@@ -68,6 +70,8 @@ public class Coachmark: UIView {
             self.offsetMargin = offsetMargin
             self.isListTarget = isListTarget
             self.listSpacing = listSpacing
+            self.listSpacingLeft = listSpacingLeft
+            self.listSpacingRight = listSpacingRight
         }
     }
 
@@ -397,12 +401,14 @@ public class Coachmark: UIView {
         }
         
         let listSpacing = stepConfig.listSpacing
+        let listSpacingLeft = stepConfig.listSpacingLeft ?? listSpacing
+        let listSpacingRight = stepConfig.listSpacingRight ?? listSpacing
         let containerFrame = targetFrame
         
         let listSpotlightFrame = CGRect(
-            x: containerFrame.minX + listSpacing,
+            x: containerFrame.minX + listSpacingLeft,
             y: containerFrame.minY - spotlightRadius,
-            width: containerFrame.width - (listSpacing * 2),
+            width: containerFrame.width - (listSpacingLeft + listSpacingRight),
             height: containerFrame.height + (spotlightRadius * 2)
         )
         
