@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SearchBar: UISearchBar {
+public class SearchBar: UISearchBar {
     
     private var searchText: String?
     private var animationTimer: Timer?
@@ -17,12 +17,13 @@ class SearchBar: UISearchBar {
     private var cursorSymbol: String = "|"
     private var isAnimating: Bool = false
     
-    var placeholderText: String = "Search" {
+    public var placeholderText: String = "Search" {
         didSet {
             super.placeholder = placeholderText
         }
     }
-    var fieldBackgroundColor: UIColor = .white {
+    
+    public var fieldBackgroundColor: UIColor = .white {
         didSet {
             if let textField = getSearchTextField() {
                 textField.backgroundColor = fieldBackgroundColor
@@ -30,7 +31,7 @@ class SearchBar: UISearchBar {
         }
     }
 
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         super.init(coder: coder)
         
         setupUI()
@@ -94,7 +95,7 @@ class SearchBar: UISearchBar {
     
     }
     
-    func getSearchTextField() -> UITextField? {
+    public func getSearchTextField() -> UITextField? {
         if #available(iOS 13.0, *) {
             return self.searchTextField
         } else {
@@ -113,7 +114,7 @@ class SearchBar: UISearchBar {
         }
     }
     
-    func startPlaceholderAnimation(type: PlaceholderAnimationType, speed: TimeInterval = 0.1, cursorSymbol: String = "|") {
+    public func startPlaceholderAnimation(type: PlaceholderAnimationType, speed: TimeInterval = 0.1, cursorSymbol: String = "|") {
         stopPlaceholderAnimation()
         
         self.animationType = type
@@ -133,7 +134,7 @@ class SearchBar: UISearchBar {
         animationTimer = Timer.scheduledTimer(timeInterval: speed, target: self, selector: #selector(updatePlaceholder), userInfo: nil, repeats: true)
     }
     
-    func stopPlaceholderAnimation() {
+    public func stopPlaceholderAnimation() {
         animationTimer?.invalidate()
         animationTimer = nil
         isAnimating = false
@@ -240,25 +241,25 @@ class SearchBar: UISearchBar {
 }
 
 extension SearchBar: UISearchBarDelegate {
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+    public func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         if let textField = getSearchTextField() {
             textField.layer.borderColor = UIColor.blue10.cgColor
         }
     }
     
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+    public func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         if let textField = getSearchTextField() {
             textField.layer.borderColor = UIColor.grey30.cgColor
         }
     }
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if !searchText.isEmpty && isAnimating {
             stopPlaceholderAnimation()
         }
     }
     
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+    public func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.text = ""
         
         if let textField = getSearchTextField() {
@@ -267,7 +268,7 @@ extension SearchBar: UISearchBarDelegate {
     }
 }
 
-enum PlaceholderAnimationType {
+public enum PlaceholderAnimationType {
     case append
     case appendPrefix
     case slideTopBottom

@@ -7,11 +7,11 @@
 
 import UIKit
 
-class CustomPageControl: UIPageControl {
+public class CustomPageControl: UIPageControl {
     
     private var dotLayers: [CALayer] = []
     
-    var scrollProgress: CGFloat = 0 {
+    public var scrollProgress: CGFloat = 0 {
         didSet {
             if oldValue != scrollProgress {
                 updateDotsForScrollProgress()
@@ -19,23 +19,23 @@ class CustomPageControl: UIPageControl {
         }
     }
     
-    var activeColor: UIColor = .blue {
+    public var activeColor: UIColor = .blue {
         didSet { updateDotAppearance() }
     }
-    var inactiveColor: UIColor = .lightGray {
+    public var inactiveColor: UIColor = .lightGray {
         didSet { updateDotAppearance() }
     }
-    var activeDotSize: CGFloat = 8 {
+    public var activeDotSize: CGFloat = 8 {
         didSet { updateDotAppearance() }
     }
-    var inactiveDotSize: CGFloat = 6 {
+    public var inactiveDotSize: CGFloat = 6 {
         didSet { updateDotAppearance() }
     }
-    var dotSpacing: CGFloat = 10 {
+    public var dotSpacing: CGFloat = 10 {
         didSet { updateDotAppearance() }
     }
     
-    override var numberOfPages: Int {
+    override public var numberOfPages: Int {
         didSet {
             if oldValue != numberOfPages {
                 setupDotLayers()
@@ -43,7 +43,7 @@ class CustomPageControl: UIPageControl {
         }
     }
     
-    override var currentPage: Int {
+    override public var currentPage: Int {
         didSet {
             if !isUpdatingFromScroll {
                 scrollProgress = CGFloat(currentPage)
@@ -54,14 +54,40 @@ class CustomPageControl: UIPageControl {
     
     private var isUpdatingFromScroll = false
     
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
     }
     
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         super.init(coder: coder)
         commonInit()
+    }
+    
+    override public func layoutSubviews() {
+        super.layoutSubviews()
+        
+        var totalWidth: CGFloat = 0
+        for i in 0..<dotLayers.count {
+            let dotSize = dotLayers[i].bounds.width
+            totalWidth += dotSize
+            
+            if i < dotLayers.count - 1 {
+                totalWidth += dotSpacing
+            }
+        }
+        
+        let startX = (bounds.width - totalWidth) / 2
+        let centerY = bounds.height / 2
+        
+        var currentX = startX
+        for i in 0..<dotLayers.count {
+            let dotSize = dotLayers[i].bounds.width
+            let dotLayer = dotLayers[i]
+            
+            dotLayer.position = CGPoint(x: currentX + dotSize / 2, y: centerY)
+            currentX += dotSize + dotSpacing
+        }
     }
     
     private func commonInit() {
@@ -88,32 +114,6 @@ class CustomPageControl: UIPageControl {
         scrollProgress = CGFloat(currentPage)
         updateDotsForScrollProgress()
         setNeedsLayout()
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        var totalWidth: CGFloat = 0
-        for i in 0..<dotLayers.count {
-            let dotSize = dotLayers[i].bounds.width
-            totalWidth += dotSize
-            
-            if i < dotLayers.count - 1 {
-                totalWidth += dotSpacing
-            }
-        }
-        
-        let startX = (bounds.width - totalWidth) / 2
-        let centerY = bounds.height / 2
-        
-        var currentX = startX
-        for i in 0..<dotLayers.count {
-            let dotSize = dotLayers[i].bounds.width
-            let dotLayer = dotLayers[i]
-            
-            dotLayer.position = CGPoint(x: currentX + dotSize / 2, y: centerY)
-            currentX += dotSize + dotSpacing
-        }
     }
     
     private func updateDotAppearance() {
@@ -167,7 +167,7 @@ class CustomPageControl: UIPageControl {
 
 extension CustomPageControl {
     
-    func updateScrollProgress(scrollView: UIScrollView) {
+    public func updateScrollProgress(scrollView: UIScrollView) {
         let pageWidth = scrollView.frame.width
         let offsetX = scrollView.contentOffset.x
         let totalWidth = scrollView.contentSize.width

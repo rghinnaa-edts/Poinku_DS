@@ -7,20 +7,20 @@
 
 import UIKit
 
-class Tabs: UIView {
+public class Tabs: UIView {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var tabStackView: UIStackView!
     @IBOutlet weak var selectedIndicatorView: UIView!
     @IBOutlet weak var bottomRoundedView: UIView!
     @IBOutlet weak var indicatorLeadingConstraint: NSLayoutConstraint!
     
-    weak var delegate: TabsDelegate?
+    weak public var delegate: TabsDelegate?
     private var tabs: [Tab] = []
     private var selectedIndex: Int = 0
     private var tabButtons: [UIButton] = []
     private let animationDuration: TimeInterval = 0.3
     
-    enum TabType {
+    public enum TabType {
         case cart
         case home
         case category
@@ -29,12 +29,12 @@ class Tabs: UIView {
         case home_new2
     }
     
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         setupFromNib()
     }
     
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         super.init(coder: coder)
         setupFromNib()
     }
@@ -60,7 +60,7 @@ class Tabs: UIView {
         updateBottomCorners()
     }
     
-    func configure(with tabs: [Tab], selectedIndex: Int = 0) {
+    public func configure(with tabs: [Tab], selectedIndex: Int = 0) {
         self.tabs = tabs
         self.selectedIndex = selectedIndex
         setupTabs()
@@ -115,7 +115,7 @@ class Tabs: UIView {
         selectTab(at: sender.tag)
     }
     
-    func selectTab(at index: Int) {
+    public func selectTab(at index: Int) {
         guard index != selectedIndex else { return }
         selectedIndex = index
         updateSelectedTab(animated: true)
@@ -165,7 +165,7 @@ class Tabs: UIView {
     }
 }
 
-protocol TabsDelegate: AnyObject {
+public protocol TabsDelegate: AnyObject {
     func tabSelected(_ index: Int)
 }
 

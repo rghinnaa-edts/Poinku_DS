@@ -7,7 +7,7 @@
 
 import UIKit
 
-class StampCardCell: UICollectionViewCell {
+public class StampCardCell: UICollectionViewCell {
     
     @IBOutlet var stampCard: UIView!
     @IBOutlet var ivStampCard: UIImageView!
@@ -19,25 +19,25 @@ class StampCardCell: UICollectionViewCell {
     @IBOutlet var lblStamp: UILabel!
     @IBOutlet var btnExchange: UIButton!
     
-    var id: String = ""
-    var title: String = ""
-    var imageURL: String = ""
-    var quantity: Int = 3
-    var stampCount: Int = 0
-    var price: Int = 0
-    var isNew: Bool = false
-    var isHotProduct: Bool = false
-    var isDiscount: Bool = false
-    var discountImp: Int = 0
-    var size: Size = .fullSize
+    public var id: String = ""
+    public var title: String = ""
+    public var imageURL: String = ""
+    public var quantity: Int = 3
+    public var stampCount: Int = 0
+    public var price: Int = 0
+    public var isNew: Bool = false
+    public var isHotProduct: Bool = false
+    public var isDiscount: Bool = false
+    public var discountImp: Int = 0
+    public var size: Size = .fullSize
     
-    enum Size {
+    public enum Size {
         case fullSize
         case rewardWidget
         case stampPage
     }
     
-    struct Product {
+    public struct Product {
         let id: String
         let title: String
         let imageURL: String
@@ -51,7 +51,23 @@ class StampCardCell: UICollectionViewCell {
         let Size: Size
     }
     
-    func configure(with product: Product) {
+    override public init(frame: CGRect) {
+        super.init(frame: frame)
+        setupStampCard()
+    }
+
+    required public init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setupStampCard()
+    }
+    
+    override public func awakeFromNib() {
+        super.awakeFromNib()
+        
+        setupUI()
+    }
+    
+    public func configure(with product: Product) {
         id = product.id
         title = product.title
         imageURL = product.imageURL
@@ -65,20 +81,19 @@ class StampCardCell: UICollectionViewCell {
         size = product.Size
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupStampCard()
-    }
-
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setupStampCard()
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    public func calculateHeight(for width: CGFloat) -> CGFloat {
+        let widthConstraint = stampCard.widthAnchor.constraint(equalToConstant: width)
+        widthConstraint.isActive = true
         
-        setupUI()
+        let size = stampCard.systemLayoutSizeFitting(
+            CGSize(width: width, height: UIView.layoutFittingCompressedSize.height),
+            withHorizontalFittingPriority: .required,
+            verticalFittingPriority: .fittingSizeLevel
+        )
+        
+        widthConstraint.isActive = false
+        
+        return size.height
     }
 
     private func setupStampCard() {
@@ -206,20 +221,5 @@ class StampCardCell: UICollectionViewCell {
             verticalAlignment: .top,
             offsetX: 21
         )
-    }
-    
-    func calculateHeight(for width: CGFloat) -> CGFloat {
-        let widthConstraint = stampCard.widthAnchor.constraint(equalToConstant: width)
-        widthConstraint.isActive = true
-        
-        let size = stampCard.systemLayoutSizeFitting(
-            CGSize(width: width, height: UIView.layoutFittingCompressedSize.height),
-            withHorizontalFittingPriority: .required,
-            verticalFittingPriority: .fittingSizeLevel
-        )
-        
-        widthConstraint.isActive = false
-        
-        return size.height
     }
 }

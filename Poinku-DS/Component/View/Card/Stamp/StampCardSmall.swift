@@ -7,7 +7,7 @@
 
 import UIKit
 
-class StampCardSmall: UICollectionViewCell {
+public class StampCardSmall: UICollectionViewCell {
     
     @IBOutlet var stampCard: UIView!
     @IBOutlet var ivStampCard: UIImageView!
@@ -19,25 +19,25 @@ class StampCardSmall: UICollectionViewCell {
     @IBOutlet var lblStamp: UILabel!
     @IBOutlet var btnExchange: UIButton!
     
-    var id: String = ""
-    var title: String = ""
-    var imageURL: String = ""
-    var quantity: Int = 3
-    var stampCount: Int = 0
-    var price: Int = 0
-    var isNew: Bool = false
-    var isHotProduct: Bool = false
-    var isDiscount: Bool = false
-    var discountImp: Int = 0
-    var size: Size = .stampPage
+    public var id: String = ""
+    public var title: String = ""
+    public var imageURL: String = ""
+    public var quantity: Int = 3
+    public var stampCount: Int = 0
+    public var price: Int = 0
+    public var isNew: Bool = false
+    public var isHotProduct: Bool = false
+    public var isDiscount: Bool = false
+    public var discountImp: Int = 0
+    public var size: Size = .stampPage
     
-    enum Size {
+    public enum Size {
         case fullSize
         case rewardWidget
         case stampPage
     }
     
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         setupStampCard()
     }
@@ -47,10 +47,25 @@ class StampCardSmall: UICollectionViewCell {
         setupStampCard()
     }
     
-    override func awakeFromNib() {
+    public override func awakeFromNib() {
         super.awakeFromNib()
         
         setupUI()
+    }
+    
+    public func calculateHeight(for width: CGFloat) -> CGFloat {
+        let widthConstraint = stampCard.widthAnchor.constraint(equalToConstant: width)
+        widthConstraint.isActive = true
+        
+        let size = stampCard.systemLayoutSizeFitting(
+            CGSize(width: width, height: UIView.layoutFittingCompressedSize.height),
+            withHorizontalFittingPriority: .required,
+            verticalFittingPriority: .fittingSizeLevel
+        )
+        
+        widthConstraint.isActive = false
+        
+        return size.height
     }
 
     private func setupStampCard() {
@@ -176,20 +191,4 @@ class StampCardSmall: UICollectionViewCell {
             offsetX: 21
         )
     }
-    
-    func calculateHeight(for width: CGFloat) -> CGFloat {
-        let widthConstraint = stampCard.widthAnchor.constraint(equalToConstant: width)
-        widthConstraint.isActive = true
-        
-        let size = stampCard.systemLayoutSizeFitting(
-            CGSize(width: width, height: UIView.layoutFittingCompressedSize.height),
-            withHorizontalFittingPriority: .required,
-            verticalFittingPriority: .fittingSizeLevel
-        )
-        
-        widthConstraint.isActive = false
-        
-        return size.height
-    }
-    
 }

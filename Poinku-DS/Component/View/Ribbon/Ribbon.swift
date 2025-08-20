@@ -8,76 +8,76 @@
 import UIKit
 
 @IBDesignable
-class RibbonView: UIView {
+public class RibbonView: UIView {
     
-    enum Gravity {
+    public enum Gravity {
         case start
         case end
     }
     
-    enum VerticalAlignment {
+    public enum VerticalAlignment {
         case top
         case center
         case bottom
         case defaultV
     }
     
-    @IBInspectable var triangleColor: UIColor = UIColor.blue50 {
+    @IBInspectable public var triangleColor: UIColor = UIColor.blue50 {
         didSet {
             setNeedsDisplay()
         }
     }
     
-    @IBInspectable var containerColor: UIColor = UIColor.blue30 {
+    @IBInspectable public var containerColor: UIColor = UIColor.blue30 {
         didSet {
             setNeedsDisplay()
         }
     }
     
-    @IBInspectable var containerStartColor: UIColor = .clear {
+    @IBInspectable public var containerStartColor: UIColor = .clear {
         didSet {
             updateGradientLayer()
         }
     }
     
-    @IBInspectable var containerEndColor: UIColor = .clear {
+    @IBInspectable public var containerEndColor: UIColor = .clear {
         didSet {
             updateGradientLayer()
         }
     }
     
-    @IBInspectable var textColor: UIColor = .white {
+    @IBInspectable public var textColor: UIColor = .white {
         didSet {
             label.textColor = textColor
         }
     }
     
-    var gravity: Gravity = .start {
+    public var gravity: Gravity = .start {
         didSet {
             setNeedsLayout()
             setNeedsDisplay()
         }
     }
     
-    @IBInspectable var cornerRadius: CGFloat = 2 {
+    @IBInspectable public var cornerRadius: CGFloat = 2 {
         didSet {
             setNeedsDisplay()
         }
     }
     
-    @IBInspectable var textVerticalPadding: CGFloat = 4 {
+    @IBInspectable public var textVerticalPadding: CGFloat = 4 {
         didSet {
             updateTextContainerHeight()
         }
     }
     
-    @IBInspectable var textHorizontalPadding: CGFloat = 4 {
+    @IBInspectable public var textHorizontalPadding: CGFloat = 4 {
         didSet {
             updateTextContainerHeight()
         }
     }
     
-    var ribbonText: String? {
+    public var ribbonText: String? {
         get { label.text }
         set {
             label.text = newValue
@@ -101,12 +101,12 @@ class RibbonView: UIView {
     private var triangleHeight: CGFloat { 8 }
     private var textContainerHeight: CGFloat = 0
     
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
     }
     
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         super.init(coder: coder)
         setupView()
     }
@@ -120,7 +120,7 @@ class RibbonView: UIView {
         sizeToFit()
     }
     
-    override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
         
         label.frame = CGRect(
@@ -133,14 +133,14 @@ class RibbonView: UIView {
         updateGradientLayer()
     }
     
-    override var intrinsicContentSize: CGSize {
+    override public var intrinsicContentSize: CGSize {
         return CGSize(
             width: textWidth,
             height: triangleWidth + textContainerHeight + 2
         )
     }
     
-    override func draw(_ rect: CGRect) {
+    override public func draw(_ rect: CGRect) {
         let containerPath = if gravity == .start {
             UIBezierPath(
                 roundedRect: CGRect(
@@ -244,7 +244,7 @@ class RibbonView: UIView {
         setNeedsDisplay()
     }
     
-    func anchorToView(
+    public func anchorToView(
         rootParent: UIView,
         targetView: UIView,
         verticalAlignment: VerticalAlignment = .defaultV,
@@ -280,7 +280,7 @@ class RibbonView: UIView {
 }
 
 extension UIBezierPath {
-    func addShadow(_ shadow: NSShadow) {
+    public func addShadow(_ shadow: NSShadow) {
         let context = UIGraphicsGetCurrentContext()
         context?.saveGState()
         

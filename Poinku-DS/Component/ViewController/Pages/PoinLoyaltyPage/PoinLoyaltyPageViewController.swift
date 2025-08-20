@@ -306,8 +306,7 @@ class PoinLoyaltyPageViewController: UIViewController {
                 description: "Filter pencarian dalam kategori yang kamu pilih.",
                 targetView: collectionChip,
                 isBtnSkipHide: true,
-                isListTarget: true,
-                listSpacing: 16
+                isListTarget: true
             )
         ])
 

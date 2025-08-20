@@ -7,13 +7,7 @@
 
 import UIKit
 
-enum Style {
-    case primary
-    case outline
-    case text
-}
-
-class Button: UIButton {
+public class Button: UIButton {
     
     private let activityIndicator = UIActivityIndicatorView(style: .gray)
     private var defaultStyle: Style = .primary
@@ -23,17 +17,17 @@ class Button: UIButton {
     private var startImageView: UIImageView?
     private var endImageView: UIImageView?
     
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
     
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         super.init(coder: coder)
         setup()
     }
     
-    convenience init(style: Style = .primary, title: String, startIcon: UIImage? = nil, endIcon: UIImage? = nil) {
+    convenience public init(style: Style = .primary, title: String, startIcon: UIImage? = nil, endIcon: UIImage? = nil) {
         self.init(frame: .zero)
         self.defaultStyle = style
         self.startIcon = startIcon
@@ -117,13 +111,13 @@ class Button: UIButton {
         self.titleEdgeInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
     }
     
-    func setIcons(startIcon: UIImage? = nil, endIcon: UIImage? = nil) {
+    public func setIcons(startIcon: UIImage? = nil, endIcon: UIImage? = nil) {
         self.startIcon = startIcon
         self.endIcon = endIcon
         setupIcons()
     }
     
-    func setStyleState(_ style: Style) {
+    public func setStyleState(_ style: Style) {
         switch style {
         case .outline:
             self.backgroundColor = .white
@@ -153,4 +147,10 @@ class Button: UIButton {
         endImageView?.tintColor = self.tintColor
     }
     
+}
+
+public enum Style {
+    case primary
+    case outline
+    case text
 }

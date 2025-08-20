@@ -7,11 +7,11 @@
 
 import UIKit
 
-class SkeletonView: UIView {
+public class SkeletonView: UIView {
     private let gradientLayer = CAGradientLayer()
     private let shimmerAnimation: CABasicAnimation
     
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         shimmerAnimation = CABasicAnimation(keyPath: "locations")
         shimmerAnimation.fromValue = [-1.0, -0.5, 0.0]
         shimmerAnimation.toValue = [1.0, 1.5, 2.0]
@@ -22,7 +22,7 @@ class SkeletonView: UIView {
         setupGradient()
     }
     
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         shimmerAnimation = CABasicAnimation(keyPath: "locations")
         shimmerAnimation.fromValue = [-1.0, -0.5, 0.0]
         shimmerAnimation.toValue = [1.0, 1.5, 2.0]
@@ -47,16 +47,16 @@ class SkeletonView: UIView {
         gradientLayer.add(shimmerAnimation, forKey: "shimmerAnimation")
     }
     
-    override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
         gradientLayer.frame = bounds
     }
     
-    func startShimmer() {
+    public func startShimmer() {
         gradientLayer.add(shimmerAnimation, forKey: "shimmerAnimation")
     }
     
-    func stopShimmer() {
+    public func stopShimmer() {
         gradientLayer.removeAnimation(forKey: "shimmerAnimation")
     }
 }

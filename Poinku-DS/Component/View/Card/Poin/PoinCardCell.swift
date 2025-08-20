@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PoinCardCell: UICollectionViewCell {
+public class PoinCardCell: UICollectionViewCell {
     
     @IBOutlet var poinCard: UIView!
     @IBOutlet var ivPoinCard: UIImageView!
@@ -22,25 +22,25 @@ class PoinCardCell: UICollectionViewCell {
     @IBOutlet var ivIKupon: UIImageView!
     @IBOutlet var lblIKupon: UILabel!
     
-    var id: String = ""
-    var title: String = ""
-    var imageURL: String = ""
-    var coupon: Int = 9
-    var stampCount: Int = 0
-    var price: Int = 0
-    var isNew: Bool = false
-    var isHotProduct: Bool = false
-    var isDiscount: Bool = false
-    var discountImp: Int = 0
-    var size: Size = .fullSize
+    public var id: String = ""
+    public var title: String = ""
+    public var imageURL: String = ""
+    public var coupon: Int = 9
+    public var stampCount: Int = 0
+    public var price: Int = 0
+    public var isNew: Bool = false
+    public var isHotProduct: Bool = false
+    public var isDiscount: Bool = false
+    public var discountImp: Int = 0
+    public var size: Size = .fullSize
     
-    enum Size {
+    public enum Size {
         case fullSize
         case rewardWidget
         case stampPage
     }
     
-    struct Product {
+    public struct Product {
         let id: String
         let title: String
         let imageURL: String
@@ -54,7 +54,23 @@ class PoinCardCell: UICollectionViewCell {
         let Size: Size
     }
     
-    func configure(with product: Product) {
+    override public init(frame: CGRect) {
+        super.init(frame: frame)
+        setupPoinCard()
+    }
+
+    required public init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setupPoinCard()
+    }
+    
+    override public func awakeFromNib() {
+        super.awakeFromNib()
+        
+        setupUI()
+    }
+    
+    public func configure(with product: Product) {
         id = product.id
         title = product.title
         imageURL = product.imageURL
@@ -68,20 +84,19 @@ class PoinCardCell: UICollectionViewCell {
         size = product.Size
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupPoinCard()
-    }
-
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setupPoinCard()
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    public func calculateHeight(for width: CGFloat) -> CGFloat {
+        let widthConstraint = poinCard.widthAnchor.constraint(equalToConstant: width)
+        widthConstraint.isActive = true
         
-        setupUI()
+        let size = poinCard.systemLayoutSizeFitting(
+            CGSize(width: width, height: UIView.layoutFittingCompressedSize.height),
+            withHorizontalFittingPriority: .required,
+            verticalFittingPriority: .fittingSizeLevel
+        )
+        
+        widthConstraint.isActive = false
+        
+        return size.height
     }
 
     private func setupPoinCard() {
@@ -203,20 +218,5 @@ class PoinCardCell: UICollectionViewCell {
             rootParent: poinCard,
             targetView: poinCard
         )
-    }
-    
-    func calculateHeight(for width: CGFloat) -> CGFloat {
-        let widthConstraint = poinCard.widthAnchor.constraint(equalToConstant: width)
-        widthConstraint.isActive = true
-        
-        let size = poinCard.systemLayoutSizeFitting(
-            CGSize(width: width, height: UIView.layoutFittingCompressedSize.height),
-            withHorizontalFittingPriority: .required,
-            verticalFittingPriority: .fittingSizeLevel
-        )
-        
-        widthConstraint.isActive = false
-        
-        return size.height
     }
 }

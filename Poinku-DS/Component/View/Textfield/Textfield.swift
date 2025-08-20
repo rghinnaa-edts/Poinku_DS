@@ -8,7 +8,7 @@
 import UIKit
 
 @IBDesignable
-class Textfield: UIView {
+public class Textfield: UIView {
     
     @IBOutlet var containerView: UIView!
     @IBOutlet var vTextfield: UIView!
@@ -21,7 +21,7 @@ class Textfield: UIView {
     @IBOutlet var iconLeading: UIImageView!
     @IBOutlet var iconTrailing: UIImageView!
     
-    @IBInspectable var label: String? {
+    @IBInspectable public var label: String? {
         get { return labelText.text }
         set {
             labelText.text = newValue
@@ -30,7 +30,7 @@ class Textfield: UIView {
         }
     }
     
-    @IBInspectable var text: String? {
+    @IBInspectable public var text: String? {
         get { return textfield.text }
         set {
             textfield.text = newValue
@@ -39,7 +39,7 @@ class Textfield: UIView {
         }
     }
     
-    @IBInspectable var placeholder: String? {
+    @IBInspectable public var placeholder: String? {
         get { return textfield.placeholder }
         set {
             textfield.placeholder = newValue
@@ -47,14 +47,14 @@ class Textfield: UIView {
         }
     }
     
-    @IBInspectable var isRequired: Bool {
+    @IBInspectable public var isRequired: Bool {
         get { return !labelRequired.isHidden }
         set {
             labelRequired.isHidden = !newValue
         }
     }
     
-    @IBInspectable var supportText: String? {
+    @IBInspectable public var supportText: String? {
         get { return text }
         set {
             text = newValue
@@ -62,7 +62,7 @@ class Textfield: UIView {
         }
     }
     
-    @IBInspectable var counterText: String? {
+    @IBInspectable public var counterText: String? {
         get { return counter.text }
         set {
             counter.text = newValue
@@ -70,7 +70,7 @@ class Textfield: UIView {
         }
     }
     
-    @IBInspectable var errorMessage: String? {
+    @IBInspectable public var errorMessage: String? {
         didSet {
             text = errorMessage
             if errorMessage == nil {
@@ -82,7 +82,7 @@ class Textfield: UIView {
         }
     }
     
-    @IBInspectable var iconStart: UIImage? {
+    @IBInspectable public var iconStart: UIImage? {
         get { return iconLeading.image }
         set {
             iconLeading.image = newValue
@@ -90,7 +90,7 @@ class Textfield: UIView {
         }
     }
     
-    @IBInspectable var iconEnd: UIImage? {
+    @IBInspectable public var iconEnd: UIImage? {
         get { return iconTrailing.image }
         set {
             iconTrailing.image = newValue
@@ -98,7 +98,7 @@ class Textfield: UIView {
         }
     }
     
-    var keyboardType: UIKeyboardType {
+    public var keyboardType: UIKeyboardType {
         get { return textfield.keyboardType }
         set {
             textfield.keyboardType = newValue
@@ -106,7 +106,7 @@ class Textfield: UIView {
         }
     }
     
-    var returnKeyType: UIReturnKeyType {
+    public var returnKeyType: UIReturnKeyType {
         get { return textfield.returnKeyType }
         set {
             textfield.returnKeyType = newValue
@@ -114,44 +114,44 @@ class Textfield: UIView {
         }
     }
     
-    var autocapitalizationType: UITextAutocapitalizationType {
+    public var autocapitalizationType: UITextAutocapitalizationType {
         get { return textfield.autocapitalizationType }
         set { textfield.autocapitalizationType = newValue }
     }
     
-    var autocorrectionType: UITextAutocorrectionType {
+    public var autocorrectionType: UITextAutocorrectionType {
         get { return textfield.autocorrectionType }
         set { textfield.autocorrectionType = newValue }
     }
     
-    var delegate: UITextFieldDelegate? {
+    public var delegate: UITextFieldDelegate? {
         get { return textfield.delegate }
         set { textfield.delegate = newValue }
     }
     
-    enum Style {
+    public enum Style {
         case Default
         case Focus
         case Error
     }
     
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         setupTextfield()
     }
 
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         super.init(coder: coder)
         setupTextfield()
     }
     
     @discardableResult
-    override func becomeFirstResponder() -> Bool {
+    override public func becomeFirstResponder() -> Bool {
         return textfield.becomeFirstResponder()
     }
     
     @discardableResult
-    override func resignFirstResponder() -> Bool {
+    override public func resignFirstResponder() -> Bool {
         return textfield.resignFirstResponder()
     }
     
@@ -256,7 +256,7 @@ class Textfield: UIView {
         }
     }
     
-    func setIconWidth(icon image: UIImageView!, to width: CGFloat) {
+    public func setIconWidth(icon image: UIImageView!, to width: CGFloat) {
         image.constraints.forEach { constraint in
             if constraint.firstAttribute == .width && constraint.firstItem === image {
                 image.removeConstraint(constraint)
@@ -272,22 +272,22 @@ class Textfield: UIView {
         invalidateIntrinsicContentSize()
     }
     
-    func validate(condition: (String?) -> Bool, errorMessage: String) -> Bool {
+    public func validate(condition: (String?) -> Bool, errorMessage: String) -> Bool {
         let isValid = condition(text)
         self.errorMessage = isValid ? nil : errorMessage
         return isValid
     }
     
-    func clear() {
+    public func clear() {
         text = nil
         errorMessage = nil
     }
     
-    func getTextField() -> UITextField {
+    public func getTextField() -> UITextField {
         return textfield
     }
     
-    override func prepareForInterfaceBuilder() {
+    override public func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
         setupTextfield()
     }

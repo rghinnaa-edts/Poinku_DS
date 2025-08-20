@@ -8,7 +8,7 @@
 import UIKit
 
 @IBDesignable
-class Coachmark: UIView {
+public class Coachmark: UIView {
     
     @IBOutlet var lblTitle: UILabel!
     @IBOutlet var lblDescription: UILabel!
@@ -37,9 +37,9 @@ class Coachmark: UIView {
     private var stepConfigurations: [StepConfiguration] = []
     private let contentViewWidth: CGFloat = 320
     private var arrowPosition: ArrowPosition = .top
-    var onDismiss: (() -> Void)?
+    public var onDismiss: (() -> Void)?
 
-    struct StepConfiguration {
+    public struct StepConfiguration {
         let title: String
         let description: String
         let targetView: UIView
@@ -71,18 +71,18 @@ class Coachmark: UIView {
         }
     }
 
-    enum Position {
+    public enum Position {
         case left
         case center
         case right
     }
 
-    enum ArrowPosition {
+    public enum ArrowPosition {
         case top
         case bottom
     }
 
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
@@ -92,12 +92,12 @@ class Coachmark: UIView {
         setup()
     }
 
-    override func awakeFromNib() {
+    override public func awakeFromNib() {
         super.awakeFromNib()
         setupUI()
     }
 
-    func configureSteps(steps: [StepConfiguration]) {
+    public func configureSteps(steps: [StepConfiguration]) {
         self.stepConfigurations = steps
         self.totalSteps = steps.count
 
@@ -107,7 +107,7 @@ class Coachmark: UIView {
         }
     }
 
-    func show(animated: Bool = true, completion: (() -> Void)? = nil) {
+    public func show(animated: Bool = true, completion: (() -> Void)? = nil) {
         guard let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) else { return }
 
         self.frame = window.bounds
@@ -172,7 +172,7 @@ class Coachmark: UIView {
         }
     }
 
-    func dismiss(animated: Bool = true, completion: (() -> Void)? = nil) {
+    public func dismiss(animated: Bool = true, completion: (() -> Void)? = nil) {
         if animated {
             UIView.animate(withDuration: 0.2, animations: {
                 self.contentView?.alpha = 0
@@ -191,7 +191,7 @@ class Coachmark: UIView {
         }
     }
     
-    func setupCoachmarkButton(
+    public func setupCoachmarkButton(
         isBtnLeftHide: Bool = false,
         isBtnRightHide: Bool = false,
         textBtnLeft: String = "",

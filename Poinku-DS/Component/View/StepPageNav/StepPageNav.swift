@@ -7,7 +7,7 @@
 
 import UIKit
 
-class StepPageNav: UIView {
+public class StepPageNav: UIView {
     
     @IBOutlet var containerView: UIView!
     @IBOutlet var lblStep1: UILabel!
@@ -24,24 +24,24 @@ class StepPageNav: UIView {
     
     private var progressTimer: Timer?
     
-    var title: [String] = [] {
+    public var title: [String] = [] {
         didSet {
             setupUI()
         }
     }
-    var currentStep = 0 {
+    public var currentStep = 0 {
         didSet {
             setupUI()
         }
     }
     
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         super.init(coder: coder)
         
         setupStepPageNav()
     }
     
-    override func awakeFromNib() {
+    override public func awakeFromNib() {
         super.awakeFromNib()
         
         setupUI()
@@ -196,5 +196,4 @@ class StepPageNav: UIView {
             
         }
     }
-    
 }

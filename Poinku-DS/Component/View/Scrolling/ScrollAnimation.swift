@@ -10,7 +10,7 @@ import UIKit
 private var lastContentOffset: CGFloat = 0
 private var visibleCellsBeforeScroll: [IndexPath: CGPoint] = [:]
 
-func animateScale(_ collectionView: UICollectionView, _ scrollView: UIScrollView) {
+public func animateScale(_ collectionView: UICollectionView, _ scrollView: UIScrollView) {
     let isScrollingDown = scrollView.contentOffset.y > lastContentOffset
     
     let visibleCells = collectionView.visibleCells
@@ -37,7 +37,7 @@ func animateScale(_ collectionView: UICollectionView, _ scrollView: UIScrollView
     lastContentOffset = scrollView.contentOffset.y
 }
 
-func animateFade(_ collectionView: UICollectionView, _ scrollView: UIScrollView) {
+public func animateFade(_ collectionView: UICollectionView, _ scrollView: UIScrollView) {
     let visibleCells = collectionView.visibleCells
     for cell in visibleCells {
         guard let indexPath = collectionView.indexPath(for: cell) else { continue }

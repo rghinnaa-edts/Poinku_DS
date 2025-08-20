@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeSwitcher: UIView {
+public class HomeSwitcher: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -15,15 +15,15 @@ class HomeSwitcher: UIView {
 //        setupViews()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupViews() {
+    public func setupViews() {
         self.addSubview(btnTab)
     }
     
-    let btnTab: UIView = {
+    public let btnTab: UIView = {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 50))
         let title = UITextView()
         

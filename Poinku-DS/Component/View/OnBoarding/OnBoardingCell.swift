@@ -7,13 +7,13 @@
 
 import UIKit
 
-class OnBoardingCell: UICollectionViewCell {
+public class OnBoardingCell: UICollectionViewCell {
     
-    static let identifier = String(describing: OnBoardingCell.self)
+    public static let identifier = String(describing: OnBoardingCell.self)
     
     @IBOutlet var ivSlide: UIImageView!
     
-    func setup(_ image: UIImage?) {
+    public func setup(_ image: UIImage?) {
         ivSlide.image = image
         ivSlide.contentMode = .scaleAspectFill
     }

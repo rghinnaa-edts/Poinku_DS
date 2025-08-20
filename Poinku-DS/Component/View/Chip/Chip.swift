@@ -7,7 +7,7 @@
 
 import UIKit
 
-class Chip: UIView {
+public class Chip: UIView {
     
     @IBOutlet var containerView: UIView!
     @IBOutlet var ivChip: UIImageView!
@@ -16,33 +16,33 @@ class Chip: UIView {
     private var ivChipConstraints: [NSLayoutConstraint] = []
     private var tapGestureRecognizer: UITapGestureRecognizer?
     
-    var onTap: (() -> Void)?
+    public var onTap: (() -> Void)?
     
-    var text = "" {
+    public var text = "" {
         didSet {
             lblChip.text = text
         }
     }
     
-    var image: UIImage? = nil {
+    public var image: UIImage? = nil {
         didSet {
             setupUI()
         }
     }
     
-    var isActive: Bool = false {
+    public var isActive: Bool = false {
         didSet {
             setupUI()
         }
     }
     
-    var isClickable: Bool = true {
+    public var isClickable: Bool = true {
         didSet {
             setupClickability()
         }
     }
     
-    var textColorActive: UIColor = UIColor.white {
+    public var textColorActive: UIColor = UIColor.white {
         didSet {
             if isActive {
                 setupUI()
@@ -50,7 +50,7 @@ class Chip: UIView {
         }
     }
     
-    var textColorInactive: UIColor = UIColor.grey80 {
+    public var textColorInactive: UIColor = UIColor.grey80 {
         didSet {
             if !isActive {
                 setupUI()
@@ -58,7 +58,7 @@ class Chip: UIView {
         }
     }
     
-    var activeColor: UIColor = UIColor.blue30 {
+    public var activeColor: UIColor = UIColor.blue30 {
         didSet {
             if isActive {
                 setupUI()
@@ -66,7 +66,7 @@ class Chip: UIView {
         }
     }
     
-    var inactiveColor: UIColor = UIColor.grey20 {
+    public var inactiveColor: UIColor = UIColor.grey20 {
         didSet {
             if !isActive {
                 setupUI()
@@ -74,7 +74,7 @@ class Chip: UIView {
         }
     }
     
-    var borderActiveColor: CGColor = UIColor.blue40.cgColor {
+    public var borderActiveColor: CGColor = UIColor.blue40.cgColor {
         didSet {
             if isActive {
                 setupUI()
@@ -82,7 +82,7 @@ class Chip: UIView {
         }
     }
     
-    var borderInactiveColor: CGColor? = nil {
+    public var borderInactiveColor: CGColor? = nil {
         didSet {
             if !isActive {
                 setupUI()
@@ -90,12 +90,12 @@ class Chip: UIView {
         }
     }
     
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         setupChip()
     }
 
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         super.init(coder: coder)
         setupChip()
     }

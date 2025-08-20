@@ -7,7 +7,7 @@
 
 import UIKit
 
-class OnBoarding2: UIView {
+public class OnBoarding2: UIView {
     
     @IBOutlet var containerView: UIView!
     @IBOutlet var imgBackground: UIImageView!
@@ -20,7 +20,7 @@ class OnBoarding2: UIView {
     private var imgBackground2: UIImageView!
     private var isTransitioning = false
     
-    var slides: [OnBoarding2Slide] = [] {
+    public var slides: [OnBoarding2Slide] = [] {
         didSet {
             if collectionView2 != nil && !slides.isEmpty {
                 setupInfiniteScrollSlides()
@@ -43,10 +43,10 @@ class OnBoarding2: UIView {
     private var oriSlides: [OnBoarding2Slide] = []
     private var wrapSlides: [OnBoarding2Slide] = []
     
-    var currentPage = 0
+    public var currentPage = 0
     private var autoScrollTimer: Timer?
     
-    override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
         
         vContentContainer.layer.sublayers?.forEach {
@@ -63,16 +63,25 @@ class OnBoarding2: UIView {
         }
     }
     
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         
         setupOnBoarding()
     }
 
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         super.init(coder: coder)
         
         setupOnBoarding()
+    }
+    
+    public func viewWillAppear() {
+       startAutoScrollTimer()
+       stopDisplayLink()
+    }
+   
+    public func viewWillDisappear() {
+       stopAutoScrollTimer()
     }
     
     private func setupOnBoarding() {
@@ -273,109 +282,99 @@ class OnBoarding2: UIView {
         autoScrollTimer = nil
     }
    
-   private var animationStartTime: CFTimeInterval = 0
-   private var animationDuration: CFTimeInterval = 0
-   private var animationStartOffset: CGFloat = 0
-   private var animationEndOffset: CGFloat = 0
-   private var displayLink: CADisplayLink?
-    
-   @objc private func scrollToNextPage() {
-       let nextPage = currentPage + 1
-       let width = collectionView2.frame.width
-       let nextXOffset = CGFloat(nextPage) * width
-       
-       let startOffset = collectionView2.contentOffset.x
-       
-       displayLink = CADisplayLink(target: self, selector: #selector(updateScroll))
-       displayLink?.add(to: .current, forMode: .common)
-       
-       animationStartTime = CACurrentMediaTime()
-       animationDuration = 0.5
-       animationStartOffset = startOffset
-       animationEndOffset = nextXOffset
-       
-       currentPage = nextPage
-       
-       if currentPage == wrapSlides.count - 1 {
-           DispatchQueue.main.asyncAfter(deadline: .now() + animationDuration + 0.1) {
-               self.currentPage = 1
-               let newOffset = CGFloat(self.currentPage) * width
-               self.pageControl.currentPage = 0
-               self.collectionView2.setContentOffset(CGPoint(x: newOffset, y: 0), animated: false)
-               self.pageControl.currentPage = 0
-               
-               self.setupContent(self.wrapSlides[self.currentPage])
-               self.updateBackgroundImage()
-           }
-       } else {
-           let actualPage = (currentPage - 1) % oriSlides.count
-           pageControl.currentPage = actualPage
-           setupContent(wrapSlides[currentPage])
-       }
-   }
-   
-    @objc private func updateScroll() {
-        let elapsed = CACurrentMediaTime() - animationStartTime
+    private var animationStartTime: CFTimeInterval = 0
+    private var animationDuration: CFTimeInterval = 0
+    private var animationStartOffset: CGFloat = 0
+    private var animationEndOffset: CGFloat = 0
+    private var displayLink: CADisplayLink?
+     
+    @objc private func scrollToNextPage() {
+        let nextPage = currentPage + 1
+        let width = collectionView2.frame.width
+        let nextXOffset = CGFloat(nextPage) * width
         
-        if elapsed >= animationDuration {
-            stopDisplayLink()
-            imgBackground2.alpha = 0
-            return
-        }
+        let startOffset = collectionView2.contentOffset.x
         
-        let progress = CGFloat(elapsed / animationDuration)
-        let easedProgress = easeInOutQuad(progress)
+        displayLink = CADisplayLink(target: self, selector: #selector(updateScroll))
+        displayLink?.add(to: .current, forMode: .common)
         
-        let currentOffset = animationStartOffset + (animationEndOffset - animationStartOffset) * easedProgress
+        animationStartTime = CACurrentMediaTime()
+        animationDuration = 0.5
+        animationStartOffset = startOffset
+        animationEndOffset = nextXOffset
         
-        collectionView2.setContentOffset(CGPoint(x: currentOffset, y: 0), animated: false)
+        currentPage = nextPage
         
-        if !wrapSlides.isEmpty {
-            let width = collectionView2.frame.width
-            let normalizedOffset = currentOffset / width - 1
-            pageControl.scrollProgress = normalizedOffset
-            
-            updateBackgroundImageProgressive()
+        if currentPage == wrapSlides.count - 1 {
+            DispatchQueue.main.asyncAfter(deadline: .now() + animationDuration + 0.1) {
+                self.currentPage = 1
+                let newOffset = CGFloat(self.currentPage) * width
+                self.pageControl.currentPage = 0
+                self.collectionView2.setContentOffset(CGPoint(x: newOffset, y: 0), animated: false)
+                self.pageControl.currentPage = 0
+                
+                self.setupContent(self.wrapSlides[self.currentPage])
+                self.updateBackgroundImage()
+            }
+        } else {
+            let actualPage = (currentPage - 1) % oriSlides.count
+            pageControl.currentPage = actualPage
+            setupContent(wrapSlides[currentPage])
         }
     }
+    
+     @objc private func updateScroll() {
+         let elapsed = CACurrentMediaTime() - animationStartTime
+         
+         if elapsed >= animationDuration {
+             stopDisplayLink()
+             imgBackground2.alpha = 0
+             return
+         }
+         
+         let progress = CGFloat(elapsed / animationDuration)
+         let easedProgress = easeInOutQuad(progress)
+         
+         let currentOffset = animationStartOffset + (animationEndOffset - animationStartOffset) * easedProgress
+         
+         collectionView2.setContentOffset(CGPoint(x: currentOffset, y: 0), animated: false)
+         
+         if !wrapSlides.isEmpty {
+             let width = collectionView2.frame.width
+             let normalizedOffset = currentOffset / width - 1
+             pageControl.scrollProgress = normalizedOffset
+             
+             updateBackgroundImageProgressive()
+         }
+     }
 
-    private func easeInOutQuad(_ t: CGFloat) -> CGFloat {
-        return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t
+     private func easeInOutQuad(_ t: CGFloat) -> CGFloat {
+         return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t
+     }
+     
+     private func setBackgroundImageImmediate(_ image: UIImage?) {
+         imgBackground.image = image
+         imgBackground2.alpha = 0
+     }
+    
+    private func stopDisplayLink() {
+        displayLink?.invalidate()
+        displayLink = nil
     }
     
-    private func setBackgroundImageImmediate(_ image: UIImage?) {
-        imgBackground.image = image
-        imgBackground2.alpha = 0
+    deinit {
+        stopAutoScrollTimer()
+        stopDisplayLink()
     }
-   
-   private func stopDisplayLink() {
-       displayLink?.invalidate()
-       displayLink = nil
-   }
-    
-   func viewWillAppear() {
-       startAutoScrollTimer()
-       stopDisplayLink()
-   }
-   
-   func viewWillDisappear() {
-       stopAutoScrollTimer()
-   }
-   
-   deinit {
-       stopAutoScrollTimer()
-       stopDisplayLink()
-   }
-   
 }
 
 extension OnBoarding2: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return wrapSlides.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OnBoarding2Cell.identifier, for: indexPath) as! OnBoarding2Cell
         
         cell.setup(wrapSlides[indexPath.item].imageIllustration)
@@ -383,11 +382,11 @@ extension OnBoarding2: UICollectionViewDelegate, UICollectionViewDataSource, UIC
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView != collectionView2 {
             return
         }
@@ -410,7 +409,7 @@ extension OnBoarding2: UICollectionViewDelegate, UICollectionViewDataSource, UIC
         }
     }
     
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         if scrollView != collectionView2 {
             return
         }
@@ -433,7 +432,7 @@ extension OnBoarding2: UICollectionViewDelegate, UICollectionViewDataSource, UIC
         startAutoScrollTimer()
     }
     
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+    public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         if scrollView != collectionView2 {
             return
         }

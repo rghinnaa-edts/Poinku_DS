@@ -8,7 +8,7 @@
 import UIKit
 
 @IBDesignable
-class DoubleArc: UIView {
+public class DoubleArc: UIView {
     
     @IBInspectable var progressColor: UIColor = .systemBlue {
         didSet {
@@ -57,12 +57,12 @@ class DoubleArc: UIView {
     private var isRunning: Bool = false
     private var displayLink: CADisplayLink?
     
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
     }
     
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         super.init(coder: coder)
         setupView()
     }
@@ -74,11 +74,11 @@ class DoubleArc: UIView {
         startAnimation()
     }
     
-    override var intrinsicContentSize: CGSize {
+    override public var intrinsicContentSize: CGSize {
         return CGSize(width: progressSize, height: progressSize)
     }
     
-    override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
         paint.frame = bounds
         updatePath()
@@ -134,7 +134,7 @@ class DoubleArc: UIView {
         updatePath()
     }
     
-    override func didMoveToWindow() {
+    override public func didMoveToWindow() {
         super.didMoveToWindow()
         if window != nil {
             startAnimation()
