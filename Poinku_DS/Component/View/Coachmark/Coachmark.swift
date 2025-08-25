@@ -352,7 +352,7 @@ public class Coachmark: UIView {
         self.spotlightLayer = spotlightLayer
 
         let path = UIBezierPath(rect: self.bounds)
-
+ 
         if spotlightFrame == .zero && targetFrame != .zero {
             spotlightFrame = CGRect(
                 x: targetFrame.midX - 1,

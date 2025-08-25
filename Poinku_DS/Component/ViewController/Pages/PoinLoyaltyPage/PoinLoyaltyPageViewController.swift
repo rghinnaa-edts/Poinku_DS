@@ -290,9 +290,7 @@ class PoinLoyaltyPageViewController: UIViewController {
                 description: "Pilih kategori utama yang paling sesuai dengan kupon yang ingin kamu cari.",
                 targetView: vTab,
                 isBtnSkipHide: true,
-                isListTarget: true,
-                listSpacingLeft: 16,
-                listSpacingRight: 0
+                isListTarget: true
             ),
             
             Coachmark.StepConfiguration(
