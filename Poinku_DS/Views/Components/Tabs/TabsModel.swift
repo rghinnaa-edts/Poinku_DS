@@ -5,7 +5,7 @@
 //  Created by Rizka Ghinna Auliya on 21/01/25.
 //
 
-public struct Tab {
+public struct TabsModel {
     let icon: String
     let title: String
     let badge: String

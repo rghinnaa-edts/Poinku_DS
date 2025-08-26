@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name             = "Poinku_DS"
-  spec.version          = "0.1.1"
+  spec.version          = "0.1.2"
   spec.summary          = "UI Components and Animation"
   spec.description      = "UI Components and Animation of Poinku Apps"
 
