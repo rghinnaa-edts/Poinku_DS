@@ -187,7 +187,7 @@ public class PoinCardCell: UICollectionViewCell {
         vIKupon.backgroundColor = UIColor.primaryHighlightWeak
         vIKupon.layer.cornerRadius = 8
         vIKupon.layer.borderWidth = 1
-        vIKupon.layer.borderColor = UIColor.primaryHighlightStrong.cgColor
+        vIKupon.layer.borderColor = UIColor.primaryHighlightStrong?.cgColor
         
         lblIKupon.textColor = UIColor.primaryHighlightStrong
         lblIKupon.font = Font.B4.Small.font
@@ -198,7 +198,7 @@ public class PoinCardCell: UICollectionViewCell {
         vPoin.backgroundColor = UIColor.highlightWeak
         vPoin.layer.cornerRadius = 8
         vPoin.layer.borderWidth = 1
-        vPoin.layer.borderColor = UIColor.warningStrong.cgColor
+        vPoin.layer.borderColor = UIColor.warningStrong?.cgColor
         
         lblPoin.textColor = UIColor.warningStrong
         lblPoin.font = Font.B4.Small.font

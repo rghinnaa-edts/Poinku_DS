@@ -153,7 +153,7 @@ public class StampCardSmall: UICollectionViewCell {
         vStamp.backgroundColor = UIColor.highlightWeak
         vStamp.layer.cornerRadius = 8
         vStamp.layer.borderWidth = 1
-        vStamp.layer.borderColor = UIColor.warningStrong.cgColor
+        vStamp.layer.borderColor = UIColor.warningStrong?.cgColor
         
         lblStamp.textColor = UIColor.warningStrong
         lblStamp.font = Font.B4.Small.font

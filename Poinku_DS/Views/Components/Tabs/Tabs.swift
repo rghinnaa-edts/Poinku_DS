@@ -60,7 +60,7 @@ public class Tabs: UIView {
         updateBottomCorners()
     }
     
-    public func configure(with tabs: [Tab], selectedIndex: Int = 0) {
+    public func configure(with tabs: [TabsModel], selectedIndex: Int = 0) {
         self.tabs = tabs
         self.selectedIndex = selectedIndex
         setupTabs()
@@ -78,7 +78,7 @@ public class Tabs: UIView {
         }
     }
     
-    private func createTabButton(with tab: Tab, at index: Int) -> UIButton {
+    private func createTabButton(with tab: TabsModel, at index: Int) -> UIButton {
         let button = UIButton()
         button.tag = index
         
@@ -89,7 +89,7 @@ public class Tabs: UIView {
         
         let titleLabel = UILabel()
         titleLabel.text = tab.title
-        titleLabel.font = UIFont(name: "Arial", size: 16) // Replace with your actual font
+        titleLabel.font = UIFont(name: "Arial", size: 16)
         titleLabel.textColor = .blue
         
         let stackView = UIStackView(arrangedSubviews: [iconImageView, titleLabel])

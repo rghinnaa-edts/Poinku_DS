@@ -204,13 +204,44 @@ extension UIColor {
         return UIColor(named: "Disable") ?? UIColor.gray
     }
     
-    struct Support {
-        static let errorStrong = UIColor(named: "Error-Strong")
-        static let errorWeak = UIColor(named: "Error-Weak")
-        static let successStrong = UIColor(named: "Success -Strong")
-        static let successWeak = UIColor(named: "Success-Weak")
-        static let warningStrong = UIColor(named: "Warning-Strong")
-        static let warningWeak = UIColor(named: "Warning-Weak")
+    static var errorStrong: UIColor? {
+        return UIColor(named: "StrongError") ?? UIColor.red
+    }
+    
+    static var errorWeak: UIColor? {
+        return UIColor(named: "WeakError") ?? UIColor.red
+    }
+    
+    static var successStrong: UIColor? {
+        return UIColor(named: "StrongSuccess") ?? UIColor.green
+    }
+    
+    static var successWeak: UIColor? {
+        return UIColor(named: "WeakSuccess") ?? UIColor.green
+    }
+    
+    static var warningStrong: UIColor? {
+        return UIColor(named: "StrongWarning") ?? UIColor.yellow
+    }
+    
+    static var warningWeak: UIColor? {
+        return UIColor(named: "WeakWarning") ?? UIColor.yellow
+    }
+    
+    static var highlightStrong: UIColor? {
+        return UIColor(named: "StrongHighlight") ?? UIColor.yellow
+    }
+    
+    static var highlightWeak: UIColor? {
+        return UIColor(named: "WeakHighlight") ?? UIColor.yellow
+    }
+    
+    static var primaryHighlightStrong: UIColor? {
+        return UIColor(named: "StrongPrimaryHighlight") ?? UIColor.yellow
+    }
+    
+    static var primaryHighlightWeak: UIColor? {
+        return UIColor(named: "WeakPrimaryHighlight") ?? UIColor.yellow
     }
     
     struct Brand {

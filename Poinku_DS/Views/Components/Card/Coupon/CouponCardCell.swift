@@ -183,7 +183,7 @@ public class CouponCardCell: UICollectionViewCell {
         vIKupon.backgroundColor = UIColor.primaryHighlightWeak
         vIKupon.layer.cornerRadius = 8
         vIKupon.layer.borderWidth = 1
-        vIKupon.layer.borderColor = UIColor.primaryHighlightStrong.cgColor
+        vIKupon.layer.borderColor = UIColor.primaryHighlightStrong?.cgColor
         
         lblIKupon.textColor = UIColor.primaryHighlightStrong
         lblIKupon.font = Font.B4.Small.font
