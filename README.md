@@ -8,25 +8,25 @@ Poinku_DS is an iOS SDK that contains components and animations that can be used
 - Support UIKit only
 
 ## Table of Contents
-- [Card](https://github.com/rghinnaa-edts/KlikIDM-DS/tree/main/KlikIDM-DS/Views/Components/Tab/QuadRound)
-- [Coachmark](https://github.com/rghinnaa-edts/KlikIDM-DS/tree/main/KlikIDM-DS/Views/Components/Tab/Default)
-- [MGM Card Animation](https://github.com/rghinnaa-edts/KlikIDM-DS/tree/main/KlikIDM-DS/Views/Components/Tab/QuadRound)
-- [OnBoarding](https://github.com/rghinnaa-edts/KlikIDM-DS/tree/main/KlikIDM-DS/Views/Components/Tab/QuadRound)
-- [Poin Loyalty Animation](https://github.com/rghinnaa-edts/KlikIDM-DS/tree/main/KlikIDM-DS/Views/Components/Tab/QuadRound)
-- [Ribbon](https://github.com/rghinnaa-edts/KlikIDM-DS/tree/main/KlikIDM-DS/Views/Components/Tab/QuadRound)
-- [Scrolling Animation](https://github.com/rghinnaa-edts/KlikIDM-DS/tree/main/KlikIDM-DS/Views/Components/Tab/QuadRound)
-- [Search Bar Animation](https://github.com/rghinnaa-edts/KlikIDM-DS/tree/main/KlikIDM-DS/Views/Components/Tab/QuadRound)
-- [Skeleton](https://github.com/rghinnaa-edts/KlikIDM-DS/tree/main/KlikIDM-DS/Views/Components/Tab/QuadRound)
-- [Stamp Page Scroll](https://github.com/rghinnaa-edts/KlikIDM-DS/tree/main/KlikIDM-DS/Views/Components/Tab/QuadRound)
-- [Step Page Navigation](https://github.com/rghinnaa-edts/KlikIDM-DS/tree/main/KlikIDM-DS/Views/Components/Tab/QuadRound)
+- [Card](https://github.com/rghinnaa-edts/Poinku_DS/tree/main/Poinku_DS/Views/Components/Card)
+- [Coachmark](https://github.com/rghinnaa-edts/Poinku_DS/tree/main/Poinku_DS/Views/Components/Coachmark)
+- [MGM Card Animation](https://github.com/rghinnaa-edts/Poinku_DS/tree/main/Poinku_DS/Views/Pages/MGM)
+- [OnBoarding](https://github.com/rghinnaa-edts/Poinku_DS/tree/main/Poinku_DS/Views/Components/OnBoarding)
+- [Poin Loyalty Animation](https://github.com/rghinnaa-edts/Poinku_DS/tree/main/Poinku_DS/Views/Pages/Pages/PoinLoyaltyPage)
+- [Ribbon](https://github.com/rghinnaa-edts/Poinku_DS/tree/main/Poinku_DS/Views/Pages/Ribbon)
+- [Scrolling Animation](https://github.com/rghinnaa-edts/Poinku_DS/blob/main/Poinku_DS/Views/Components/Scrolling/ScrollAnimation.swift)
+- [Search Bar Animation](https://github.com/rghinnaa-edts/Poinku_DS/blob/main/Poinku_DS/Views/Components/Search/SearchBar.swift)
+- [Skeleton](https://github.com/rghinnaa-edts/Poinku_DS/tree/main/Poinku_DS/Views/Components/Skeleton)
+- [Stamp Page Scroll](https://github.com/rghinnaa-edts/Poinku_DS/tree/main/Poinku_DS/Views/Pages/Pages/StampPage)
+- [Step Page Navigation](https://github.com/rghinnaa-edts/Poinku_DS/tree/main/Poinku_DS/Views/Components/StepPageNav)
 
 ## Pages Reference
-- [Home Page](https://github.com/rghinnaa-edts/KlikIDM-DS/tree/main/KlikIDM-DS/Views/Pages/CartPage)
-- [OnBoarding Page](https://github.com/rghinnaa-edts/KlikIDM-DS/tree/main/KlikIDM-DS/Views/Pages/PromoGiftPage)
-- [Poin Loyalty Page](https://github.com/rghinnaa-edts/KlikIDM-DS/tree/main/KlikIDM-DS/Views/Pages/PromoGiftPage)
-- [Profile Page](https://github.com/rghinnaa-edts/KlikIDM-DS/tree/main/KlikIDM-DS/Views/Pages/PromoGiftPage)
-- [Register Page](https://github.com/rghinnaa-edts/KlikIDM-DS/tree/main/KlikIDM-DS/Views/Pages/PromoGiftPage)
-- [Stamp Page](https://github.com/rghinnaa-edts/KlikIDM-DS/tree/main/KlikIDM-DS/Views/Pages/PromoGiftPage)
+- [Home Page](https://github.com/rghinnaa-edts/Poinku_DS/tree/main/Poinku_DS/Views/Pages/Pages/HomePage)
+- [OnBoarding Page](https://github.com/rghinnaa-edts/Poinku_DS/tree/main/Poinku_DS/Views/Pages/Pages/OnBoardingPage)
+- [Poin Loyalty Page](https://github.com/rghinnaa-edts/Poinku_DS/tree/main/Poinku_DS/Views/Pages/Pages/PoinLoyaltyPage)
+- [Profile Page](https://github.com/rghinnaa-edts/Poinku_DS/tree/main/Poinku_DS/Views/Pages/Pages/ProfilePage)
+- [Register Page](https://github.com/rghinnaa-edts/Poinku_DS/tree/main/Poinku_DS/Views/Pages/Pages/RegisterPage)
+- [Stamp Page](https://github.com/rghinnaa-edts/Poinku_DS/tree/main/Poinku_DS/Views/Pages/Pages/StampPage)
 
 ## Installation
 
