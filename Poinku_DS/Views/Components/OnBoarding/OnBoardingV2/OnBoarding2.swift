@@ -96,13 +96,13 @@ public class OnBoarding2: UIView {
             collectionView2.delegate = self
             collectionView2.dataSource = self
             
-            let nib = UINib(nibName: "OnBoarding2Cell", bundle: nil)
-            collectionView2.register(nib, forCellWithReuseIdentifier: OnBoarding2Cell.identifier)
+            let nib2 = UINib(nibName: "OnBoarding2Cell", bundle: bundle)
+            collectionView2.register(nib2, forCellWithReuseIdentifier: OnBoarding2Cell.identifier)
             
             setupUI()
             startAutoScrollTimer()
         } else {
-            print("Failed to load Chip XIB")
+            print("Failed to load OnBoarding2 XIB")
         }
     }
     
