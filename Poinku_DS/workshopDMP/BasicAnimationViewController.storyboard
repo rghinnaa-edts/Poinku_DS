@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Basic Animation View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="BasicAnimationPage" id="Y6W-OH-hqX" customClass="BasicAnimationViewController" customModule="Poinku_DS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="QmN-FG-uvI">
+                                <rect key="frame" x="24" y="263" width="345" height="326"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RJG-8s-A7O">
+                                        <rect key="frame" x="0.0" y="0.0" width="345" height="34.333333333333336"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Basic"/>
+                                        <connections>
+                                            <action selector="actionBasic:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="WFA-Ao-OqU"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ift-cK-8xa">
+                                        <rect key="frame" x="0.0" y="58.333333333333314" width="345" height="34.333333333333343"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Spring"/>
+                                        <connections>
+                                            <action selector="actionSpring:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="mHF-Km-IN0"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8XN-Sr-Jg8">
+                                        <rect key="frame" x="0.0" y="116.66666666666667" width="345" height="34.333333333333329"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Keyframe"/>
+                                        <connections>
+                                            <action selector="actionKeyframe:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="6Zn-G0-oOR"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Qh-7Y-kWa">
+                                        <rect key="frame" x="0.0" y="175" width="345" height="34.333333333333343"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Transition"/>
+                                        <connections>
+                                            <action selector="actionTransition:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="gGq-FB-xRi"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3bK-Jq-xuw">
+                                        <rect key="frame" x="0.0" y="233.33333333333331" width="345" height="34.333333333333314"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Core Animation"/>
+                                        <connections>
+                                            <action selector="btnCoreAnimation:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="aVF-LP-z4b"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BSH-AM-Tc1">
+                                        <rect key="frame" x="0.0" y="291.66666666666663" width="345" height="34.333333333333314"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="UIViewPropertyAnimator"/>
+                                        <connections>
+                                            <action selector="btnProperty:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="LsG-3V-YWZ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="QmN-FG-uvI" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="2Zv-wb-IJv"/>
+                            <constraint firstItem="QmN-FG-uvI" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="24" id="Nw9-zb-7Jv"/>
+                            <constraint firstItem="QmN-FG-uvI" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="VXH-se-haJ"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="QmN-FG-uvI" secondAttribute="trailing" constant="24" id="lmJ-kO-zQx"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="btnBasic" destination="RJG-8s-A7O" id="oj3-AC-Ibx"/>
+                        <outlet property="btnCoreAnimation" destination="3bK-Jq-xuw" id="fdi-q6-M26"/>
+                        <outlet property="btnKeyframe" destination="8XN-Sr-Jg8" id="ZO6-cu-jaf"/>
+                        <outlet property="btnProperty" destination="BSH-AM-Tc1" id="JA3-2B-xfA"/>
+                        <outlet property="btnSpring" destination="Ift-cK-8xa" id="JAd-bi-gVH"/>
+                        <outlet property="btnTransition" destination="6Qh-7Y-kWa" id="xMa-xc-gc7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-16" y="4"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

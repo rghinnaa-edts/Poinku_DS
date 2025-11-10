@@ -7,6 +7,6 @@
 
 import Foundation
 
-public class EDTSUIAssets {
-    public static let bundle = Bundle(for: EDTSUIAssets.self)
+public class Assets {
+    public static let bundle = Bundle(for: Assets.self)
 }

@@ -248,7 +248,7 @@ public class Textfield: UIView {
     
     private func updateBorderColor() {
         if errorMessage != nil {
-            vTextfield.layer.borderColor = UIColor.errorStrong?.cgColor
+            vTextfield.layer.borderColor = UIColor.errorStrong.cgColor
         } else if vTextfield.isFirstResponder {
             vTextfield.layer.borderColor = UIColor.blue30.cgColor
         } else {

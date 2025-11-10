@@ -19,7 +19,7 @@ class PoinLoyaltyPageViewController: UIViewController {
     @IBOutlet var btnHelp: UIButton!
     
     @IBOutlet var viewCategory: UIView!
-    @IBOutlet var vTab: TabDefault!
+    @IBOutlet var vTab: TabsDefault!
     @IBOutlet var btnAllCategory: UIButton!
     
     @IBOutlet var viewChip: UIView!
@@ -48,7 +48,7 @@ class PoinLoyaltyPageViewController: UIViewController {
     private var isViewChipVisible = true
     
     var short: [ShortChip] = []
-    var tabItems: [TabDefaultModel] = []
+    var tabItems: [TabsDefaultModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -110,12 +110,12 @@ class PoinLoyaltyPageViewController: UIViewController {
         vTab.delegate = self
         
         tabItems = [
-            TabDefaultModel(id: "1", title: "Semua", icon: "bundling"),
-            TabDefaultModel(id: "2", title: "Penawaran Khusus", icon: "tag-alt"),
-            TabDefaultModel(id: "3", title: "Makanan", icon: "food"),
+            TabsDefaultModel(id: "1", title: "Semua"),
+            TabsDefaultModel(id: "2", title: "Penawaran Khusus"),
+            TabsDefaultModel(id: "3", title: "Makanan"),
         ]
         
-        vTab.registerCellType(TabDefaultCell.self, withIdentifier: "TabDefaultCell")
+        vTab.registerCellType(TabsDefaultCell.self, withIdentifier: "TabsDefaultCell")
         vTab.setData(tabItems)
         
         vTab.enableDynamicWidth()
@@ -163,7 +163,7 @@ class PoinLoyaltyPageViewController: UIViewController {
         NSLayoutConstraint.deactivate(viewPoinTopConstraints)
         viewPoinTop.isHidden = true
         
-        viewPoinTop.backgroundColor = .white
+        viewPoinTop.backgroundColor = UIColor.white
         viewPoinTop.layer.shadowOpacity = 0.15
         viewPoinTop.layer.shadowOffset = CGSize(width: 0.0, height: 5.0)
         viewPoinTop.layer.shadowRadius = 3.0
@@ -172,11 +172,11 @@ class PoinLoyaltyPageViewController: UIViewController {
         
         lblTitleTop.text = "Kamu punya:"
         lblTitleTop.textColor = UIColor.grey50
-        lblTitleTop.font = Font.Body.B3.Small.font
+        lblTitleTop.font = Font.B3.Small.font
         
         lblPoinTop.text = "2480 Poin Loyalty"
         lblPoinTop.textColor = UIColor.grey70
-        lblPoinTop.font = Font.Body.B3.Medium.font
+        lblPoinTop.font = Font.B3.Medium.font
     }
     
     func setupViewPoin() {
@@ -190,7 +190,7 @@ class PoinLoyaltyPageViewController: UIViewController {
         
         lblTitlePoin.text = "Kamu punya:"
         lblTitlePoin.textColor = UIColor.grey50
-        lblTitlePoin.font = Font.Body.B3.Small.font
+        lblTitlePoin.font = Font.B3.Small.font
         
         lblPoin.text = "2480 Poin Loyalty"
         lblPoin.textColor = UIColor.grey70
@@ -367,7 +367,7 @@ struct ShortChip {
     let name: String
 }
 
-extension PoinLoyaltyPageViewController: TabDefaultDelegate {
+extension PoinLoyaltyPageViewController: TabsDefaultDelegate {
     func didSelectTabDefault(at index: Int, withId id: String) {
         
     }

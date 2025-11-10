@@ -129,14 +129,14 @@ class StampPageViewController: UIViewController {
     
     func loadProducts() {
         products = [
-            Product(id: "1", image: "indomaret", name: "Indomaret Festival", currentStamp: "32"),
-            Product(id: "2", image: "unilever", name: "Gebyar Unilever Indonesia", currentStamp: "8"),
-            Product(id: "3", image: "danone", name: "Danone Festival", currentStamp: "10"),
-            Product(id: "4", image: "mister_donut", name: "Mister Donut Fest", currentStamp: "10"),
-            Product(id: "5", image: "indomaret", name: "Indomaret Festival", currentStamp: "32"),
-            Product(id: "6", image: "unilever", name: "Gebyar Unilever Indonesia", currentStamp: "8"),
-            Product(id: "7", image: "danone", name: "Danone Festival", currentStamp: "10"),
-            Product(id: "8", image: "mister_donut", name: "Mister Donut Fest", currentStamp: "10")
+            Product(id: "1", image: UIImage(named: "indomaret"), name: "Indomaret Festival", currentStamp: "32"),
+            Product(id: "2", image: UIImage(named: "unilever"), name: "Gebyar Unilever Indonesia", currentStamp: "8"),
+            Product(id: "3", image: UIImage(named: "danone"), name: "Danone Festival", currentStamp: "10"),
+            Product(id: "4", image: UIImage(named: "mister_donut"), name: "Mister Donut Fest", currentStamp: "10"),
+            Product(id: "5", image: UIImage(named: "indomaret"), name: "Indomaret Festival", currentStamp: "32"),
+            Product(id: "6", image: UIImage(named: "unilever"), name: "Gebyar Unilever Indonesia", currentStamp: "8"),
+            Product(id: "7", image: UIImage(named: "danone"), name: "Danone Festival", currentStamp: "10"),
+            Product(id: "8", image: UIImage(named: "mister_donut"), name: "Mister Donut Fest", currentStamp: "10")
         ]
         
         collectionProduct.reloadData()
@@ -144,14 +144,14 @@ class StampPageViewController: UIViewController {
     
     func loadChipBucket() {
         bucket = [
-            ChipBucket(id: "1", image: "indomaret", currentStamp: "32"),
-            ChipBucket(id: "2", image: "unilever", currentStamp: "8"),
-            ChipBucket(id: "3", image: "danone", currentStamp: "0"),
-            ChipBucket(id: "4", image: "mister_donut", currentStamp: "0"),
-            ChipBucket(id: "5", image: "indomaret", currentStamp: "32"),
-            ChipBucket(id: "6", image: "unilever", currentStamp: "8"),
-            ChipBucket(id: "7", image: "danone", currentStamp: "0"),
-            ChipBucket(id: "8", image: "mister_donut", currentStamp: "0")
+            ChipBucket(id: "1", image: UIImage(named: "indomaret"), currentStamp: "32"),
+            ChipBucket(id: "2", image: UIImage(named: "unilever"), currentStamp: "8"),
+            ChipBucket(id: "3", image: UIImage(named: "danone"), currentStamp: "0"),
+            ChipBucket(id: "4", image: UIImage(named: "mister_donut"), currentStamp: "0"),
+            ChipBucket(id: "5", image: UIImage(named: "indomaret"), currentStamp: "32"),
+            ChipBucket(id: "6", image: UIImage(named: "unilever"), currentStamp: "8"),
+            ChipBucket(id: "7", image: UIImage(named: "danone"), currentStamp: "0"),
+            ChipBucket(id: "8", image: UIImage(named: "mister_donut"), currentStamp: "0")
         ]
         
         collectionBucket.reloadData()
@@ -211,14 +211,14 @@ class StampPageViewController: UIViewController {
 
 struct Product {
     let id: String
-    let image: String
+    let image: UIImage?
     let name: String
     let currentStamp: String
 }
 
 struct ChipBucket {
     let id: String
-    let image: String
+    let image: UIImage?
     let currentStamp: String
 }
 

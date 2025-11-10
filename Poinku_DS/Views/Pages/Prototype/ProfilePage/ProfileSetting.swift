@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileSetting: UICollectionViewCell {
+public class ProfileSetting: UICollectionViewCell {
     
     @IBOutlet var profileSetting: UIView!
     @IBOutlet var ivSetting: UIImageView!
@@ -23,24 +23,36 @@ class ProfileSetting: UICollectionViewCell {
         setupProfileSetting()
     }
     
-    override func awakeFromNib() {
+    override public func awakeFromNib() {
         super.awakeFromNib()
         
         setupUI()
     }
 
     private func setupProfileSetting() {
-        if let nib = Bundle.main.loadNibNamed("ProfileSetting", owner: self, options: nil),
-           let card = nib.first as? UIView {
-            profileSetting = card
-            profileSetting.frame = contentView.bounds
-            profileSetting.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            contentView.addSubview(profileSetting)
+        let bundle = Bundle(for: type(of: self))
+        if let nib = bundle.loadNibNamed("ProfileSetting", owner: self, options: nil),
+           let view = nib.first as? UIView {
+            profileSetting = view
+            profileSetting.frame = bounds
+            profileSetting.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+            addSubview(profileSetting)
             
             setupUI()
         } else {
-            print("Failed to load StampBrand XIB")
+            print("Failed to load ProfileSetting XIB")
         }
+//        if let nib = Bundle.main.loadNibNamed("ProfileSetting", owner: self, options: nil),
+//           let card = nib.first as? UIView {
+//            profileSetting = card
+//            profileSetting.frame = contentView.bounds
+//            profileSetting.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//            contentView.addSubview(profileSetting)
+//            
+//            setupUI()
+//        } else {
+//            print("Failed to load StampBrand XIB")
+//        }
     }
     
     private func setupUI() {
@@ -48,7 +60,7 @@ class ProfileSetting: UICollectionViewCell {
         lblSetting.textColor = UIColor.grey70
     }
     
-    func loadProfileSetting(
+    public func loadProfileSetting(
         icon: String,
         title: String
     ) {
@@ -59,7 +71,7 @@ class ProfileSetting: UICollectionViewCell {
         layoutIfNeeded()
     }
     
-    func calculateHeight(for width: CGFloat) -> CGFloat {
+    public func calculateHeight(for width: CGFloat) -> CGFloat {
         profileSetting.layoutIfNeeded()
         
         let widthConstraint = profileSetting.widthAnchor.constraint(equalToConstant: width)
@@ -76,7 +88,7 @@ class ProfileSetting: UICollectionViewCell {
         return size.height
     }
 
-    func calculateWidth() -> CGFloat {
+    public func calculateWidth() -> CGFloat {
         profileSetting.layoutIfNeeded()
         return profileSetting.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).width
     }

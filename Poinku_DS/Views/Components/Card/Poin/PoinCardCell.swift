@@ -100,12 +100,13 @@ public class PoinCardCell: UICollectionViewCell {
     }
 
     private func setupPoinCard() {
-        if let nib = Bundle.main.loadNibNamed("PoinCard", owner: self, options: nil),
-           let card = nib.first as? UIView {
-            poinCard = card
-            poinCard.frame = contentView.bounds
-            poinCard.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            contentView.addSubview(poinCard)
+        let bundle = Bundle(for: type(of: self))
+        if let nib = bundle.loadNibNamed("PoinCard", owner: self, options: nil),
+           let view = nib.first as? UIView {
+            poinCard = view
+            poinCard.frame = bounds
+            poinCard.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+            addSubview(poinCard)
             
             setupUI()
         } else {
@@ -133,7 +134,7 @@ public class PoinCardCell: UICollectionViewCell {
         poinCard.layer.masksToBounds = false
         
         lblPoinCard.textColor = UIColor.grey70
-        lblPoinCard.font = Font.Body.B3.Small.font
+        lblPoinCard.font = Font.B3.Small.font
         
         btnExchange.titleLabel?.text = "Tukar Poin"
         btnExchange.backgroundColor = UIColor.blue30
@@ -142,15 +143,14 @@ public class PoinCardCell: UICollectionViewCell {
         btnExchange.titleLabel?.font = Font.Button.Small.font
         
         lblPoinCard.text = "Diskon Rp5.000 1 Pcs Kellogg’s Frosted Flakes 300gr"
-        ivPoinCard.image = UIImage(named: "product-image")
+//        ivPoinCard.image = UIImage(named: "product-image")
     }
     
     private func UICoupon() {
-        ivCoupon.image = if coupon < 10 && coupon > 0 {
-            UIImage(named: "exclamation")
-        } else {
-            UIImage(named: "product-empty")
+        if coupon > 10 && coupon < 0 {
+            ivCoupon.image = UIImage(named: "product-empty")
         }
+        
         ivCoupon.image = ivCoupon.image?.withRenderingMode(.alwaysTemplate)
         
         ivCoupon.tintColor = if coupon < 10 && coupon > 0 {
@@ -180,14 +180,13 @@ public class PoinCardCell: UICollectionViewCell {
     }
     
     private func UIikupon() {
-        ivIKupon.image = UIImage(named: "store-01")
         ivIKupon.image = ivIKupon.image?.withRenderingMode(.alwaysTemplate)
         ivIKupon.tintColor = UIColor.primaryHighlightStrong
         
         vIKupon.backgroundColor = UIColor.primaryHighlightWeak
         vIKupon.layer.cornerRadius = 8
         vIKupon.layer.borderWidth = 1
-        vIKupon.layer.borderColor = UIColor.primaryHighlightStrong?.cgColor
+        vIKupon.layer.borderColor = UIColor.primaryHighlightStrong.cgColor
         
         lblIKupon.textColor = UIColor.primaryHighlightStrong
         lblIKupon.font = Font.B4.Small.font
@@ -198,7 +197,7 @@ public class PoinCardCell: UICollectionViewCell {
         vPoin.backgroundColor = UIColor.highlightWeak
         vPoin.layer.cornerRadius = 8
         vPoin.layer.borderWidth = 1
-        vPoin.layer.borderColor = UIColor.warningStrong?.cgColor
+        vPoin.layer.borderColor = UIColor.warningStrong.cgColor
         
         lblPoin.textColor = UIColor.warningStrong
         lblPoin.font = Font.B4.Small.font

@@ -9,7 +9,7 @@ import UIKit
 
 class TableViewController: UITableViewController {
     
-    private var sections = ["Components", "Pages"]
+    private var sections = ["Components", "Pages", "DMP"]
     
     private var componentList: [String] = [
         "Progress Bar",
@@ -29,6 +29,10 @@ class TableViewController: UITableViewController {
         "Register Page",
         "Home Page"
     ]
+    
+    private var dmpList: [String] = [
+        "Animation"
+    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,14 +40,16 @@ class TableViewController: UITableViewController {
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return componentList.count
-        } else {
+        } else if section == 1 {
             return pageList.count
+        } else {
+            return dmpList.count
         }
     }
 
@@ -52,8 +58,10 @@ class TableViewController: UITableViewController {
         
         if indexPath.section == 0 {
             cell.textLabel?.text = componentList[indexPath.row]
-        } else {
+        } else if indexPath.section == 1 {
             cell.textLabel?.text = pageList[indexPath.row]
+        } else {
+            cell.textLabel?.text = dmpList[indexPath.row]
         }
 
         return cell
@@ -73,8 +81,10 @@ class TableViewController: UITableViewController {
         let selectedItem: String
         if indexPath.section == 0 {
             selectedItem = componentList[indexPath.row]
-        } else {
+        } else if indexPath.section == 1 {
             selectedItem = pageList[indexPath.row]
+        } else {
+            selectedItem = dmpList[indexPath.row]
         }
         
         navigateToPage(for: selectedItem)
@@ -129,6 +139,10 @@ class TableViewController: UITableViewController {
         break
         case "Home Page":
             let vc = UIStoryboard(name: "HomeViewController", bundle: nil).instantiateViewController(withIdentifier: "HomePage")
+            navigationController?.pushViewController(vc, animated: true)
+        break
+        case "Animation":
+            let vc = UIStoryboard(name: "BasicAnimationViewController", bundle: nil).instantiateViewController(withIdentifier: "BasicAnimationPage")
             navigationController?.pushViewController(vc, animated: true)
         break
         default:

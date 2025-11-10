@@ -5,7 +5,12 @@
 //  Created by Rizka Ghinna Auliya on 02/05/25.
 //
 
-struct ProfileSettingModel {
-    var icon: String
-    var title: String
+public struct ProfileSettingModel {
+    public var icon: String
+    public var title: String
+    
+    public init(icon: String, title: String) {
+        self.icon = icon
+        self.title = title
+    }
 }

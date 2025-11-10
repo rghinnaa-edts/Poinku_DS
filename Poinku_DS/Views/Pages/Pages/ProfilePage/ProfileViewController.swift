@@ -93,24 +93,24 @@ class ProfileViewController: UIViewController {
         lblTransaction.textColor = UIColor.white
         lblTransaction.text = "9/15"
         
-        ivMGM.image = UIImage(named: "mgm")
-        ivArrowRight.image = UIImage(named: "ic-arrow-right")?.withRenderingMode(.alwaysTemplate)
-        ivArrowRight.tintColor = UIColor.blue30
-        
-        lblMGM.font = Font.H2.font
-        lblMGM.textColor = UIColor.blue30
-        lblMGM.text = "Ajak Teman, Dapat Untung Bareng!"
-        
-        lblMGMDesc.font = Font.B4.Small.font
-        lblMGMDesc.textColor = UIColor.grey60
-        lblMGMDesc.text = "Bagikan kode referral kamu untuk mendapatkan hadiah."
-        
-        vMGM.layer.borderWidth = 1
-        vMGM.layer.borderColor = UIColor.blue30.cgColor
-        vMGM.backgroundColor = UIColor.white
-        vMGM.layer.cornerRadius = 8
-        
         DispatchQueue.main.async {
+            self.ivMGM.image = UIImage(named: "mgm")
+            self.ivArrowRight.image = UIImage(named: "ic-arrow-right")?.withRenderingMode(.alwaysTemplate)
+            self.ivArrowRight.tintColor = UIColor.blue30
+            
+            self.lblMGM.font = Font.H2.font
+            self.lblMGM.textColor = UIColor.blue30
+            self.lblMGM.text = "Ajak Teman, Dapat Untung Bareng!"
+            
+            self.lblMGMDesc.font = Font.B4.Small.font
+            self.lblMGMDesc.textColor = UIColor.grey60
+            self.lblMGMDesc.text = "Bagikan kode referral kamu untuk mendapatkan hadiah."
+            
+            self.vMGM.layer.borderWidth = 1
+            self.vMGM.layer.borderColor = UIColor.blue30.cgColor
+            self.vMGM.backgroundColor = UIColor.white
+            self.vMGM.layer.cornerRadius = 8
+            
             self.vMGM.startAnimationGradientBorder(
                 width: 2,
                 colors: [UIColor.white, UIColor.blue30],

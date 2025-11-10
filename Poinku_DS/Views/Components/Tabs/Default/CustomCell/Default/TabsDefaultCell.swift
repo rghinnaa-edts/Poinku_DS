@@ -1,5 +1,5 @@
 //
-//  TabDefaultCell.swift
+//  TabsDefaultCell.swift
 //  KlikIDM-DS-UiKit
 //
 //  Created by Rizka Ghinna Auliya on 16/05/25.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TabDefaultCell: UICollectionViewCell {
+public class TabsDefaultCell: UICollectionViewCell {
     
     @IBOutlet var containerView: UIView!
     @IBOutlet var lblTab: UILabel!
@@ -17,7 +17,7 @@ class TabDefaultCell: UICollectionViewCell {
     private var lblTabLeadingToIcon: NSLayoutConstraint?
     private var lblTabLeadingToSuperview: NSLayoutConstraint?
     
-    var isSelectedState: Bool = false {
+    public var isSelectedState: Bool = false {
         didSet {
             setupBackground()
         }
@@ -33,14 +33,14 @@ class TabDefaultCell: UICollectionViewCell {
         setupTab()
     }
     
-    func loadData(_ data: TabDefaultModel) {
+    public func loadData(_ data: TabsDefaultModel) {
         lblTab.text = data.title
         
-        let hasIcon = !data.icon.isEmpty
+        let hasIcon = !(data.icon == nil)
                 
         if hasIcon {
             ivIcon.isHidden = false
-            ivIcon.image = UIImage(named: data.icon)?.withRenderingMode(.alwaysTemplate)
+            ivIcon.image = data.icon?.withRenderingMode(.alwaysTemplate)
         } else {
             ivIcon.isHidden = true
         }
@@ -50,14 +50,14 @@ class TabDefaultCell: UICollectionViewCell {
     
     private func setupTab() {
         let bundle = Bundle(for: type(of: self))
-        if let nib = bundle.loadNibNamed("TabDefaultCell", owner: self, options: nil),
+        if let nib = bundle.loadNibNamed("TabsDefaultCell", owner: self, options: nil),
            let view = nib.first as? UIView {
             containerView = view
             addSubview(containerView)
             containerView.frame = bounds
             containerView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         } else {
-            print("Failed to load TabDefaultCell nib")
+            print("Failed to load TabsDefaultCell nib")
         }
         
         setupUI()
@@ -102,15 +102,15 @@ class TabDefaultCell: UICollectionViewCell {
     
 }
 
-extension TabDefaultCell: TabDefaultCellProtocol {
-    func loadData(item: TabDefaultModelProtocol) {
-        if let data = item as? TabDefaultModel {
+extension TabsDefaultCell: TabsDefaultCellProtocol {
+    public func loadData(item: TabsDefaultModelProtocol) {
+        if let data = item as? TabsDefaultModel {
             loadData(data)
         } else {
-            let data = TabDefaultModel(
+            let data = TabsDefaultModel(
                 id: item.id,
                 title: "",
-                icon: "",
+                icon: nil,
             )
             loadData(data)
         }

@@ -7,11 +7,11 @@
 
 import UIKit
 
-protocol StaggeredLayoutDelegate: AnyObject {
+public protocol StaggeredLayoutDelegate: AnyObject {
     func collectionView(_ collectionView: UICollectionView, heightForItemAt indexPath: IndexPath, width: CGFloat) -> CGFloat
 }
 
-class StaggeredLayout: UICollectionViewFlowLayout {
+public class StaggeredLayout: UICollectionViewFlowLayout {
     private let numberOfColumns: Int = 2
     private var contentHeight: CGFloat = 0
     private var cachedAttributes: [UICollectionViewLayoutAttributes] = []
@@ -20,7 +20,7 @@ class StaggeredLayout: UICollectionViewFlowLayout {
     
     private let interColumnSpacing: CGFloat = 16
     
-    weak var delegate: StaggeredLayoutDelegate?
+    public var delegate: StaggeredLayoutDelegate?
     
     private func getHeightForCell(at indexPath: IndexPath, width: CGFloat) -> CGFloat {
         let cacheKey = IndexPath(item: indexPath.item, section: indexPath.section)
@@ -38,7 +38,7 @@ class StaggeredLayout: UICollectionViewFlowLayout {
         return 270
     }
     
-    override func prepare() {
+    override public func prepare() {
         super.prepare()
         
         sectionInset.left = 16
@@ -79,20 +79,20 @@ class StaggeredLayout: UICollectionViewFlowLayout {
         }
     }
         
-    override var collectionViewContentSize: CGSize {
+    override public var collectionViewContentSize: CGSize {
         return CGSize(width: collectionView?.bounds.width ?? 0, height: contentHeight + sectionInset.bottom)
     }
     
-    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+    override public func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         return cachedAttributes.filter { $0.frame.intersects(rect) }
     }
     
-    override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+    override public func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         guard indexPath.item < cachedAttributes.count else { return nil }
         return cachedAttributes[indexPath.item]
     }
     
-    override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
+    override public func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
         guard let collectionView = collectionView else { return false }
         return collectionView.bounds.width != newBounds.width
     }

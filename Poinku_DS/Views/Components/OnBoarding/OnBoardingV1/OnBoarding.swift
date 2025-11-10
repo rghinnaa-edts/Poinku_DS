@@ -94,13 +94,13 @@ public class OnBoarding: UIView {
             collectionView.delegate = self
             collectionView.dataSource = self
             
-            let nib = UINib(nibName: "OnBoardingCell", bundle: nil)
-            collectionView.register(nib, forCellWithReuseIdentifier: OnBoardingCell.identifier)
+            let nib2 = UINib(nibName: "OnBoardingCell", bundle: bundle)
+            collectionView.register(nib2, forCellWithReuseIdentifier: OnBoardingCell.identifier)
             
             setupUI()
             startAutoScrollTimer()
         } else {
-            print("Failed to load Chip XIB")
+            print("Failed to load OnBoarding XIB")
         }
     }
     
@@ -154,6 +154,8 @@ public class OnBoarding: UIView {
     }
     
     private func setupContent(_ onBoardingSlide: OnBoardingSlide) {
+        guard !wrapSlides.isEmpty else { return }
+        
         lblTitle.text = onBoardingSlide.title
         lblDesc.text = onBoardingSlide.description
         
@@ -177,6 +179,8 @@ public class OnBoarding: UIView {
     private func startAutoScrollTimer() {
         stopAutoScrollTimer()
         stopDisplayLink()
+        
+        guard !wrapSlides.isEmpty else { return }
         
         autoScrollTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(scrollToNextPage), userInfo: nil, repeats: true)
     }
@@ -210,7 +214,9 @@ public class OnBoarding: UIView {
        currentPage = nextPage
        
        if currentPage == wrapSlides.count - 1 {
-           DispatchQueue.main.asyncAfter(deadline: .now() + animationDuration + 0.1) {
+           DispatchQueue.main.asyncAfter(deadline: .now() + animationDuration + 0.1) { [weak self] in
+               guard let self = self, !self.wrapSlides.isEmpty else { return }
+               
                self.currentPage = 1
                let newOffset = CGFloat(self.currentPage) * width
                self.collectionView.setContentOffset(CGPoint(x: newOffset, y: 0), animated: false)

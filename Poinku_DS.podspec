@@ -13,7 +13,7 @@ Pod::Spec.new do |spec|
 
   spec.source           = { :git => "https://github.com/rghinnaa-edts/Poinku_DS.git", :tag => spec.version.to_s }
   spec.source_files	= "Poinku_DS/**/*.{h,m,swift}"
- spec.resources		= "Poinku_DS/**/*.{xib,storyboard,xcassets,png,jpg,jpeg}"
+  spec.resources	= "Poinku_DS/**/*.{xib,storyboard,xcassets,png,jpg,jpeg}"
   
   spec.frameworks	= "UIKit"
 end

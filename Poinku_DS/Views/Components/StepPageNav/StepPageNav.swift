@@ -48,16 +48,17 @@ public class StepPageNav: UIView {
     }
     
     private func setupStepPageNav() {
-        if let nib = Bundle.main.loadNibNamed("StepPageNav", owner: self, options: nil),
-           let stepPageNav = nib.first as? UIView {
-            containerView = stepPageNav
+        let bundle = Bundle(for: type(of: self))
+        if let nib = bundle.loadNibNamed("StepPageNav", owner: self, options: nil),
+           let view = nib.first as? UIView {
+            containerView = view
             containerView.frame = bounds
-            containerView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            containerView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
             addSubview(containerView)
             
             setupUI()
         } else {
-            print("Failed to load CouponCard XIB")
+            print("Failed to load StepPageNav XIB")
         }
     }
     

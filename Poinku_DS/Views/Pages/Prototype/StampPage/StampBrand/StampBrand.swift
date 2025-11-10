@@ -7,15 +7,15 @@
 
 import UIKit
 
-class StampBrand: UICollectionViewCell {
+public class StampBrand: UICollectionViewCell {
     
     @IBOutlet var stampBrand: UIView!
     @IBOutlet var ivBrand: UIImageView!
     @IBOutlet var lblTotalStamp: UILabel!
     @IBOutlet var lblStamp: UILabel!
     
-    var isActive = false
-    var isSelectedState: Bool = false {
+    public var isActive = false
+    public var isSelectedState: Bool = false {
         didSet {
             updateAppearance()
         }
@@ -31,19 +31,20 @@ class StampBrand: UICollectionViewCell {
         setupStampBrand()
     }
     
-    override func awakeFromNib() {
+    override public func awakeFromNib() {
         super.awakeFromNib()
         
         setupUI()
     }
 
     private func setupStampBrand() {
-        if let nib = Bundle.main.loadNibNamed("StampBrand", owner: self, options: nil),
-           let card = nib.first as? UIView {
-            stampBrand = card
-            stampBrand.frame = contentView.bounds
-            stampBrand.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            contentView.addSubview(stampBrand)
+        let bundle = Bundle(for: type(of: self))
+        if let nib = bundle.loadNibNamed("StampBrand", owner: self, options: nil),
+           let view = nib.first as? UIView {
+            stampBrand = view
+            stampBrand.frame = bounds
+            stampBrand.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+            addSubview(stampBrand)
             
             setupUI()
         } else {
@@ -65,7 +66,7 @@ class StampBrand: UICollectionViewCell {
             UIColor.grey30.cgColor
         }
         
-        lblTotalStamp.font = Font.Body.B1.Medium.font
+        lblTotalStamp.font = Font.B1.Medium.font
         lblTotalStamp.text = "32"
         lblTotalStamp.textColor = UIColor.blue30
         
@@ -90,18 +91,18 @@ class StampBrand: UICollectionViewCell {
         }
     }
     
-    func loadBrand(
-        brandImage: String,
+    public func loadBrand(
+        brandImage: UIImage?,
         totalStamps: String
     ) {
-        ivBrand.image = UIImage(named: brandImage)
+        ivBrand.image = brandImage
         lblTotalStamp.text = totalStamps
         
         setNeedsLayout()
         layoutIfNeeded()
     }
     
-    func calculateHeight(for width: CGFloat) -> CGFloat {
+    public func calculateHeight(for width: CGFloat) -> CGFloat {
         stampBrand.layoutIfNeeded()
         
         let widthConstraint = stampBrand.widthAnchor.constraint(equalToConstant: width)
@@ -118,7 +119,7 @@ class StampBrand: UICollectionViewCell {
         return size.height
     }
 
-    func calculateWidth() -> CGFloat {
+    public func calculateWidth() -> CGFloat {
         stampBrand.layoutIfNeeded()
         return stampBrand.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).width
     }

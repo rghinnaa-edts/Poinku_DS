@@ -7,7 +7,7 @@
 
 import UIKit
 
-class StampBrandProduct: UICollectionViewCell {
+public class StampBrandProduct: UICollectionViewCell {
     
     @IBOutlet var stampBrandProduct: UIView!
     @IBOutlet var ivBrand: UIImageView!
@@ -28,19 +28,20 @@ class StampBrandProduct: UICollectionViewCell {
         setupStampBrandProduct()
     }
     
-    override func awakeFromNib() {
+    override public func awakeFromNib() {
         super.awakeFromNib()
         
         setupUI()
     }
 
     private func setupStampBrandProduct() {
-        if let nib = Bundle.main.loadNibNamed("StampBrandProduct", owner: self, options: nil),
-           let card = nib.first as? UIView {
-            stampBrandProduct = card
-            stampBrandProduct.frame = contentView.bounds
-            stampBrandProduct.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            contentView.addSubview(stampBrandProduct)
+        let bundle = Bundle(for: type(of: self))
+        if let nib = bundle.loadNibNamed("StampBrandProduct", owner: self, options: nil),
+           let view = nib.first as? UIView {
+            stampBrandProduct = view
+            stampBrandProduct.frame = bounds
+            stampBrandProduct.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+            addSubview(stampBrandProduct)
             
             setupUI()
         } else {
@@ -69,19 +70,19 @@ class StampBrandProduct: UICollectionViewCell {
         lblBrand.textColor = UIColor.grey80
         
         lblStamp.text = "Kamu Punya:"
-        lblStamp.font = Font.Body.B3.Small.font
+        lblStamp.font = Font.B3.Small.font
         lblStamp.textColor = UIColor.grey50
         
         lblTotalStamp.text = "80 Stamp"
-        lblTotalStamp.font = Font.Body.B3.Large.font
+        lblTotalStamp.font = Font.B3.Large.font
         lblTotalStamp.textColor = UIColor.orange30
         
         lblCoupon.text = "Kupon yang bisa ditukar:"
-        lblCoupon.font = Font.Body.B3.Small.font
+        lblCoupon.font = Font.B3.Small.font
         lblCoupon.textColor = UIColor.grey80
         
         let attributedSkip = NSAttributedString(string: "Lihat Semua", attributes: [
-            .font: Font.Body.B3.Small.font,
+            .font: Font.B3.Small.font,
             .foregroundColor: UIColor.blue30
         ])
         btnSeeAll.setAttributedTitle(attributedSkip, for: .normal)
@@ -117,7 +118,7 @@ class StampBrandProduct: UICollectionViewCell {
         collectionStampCard.dataSource = self
     }
     
-    func calculateHeight(for width: CGFloat) -> CGFloat {
+    public func calculateHeight(for width: CGFloat) -> CGFloat {
         let widthConstraint = stampBrandProduct.widthAnchor.constraint(equalToConstant: width)
         widthConstraint.isActive = true
         
@@ -132,17 +133,17 @@ class StampBrandProduct: UICollectionViewCell {
         return size.height
     }
     
-    func calculateWidth() -> CGFloat {
+    public func calculateWidth() -> CGFloat {
         return UIScreen.main.bounds.width - 32
     }
     
-    func loadBrandProduct(
+    public func loadBrandProduct(
         brandName: String,
-        brandImage: String,
+        brandImage: UIImage?,
         totalStamps: String
     ) {
         lblBrand.text = brandName
-        ivBrand.image = UIImage(named: brandImage)
+        ivBrand.image = brandImage
         lblTotalStamp.text = totalStamps
         
         setNeedsLayout()
@@ -152,19 +153,19 @@ class StampBrandProduct: UICollectionViewCell {
 }
 
 extension StampBrandProduct: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return 10
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "StampCardSmall", for: indexPath) as! StampCardSmall
         
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let cell = StampCardSmall()
         
@@ -174,7 +175,7 @@ extension StampBrandProduct: UICollectionViewDelegate, UICollectionViewDataSourc
         return CGSize(width: width, height: Int(height))
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
     }
     

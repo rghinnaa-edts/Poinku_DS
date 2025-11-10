@@ -98,12 +98,13 @@ public class CouponCardCell: UICollectionViewCell {
     }
 
     private func setupCouponCard() {
-        if let nib = Bundle.main.loadNibNamed("CouponCard", owner: self, options: nil),
-           let card = nib.first as? UIView {
-            couponCard = card
-            couponCard.frame = contentView.bounds
-            couponCard.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            contentView.addSubview(couponCard)
+        let bundle = Bundle(for: type(of: self))
+        if let nib = bundle.loadNibNamed("CouponCard", owner: self, options: nil),
+           let view = nib.first as? UIView {
+            couponCard = view
+            couponCard.frame = bounds
+            couponCard.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+            addSubview(couponCard)
             
             setupUI()
         } else {
@@ -130,7 +131,7 @@ public class CouponCardCell: UICollectionViewCell {
         couponCard.layer.masksToBounds = false
         
         lblCouponCard.textColor = UIColor.grey70
-        lblCouponCard.font = Font.Body.B3.Small.font
+        lblCouponCard.font = Font.B3.Small.font
         
         btnExchange.backgroundColor = UIColor.blue30
         btnExchange.layer.cornerRadius = 4
@@ -138,14 +139,12 @@ public class CouponCardCell: UICollectionViewCell {
         btnExchange.titleLabel?.font = Font.Button.Small.font
         
         lblCouponCard.text = "Diskon Rp2.000 Lifebuoy Red Fresh"
-        ivCouponCard.image = UIImage(named: "placeholder")
+//        ivCouponCard.image = UIImage(named: "placeholder")
     }
     
     private func UIAvailable() {
-        ivAvailable.image = if coupon < 10 && coupon > 0 {
-            UIImage(named: "exclamation")
-        } else {
-            UIImage(named: "product-empty")
+        if coupon > 10 && coupon < 0 {
+            ivAvailable.image = UIImage(named: "product-empty")
         }
         ivAvailable.image = ivAvailable.image?.withRenderingMode(.alwaysTemplate)
         
@@ -176,14 +175,14 @@ public class CouponCardCell: UICollectionViewCell {
     }
     
     private func UIikupon() {
-        ivIKupon.image = UIImage(named: "store-01")
+//        ivIKupon.image = UIImage(named: "store-01")
         ivIKupon.image = ivIKupon.image?.withRenderingMode(.alwaysTemplate)
         ivIKupon.tintColor = UIColor.primaryHighlightStrong
         
         vIKupon.backgroundColor = UIColor.primaryHighlightWeak
         vIKupon.layer.cornerRadius = 8
         vIKupon.layer.borderWidth = 1
-        vIKupon.layer.borderColor = UIColor.primaryHighlightStrong?.cgColor
+        vIKupon.layer.borderColor = UIColor.primaryHighlightStrong.cgColor
         
         lblIKupon.textColor = UIColor.primaryHighlightStrong
         lblIKupon.font = Font.B4.Small.font
@@ -196,7 +195,7 @@ public class CouponCardCell: UICollectionViewCell {
         ribbonView.triangleColor = UIColor.red50
         ribbonView.containerStartColor = UIColor.red20
         ribbonView.containerEndColor = UIColor.red50
-        ribbonView.textColor = .white
+        ribbonView.textColor = UIColor.white
         ribbonView.gravity = .start
 
         ribbonView.anchorToView(

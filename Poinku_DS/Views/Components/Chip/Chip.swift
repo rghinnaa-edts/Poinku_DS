@@ -128,7 +128,7 @@ public class Chip: UIView {
         }
         
         containerView?.layer.cornerRadius = 10
-        lblChip.font = Font.Body.B3.Small.font
+        lblChip.font = Font.B3.Small.font
         
         if isActive {
             containerView?.backgroundColor = activeColor

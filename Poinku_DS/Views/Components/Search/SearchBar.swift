@@ -90,7 +90,7 @@ public class SearchBar: UISearchBar {
             textField.clipsToBounds = true
             textField.backgroundColor = fieldBackgroundColor
             
-            textField.font = Font.Body.B3.Small.font
+            textField.font = Font.B3.Small.font
         }
     
     }

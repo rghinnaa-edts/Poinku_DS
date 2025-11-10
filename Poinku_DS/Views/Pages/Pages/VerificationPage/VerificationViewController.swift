@@ -71,15 +71,15 @@ class VerificationViewController: UIViewController {
         btnVerifWhatsapp.layer.cornerRadius = 8
         
         lblVerifOption.text = "atau verifikasi dengan"
-        lblVerifOption.font = Font.Body.B3.Small.font
+        lblVerifOption.font = Font.B3.Small.font
         lblVerifOption.textColor = UIColor.grey50
         
         lblResend.text = "Kirim ulang kode verifikasi"
-        lblResend.font = Font.Body.B3.Small.font
+        lblResend.font = Font.B3.Small.font
         lblResend.textColor = UIColor.grey50
         
         lblCounter.text = "00:30"
-        lblCounter.font = Font.Body.B3.Large.font
+        lblCounter.font = Font.B3.Large.font
         lblCounter.textColor = UIColor.grey80
         
         lblChangePhone.text = "Gant Nomor Handphone"

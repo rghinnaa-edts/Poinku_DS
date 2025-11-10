@@ -9,81 +9,81 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        
+//    }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.navigationController?.setNavigationBarHidden(false, animated: animated)
-        self.navigationController?.setToolbarHidden(true, animated: animated)
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        
+//        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+//        self.navigationController?.setToolbarHidden(true, animated: animated)
+//    }
     
-    @IBAction func GoToDoubleArc(_ sender: Any) {
-        let vc = UIStoryboard(name: "DoubleArcViewController", bundle: nil).instantiateViewController(withIdentifier: "DoubleArc")
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    @IBAction func GoToCard(_ sender: Any) {
-        let vc = UIStoryboard(name: "CardViewController", bundle: nil).instantiateViewController(withIdentifier: "Card")
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    @IBAction func GoToRibbon(_ sender: Any) {
-        let vc = UIStoryboard(name: "RibbonViewController", bundle: nil).instantiateViewController(withIdentifier: "Ribbon")
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    @IBAction func GoToScrolling(_ sender: Any) {
-        let vc = UIStoryboard(name: "ScrollingViewController", bundle: nil).instantiateViewController(withIdentifier: "Scrolling")
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    @IBAction func GoToSkeleton(_ sender: Any) {
-        let vc = UIStoryboard(name: "SkeletonViewController", bundle: nil).instantiateViewController(withIdentifier: "Skeleton")
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    @IBAction func GoToCoachmark(_ sender: Any) {
-        let vc = UIStoryboard(name: "CoachmarkViewController", bundle: nil).instantiateViewController(withIdentifier: "Coachmark")
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    @IBAction func GoToStampPage(_ sender: Any) {
-        let vc = UIStoryboard(name: "StampPageViewController", bundle: nil).instantiateViewController(withIdentifier: "StampPage")
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    @IBAction func GoToPoinLoyaltyPage(_ sender: Any) {
-        let vc = UIStoryboard(name: "PoinLoyaltyPageViewController", bundle: nil).instantiateViewController(withIdentifier: "PoinLoyaltyPage")
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    @IBAction func GoToOnBoarding(_ sender: Any) {
-        let vc = UIStoryboard(name: "OnBoardingViewController", bundle: nil).instantiateViewController(withIdentifier: "OnBoardingPage")
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    @IBAction func GotoProfile(_ sender: Any) {
-        let vc = UIStoryboard(name: "ProfileViewController", bundle: nil).instantiateViewController(withIdentifier: "ProfilePage")
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    @IBAction func GoToMGMCard(_ sender: Any) {
-        let vc = UIStoryboard(name: "MGMViewController", bundle: nil).instantiateViewController(withIdentifier: "MGMCardPage")
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    @IBAction func GoToRegister1(_ sender: Any) {
-        let vc = UIStoryboard(name: "Register1ViewController", bundle: nil).instantiateViewController(withIdentifier: "Register1Page")
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    @IBAction func GoToHome(_ sender: Any) {
-        let vc = UIStoryboard(name: "HomeViewController", bundle: nil).instantiateViewController(withIdentifier: "HomePage")
-        navigationController?.pushViewController(vc, animated: true)
-    }
+//    @IBAction func GoToDoubleArc(_ sender: Any) {
+//        let vc = UIStoryboard(name: "DoubleArcViewController", bundle: nil).instantiateViewController(withIdentifier: "DoubleArc")
+//        navigationController?.pushViewController(vc, animated: true)
+//    }
+//    
+//    @IBAction func GoToCard(_ sender: Any) {
+//        let vc = UIStoryboard(name: "CardViewController", bundle: nil).instantiateViewController(withIdentifier: "Card")
+//        navigationController?.pushViewController(vc, animated: true)
+//    }
+//    
+//    @IBAction func GoToRibbon(_ sender: Any) {
+//        let vc = UIStoryboard(name: "RibbonViewController", bundle: nil).instantiateViewController(withIdentifier: "Ribbon")
+//        navigationController?.pushViewController(vc, animated: true)
+//    }
+//    
+//    @IBAction func GoToScrolling(_ sender: Any) {
+//        let vc = UIStoryboard(name: "ScrollingViewController", bundle: nil).instantiateViewController(withIdentifier: "Scrolling")
+//        navigationController?.pushViewController(vc, animated: true)
+//    }
+//    
+//    @IBAction func GoToSkeleton(_ sender: Any) {
+//        let vc = UIStoryboard(name: "SkeletonViewController", bundle: nil).instantiateViewController(withIdentifier: "Skeleton")
+//        navigationController?.pushViewController(vc, animated: true)
+//    }
+//    
+//    @IBAction func GoToCoachmark(_ sender: Any) {
+//        let vc = UIStoryboard(name: "CoachmarkViewController", bundle: nil).instantiateViewController(withIdentifier: "Coachmark")
+//        navigationController?.pushViewController(vc, animated: true)
+//    }
+//    
+//    @IBAction func GoToStampPage(_ sender: Any) {
+//        let vc = UIStoryboard(name: "StampPageViewController", bundle: nil).instantiateViewController(withIdentifier: "StampPage")
+//        navigationController?.pushViewController(vc, animated: true)
+//    }
+//    
+//    @IBAction func GoToPoinLoyaltyPage(_ sender: Any) {
+//        let vc = UIStoryboard(name: "PoinLoyaltyPageViewController", bundle: nil).instantiateViewController(withIdentifier: "PoinLoyaltyPage")
+//        navigationController?.pushViewController(vc, animated: true)
+//    }
+//    
+//    @IBAction func GoToOnBoarding(_ sender: Any) {
+//        let vc = UIStoryboard(name: "OnBoardingViewController", bundle: nil).instantiateViewController(withIdentifier: "OnBoardingPage")
+//        navigationController?.pushViewController(vc, animated: true)
+//    }
+//    
+//    @IBAction func GotoProfile(_ sender: Any) {
+//        let vc = UIStoryboard(name: "ProfileViewController", bundle: nil).instantiateViewController(withIdentifier: "ProfilePage")
+//        navigationController?.pushViewController(vc, animated: true)
+//    }
+//    
+//    @IBAction func GoToMGMCard(_ sender: Any) {
+//        let vc = UIStoryboard(name: "MGMViewController", bundle: nil).instantiateViewController(withIdentifier: "MGMCardPage")
+//        navigationController?.pushViewController(vc, animated: true)
+//    }
+//    
+//    @IBAction func GoToRegister1(_ sender: Any) {
+//        let vc = UIStoryboard(name: "Register1ViewController", bundle: nil).instantiateViewController(withIdentifier: "Register1Page")
+//        navigationController?.pushViewController(vc, animated: true)
+//    }
+//    
+//    @IBAction func GoToHome(_ sender: Any) {
+//        let vc = UIStoryboard(name: "HomeViewController", bundle: nil).instantiateViewController(withIdentifier: "HomePage")
+//        navigationController?.pushViewController(vc, animated: true)
+//    }
 }
 

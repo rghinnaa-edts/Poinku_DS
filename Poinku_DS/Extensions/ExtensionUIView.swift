@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIView {
-    func startAnimationGradientBorder(width: CGFloat = 2, colors: [UIColor] = [.white, .blue30], duration: TimeInterval = 2.0) {
+    public func startAnimationGradientBorder(width: CGFloat = 2, colors: [UIColor] = [.white, .blue30], duration: TimeInterval = 2.0) {
         layer.removeAnimation(forKey: "gradientBorder")
         layer.borderWidth = 0
         layer.sublayers?.filter { $0.name == "gradientBorderLayer" }.forEach { $0.removeFromSuperlayer() }
@@ -62,7 +62,7 @@ extension UIView {
         gradientLayer.add(animationGroup, forKey: "moveGradient")
     }
  
-    func stopAnimationGradientBorder(withDuration duration: TimeInterval = 0.5) {
+    public func stopAnimationGradientBorder(withDuration duration: TimeInterval = 0.5) {
         layer.sublayers?.filter { $0.name == "gradientBorderLayer" }.forEach { gradientLayer in
             guard let gradientLayer = gradientLayer as? CAGradientLayer else { return }
             let presentationLayer = gradientLayer.presentation()
@@ -97,7 +97,7 @@ extension UIView {
         }
     }
     
-    func startAnimationNeonPulse(color: CGColor = UIColor.blue30.cgColor, duration: TimeInterval = 1.0) {
+    public func startAnimationNeonPulse(color: CGColor = UIColor.blue30.cgColor, duration: TimeInterval = 1.0) {
         self.layer.masksToBounds = false
         
         let pulseAnimation = CABasicAnimation(keyPath: "shadowRadius")
@@ -125,7 +125,7 @@ extension UIView {
         self.layer.add(opacityAnimation, forKey: "continuousOpacity")
     }
     
-    func stopAnimationNeonPulse() {
+    public func stopAnimationNeonPulse() {
         self.layer.removeAllAnimations()
         self.layer.shadowOpacity = 0
         self.layer.shadowRadius = 0

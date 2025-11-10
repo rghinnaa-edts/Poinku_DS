@@ -56,7 +56,7 @@ public class Coachmark: UIView {
         let listSpacingLeft: CGFloat?
         let listSpacingRight: CGFloat?
 
-        init(title: String, description: String, targetView: UIView, endTargetView: UIView? = nil, spotlightRadius: CGFloat = 4, tintColor: UIColor = UIColor.blue30, isBtnNextHide: Bool = false, isBtnSkipHide: Bool = false, btnSkipText: String = "Tutup", btnNextText: String = "Berikutnya", offsetMargin: CGFloat = 16, isListTarget: Bool = false, listSpacing: CGFloat = 8, listSpacingLeft: CGFloat? = nil, listSpacingRight: CGFloat? = nil) {
+        public init(title: String, description: String, targetView: UIView, endTargetView: UIView? = nil, spotlightRadius: CGFloat = 4, tintColor: UIColor = UIColor.blue30, isBtnNextHide: Bool = false, isBtnSkipHide: Bool = false, btnSkipText: String = "Tutup", btnNextText: String = "Berikutnya", offsetMargin: CGFloat = 16, isListTarget: Bool = false, listSpacing: CGFloat = 8, listSpacingLeft: CGFloat? = nil, listSpacingRight: CGFloat? = nil) {
             self.title = title
             self.description = description
             self.targetView = targetView
@@ -153,7 +153,7 @@ public class Coachmark: UIView {
         contentView?.alpha = 0
         triangleView?.alpha = 0
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+        DispatchQueue.main.async {
             if animated {
                 UIView.animate(withDuration: 0.1, animations: {
                     self.alpha = 1
@@ -245,13 +245,13 @@ public class Coachmark: UIView {
         lblDescription.font = Font.Paragraph.P2.Small.font
         lblDescription.textColor = UIColor.grey70
 
-        lblTotal.font = Font.Body.B3.Small.font
+        lblTotal.font = Font.B3.Small.font
         lblTotal.textColor = UIColor.grey50
         
-        lblCurrentStep.font = Font.Body.B3.Small.font
+        lblCurrentStep.font = Font.B3.Small.font
         lblCurrentStep.textColor = UIColor.grey50
         
-        lblTotalStep.font = Font.Body.B3.Small.font
+        lblTotalStep.font = Font.B3.Small.font
         lblTotalStep.textColor = UIColor.grey50
 
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleBackgroundTap(_:)))

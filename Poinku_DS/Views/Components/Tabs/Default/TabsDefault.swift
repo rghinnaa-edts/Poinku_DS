@@ -1,5 +1,5 @@
 //
-//  TabDefault.swift
+//  TabsDefault.swift
 //  KlikIDM-DS-UiKit
 //
 //  Created by Rizka Ghinna Auliya on 04/03/25.
@@ -7,25 +7,25 @@
 
 import UIKit
 
-class TabDefault: UIView {
+public class TabsDefault: UIView {
     
     @IBOutlet var containerView: UIView!
     @IBOutlet var collectionView: UICollectionView!
 
-    weak var delegate: TabDefaultDelegate?
+    public weak var delegate: TabsDefaultDelegate?
     
     private var cellIdentifier: String = ""
-    private var cellType: AnyClass = TabDefaultCell.self
+    private var cellType: AnyClass = TabsDefaultCell.self
     
-    var viewCell: UICollectionViewCell? = nil
-    private var _data: [TabDefaultModelProtocol] = []
-    var data: [TabDefaultModelProtocol] = [] {
+    public var viewCell: UICollectionViewCell? = nil
+    private var _data: [TabsDefaultModelProtocol] = []
+    public var data: [TabsDefaultModelProtocol] = [] {
         didSet {
             _data = data
             collectionView.reloadData()
         }
     }
-    var currentlySelectedBucketId: String? = nil
+    public var currentlySelectedBucketId: String? = nil
     
     private var width: CGFloat = 0
     private var height: CGFloat = 0
@@ -52,23 +52,26 @@ class TabDefault: UIView {
         setupChip()
     }
     
-    override func awakeFromNib() {
+    override public func awakeFromNib() {
         super.awakeFromNib()
         
-        setupUI()
+        DispatchQueue.main.async {
+            self.setupUI()
+        }
     }
 
     private func setupChip() {
-        if let nib = Bundle.main.loadNibNamed("TabDefault", owner: self, options: nil),
-           let card = nib.first as? UIView {
-            containerView = card
+        let bundle = Bundle(for: type(of: self))
+        if let nib = bundle.loadNibNamed("TabsDefault", owner: self, options: nil),
+           let view = nib.first as? UIView {
+            containerView = view
             containerView.frame = bounds
-            containerView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            containerView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
             addSubview(containerView)
             
             setupUI()
         } else {
-            print("Failed to load TabDefault XIB")
+            print("Failed to load TabsDefault XIB")
         }
     }
     
@@ -101,22 +104,22 @@ class TabDefault: UIView {
         collectionView.dataSource = self
     }
     
-    func registerCellType<T: UICollectionViewCell>(_ cellClass: T.Type, withIdentifier identifier: String) {
+    public func registerCellType<T: UICollectionViewCell>(_ cellClass: T.Type, withIdentifier identifier: String) {
         cellType = cellClass
         cellIdentifier = identifier
         collectionView.register(cellClass, forCellWithReuseIdentifier: identifier)
     }
     
-    func setData<T: TabDefaultModelProtocol>(_ tabData: [T]) {
+    public func setData<T: TabsDefaultModelProtocol>(_ tabData: [T]) {
         self.data = tabData
     }
     
-    func setSize(width: CGFloat, height: CGFloat) {
+    public func setSize(width: CGFloat, height: CGFloat) {
         self.width = width
         self.height = height
     }
     
-    func setItemPadding(topPadding: CGFloat = 0, leadingPadding: CGFloat = 16, bottomPadding: CGFloat = 0, trailingPadding: CGFloat = 16, itemSpacing: CGFloat = 12) {
+    public func setItemPadding(topPadding: CGFloat = 0, leadingPadding: CGFloat = 16, bottomPadding: CGFloat = 0, trailingPadding: CGFloat = 16, itemSpacing: CGFloat = 12) {
         self.itemSpacing = itemSpacing
         self.topPadding = topPadding
         self.leadingPadding = leadingPadding
@@ -126,7 +129,7 @@ class TabDefault: UIView {
         setupUI()
     }
     
-    func setDynamicWidth(enabled: Bool, minWidth: CGFloat = 60, maxWidth: CGFloat = 200, horizontalPadding: CGFloat = 16) {
+    public func setDynamicWidth(enabled: Bool, minWidth: CGFloat = 60, maxWidth: CGFloat = 200, horizontalPadding: CGFloat = 16) {
         self.useDynamicWidth = enabled
         self.minWidth = minWidth
         self.maxWidth = maxWidth
@@ -135,11 +138,11 @@ class TabDefault: UIView {
         setupUI()
     }
     
-    func enableDynamicWidth() {
+    public func enableDynamicWidth() {
         setDynamicWidth(enabled: true)
     }
     
-    func disableDynamicWidth() {
+    public func disableDynamicWidth() {
         setDynamicWidth(enabled: false)
     }
     
@@ -150,16 +153,16 @@ class TabDefault: UIView {
         return max(minWidth, min(maxWidth, calculatedWidth))
     }
     
-    func selectDefaultChip() {
+    public func selectDefaultChip() {
         guard !data.isEmpty else { return }
                 
         let defaultSelectedIndexPath = IndexPath(item: 0, section: 0)
         currentlySelectedBucketId = data[0].id
         
-        if let cell = collectionView.cellForItem(at: defaultSelectedIndexPath) as? TabDefaultCellProtocol {
+        if let cell = collectionView.cellForItem(at: defaultSelectedIndexPath) as? TabsDefaultCellProtocol {
             for index in 0..<data.count {
                 let indexPath = IndexPath(item: index, section: 0)
-                if let otherCell = collectionView.cellForItem(at: indexPath) as? TabDefaultCellProtocol {
+                if let otherCell = collectionView.cellForItem(at: indexPath) as? TabsDefaultCellProtocol {
                     otherCell.isSelectedState = false
                 }
             }
@@ -176,30 +179,31 @@ class TabDefault: UIView {
     
 }
 
-protocol TabDefaultDelegate: AnyObject {
+@MainActor
+public protocol TabsDefaultDelegate: AnyObject {
     func didSelectTabDefault(at index: Int, withId id: String)
 }
 
-protocol TabDefaultModelProtocol {
+public protocol TabsDefaultModelProtocol {
     var id: String { get }
     var title: String { get }
 }
 
-protocol TabDefaultCellProtocol: UICollectionViewCell {
-    func loadData(item: TabDefaultModelProtocol)
+public protocol TabsDefaultCellProtocol: UICollectionViewCell {
+    func loadData(item: TabsDefaultModelProtocol)
     var isSelectedState: Bool { get set }
 }
 
-extension TabDefault: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+extension TabsDefault: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return data.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath)
         
-        if let chipCell = cell as? TabDefaultCellProtocol {
+        if let chipCell = cell as? TabsDefaultCellProtocol {
             let chipData = data[indexPath.item]
             chipCell.loadData(item: chipData)
             chipCell.isSelectedState = (chipData.id == currentlySelectedBucketId)
@@ -209,7 +213,7 @@ extension TabDefault: UICollectionViewDelegate, UICollectionViewDataSource, UICo
         
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         if useDynamicWidth {
             let displayText = data[indexPath.item].title
@@ -220,15 +224,15 @@ extension TabDefault: UICollectionViewDelegate, UICollectionViewDataSource, UICo
         return CGSize(width: width, height: height)
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         for index in 0..<data.count {
             let deselectIndexPath = IndexPath(item: index, section: 0)
-            if let cell = collectionView.cellForItem(at: deselectIndexPath) as? TabDefaultCellProtocol {
+            if let cell = collectionView.cellForItem(at: deselectIndexPath) as? TabsDefaultCellProtocol {
                 cell.isSelectedState = false
             }
         }
         
-        if let cell = collectionView.cellForItem(at: indexPath) as? TabDefaultCellProtocol {
+        if let cell = collectionView.cellForItem(at: indexPath) as? TabsDefaultCellProtocol {
             cell.isSelectedState = true
         }
         

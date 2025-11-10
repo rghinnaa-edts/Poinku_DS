@@ -1,5 +1,5 @@
 //
-//  TabSquareRoundCell.swift
+//  TabsSquareRoundCell.swift
 //  KlikIDM-DS-UiKit
 //
 //  Created by Rizka Ghinna Auliya on 09/05/25.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TabSquareRoundCell: UICollectionViewCell {
+class TabsSquareRoundCell: UICollectionViewCell {
     
     @IBOutlet var containerView: UIView!
     @IBOutlet var vChip: UIView!
@@ -34,14 +34,14 @@ class TabSquareRoundCell: UICollectionViewCell {
     
     private func setupChipPromo() {
         let bundle = Bundle(for: type(of: self))
-        if let nib = bundle.loadNibNamed("TabSquareRoundCell", owner: self, options: nil),
+        if let nib = bundle.loadNibNamed("TabsSquareRoundCell", owner: self, options: nil),
            let view = nib.first as? UIView {
             containerView = view
             addSubview(containerView)
             containerView.frame = bounds
             containerView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         } else {
-            print("Failed to load TabSquareRoundCell nib")
+            print("Failed to load TabsSquareRoundCell nib")
         }
         
         setupUI()
@@ -69,7 +69,7 @@ class TabSquareRoundCell: UICollectionViewCell {
         }
     }
     
-    func loadData(data: TabSquareRoundModel) {
+    func loadData(data: TabsSquareRoundModel) {
         lblTitle.text = data.title
         
         setupBackground(isEnable: isEnable)

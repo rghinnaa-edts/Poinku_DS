@@ -69,12 +69,13 @@ public class StampCardSmall: UICollectionViewCell {
     }
 
     private func setupStampCard() {
-        if let nib = Bundle.main.loadNibNamed("StampCardSmall", owner: self, options: nil),
-           let card = nib.first as? UIView {
-            stampCard = card
-            stampCard.frame = contentView.bounds
-            stampCard.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            contentView.addSubview(stampCard)
+        let bundle = Bundle(for: type(of: self))
+        if let nib = bundle.loadNibNamed("StampCardSmall", owner: self, options: nil),
+           let view = nib.first as? UIView {
+            stampCard = view
+            stampCard.frame = bounds
+            stampCard.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+            addSubview(stampCard)
             
             setupUI()
         } else {
@@ -99,7 +100,7 @@ public class StampCardSmall: UICollectionViewCell {
         stampCard.layer.borderColor = UIColor.blue30.cgColor
         
         lblStampCard.textColor = UIColor.grey70
-        lblStampCard.font = Font.Body.B3.Small.font
+        lblStampCard.font = Font.B3.Small.font
         
         btnExchange.titleLabel?.text = "Tukar Stamp"
         btnExchange.backgroundColor = UIColor.blue30
@@ -108,7 +109,7 @@ public class StampCardSmall: UICollectionViewCell {
         btnExchange.titleLabel?.font = Font.Button.Small.font
         
         lblStampCard.text = "Diskon Rp2.000 Lifebuoy Red Fresh"
-        ivStampCard.image = UIImage(named: "product-image")
+//        ivStampCard.image = UIImage(named: "product-image")
     }
     
     private func UIQuantity() {
@@ -153,7 +154,7 @@ public class StampCardSmall: UICollectionViewCell {
         vStamp.backgroundColor = UIColor.highlightWeak
         vStamp.layer.cornerRadius = 8
         vStamp.layer.borderWidth = 1
-        vStamp.layer.borderColor = UIColor.warningStrong?.cgColor
+        vStamp.layer.borderColor = UIColor.warningStrong.cgColor
         
         lblStamp.textColor = UIColor.warningStrong
         lblStamp.font = Font.B4.Small.font

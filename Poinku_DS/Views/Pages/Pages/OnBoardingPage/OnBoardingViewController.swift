@@ -9,7 +9,7 @@ import UIKit
 
 class OnBoardingViewController: UIViewController {
     
-    @IBOutlet var onBoarding: OnBoarding2!
+    @IBOutlet var onBoarding: OnBoarding!
     
     @IBOutlet var btnRegister: UIButton!
     @IBOutlet var btnLogin: UIButton!
@@ -58,33 +58,33 @@ class OnBoardingViewController: UIViewController {
     
     private func setupSlides() {
         onBoarding.slides = [
-            OnBoarding2Slide(
-                imageIllustration: UIImage(named: "illustration-onboard1"),
-                imageBackground: UIImage(named: "bg-onboard1"),
-                title: "Kumpulin Poin, Dapat Hadiah!",
-                description: "Kumpulin Poin & Stamp dari setiap transaksi, tukarkan dengan hadiah yang cuma ada di sini!"),
-            OnBoarding2Slide(
-                imageIllustration: UIImage(named: "illustration-onboard2"),
-                imageBackground: UIImage(named: "bg-onboard2"),
-                title: "Member Lebih Untung!",
-                description: "Nikmati berbagai Promo Khusus Member, Diskon, Bonus, sampai Belanja Gratis, dijamin untung banget!"),
-            OnBoarding2Slide(
-                imageIllustration: UIImage(named: "illustration-onboard3"),
-                imageBackground: UIImage(named: "bg-onboard3"),
-                title: "Semua Ada di Poinku",
-                description: "Cek katalog promo terbaru, info event seru, sampai cek struk belanja, semua dalam satu aplikasi!")
-//            OnBoardingSlide(
-//                image: UIImage(named: "onboard1"),
+//            OnBoarding2Slide(
+//                imageIllustration: UIImage(named: "illustration-onboard1"),
+//                imageBackground: UIImage(named: "bg-onboard1"),
 //                title: "Kumpulin Poin, Dapat Hadiah!",
 //                description: "Kumpulin Poin & Stamp dari setiap transaksi, tukarkan dengan hadiah yang cuma ada di sini!"),
-//            OnBoardingSlide(
-//                image: UIImage(named: "onboard2"),
+//            OnBoarding2Slide(
+//                imageIllustration: UIImage(named: "illustration-onboard2"),
+//                imageBackground: UIImage(named: "bg-onboard2"),
 //                title: "Member Lebih Untung!",
 //                description: "Nikmati berbagai Promo Khusus Member, Diskon, Bonus, sampai Belanja Gratis, dijamin untung banget!"),
-//            OnBoardingSlide(
-//                image: UIImage(named: "onboard3"),
+//            OnBoarding2Slide(
+//                imageIllustration: UIImage(named: "illustration-onboard3"),
+//                imageBackground: UIImage(named: "bg-onboard3"),
 //                title: "Semua Ada di Poinku",
 //                description: "Cek katalog promo terbaru, info event seru, sampai cek struk belanja, semua dalam satu aplikasi!")
+            OnBoardingSlide(
+                image: UIImage(named: "onboard1"),
+                title: "Kumpulin Poin, Dapat Hadiah!",
+                description: "Kumpulin Poin & Stamp dari setiap transaksi, tukarkan dengan hadiah yang cuma ada di sini!"),
+            OnBoardingSlide(
+                image: UIImage(named: "onboard2"),
+                title: "Member Lebih Untung!",
+                description: "Nikmati berbagai Promo Khusus Member, Diskon, Bonus, sampai Belanja Gratis, dijamin untung banget!"),
+            OnBoardingSlide(
+                image: UIImage(named: "onboard3"),
+                title: "Semua Ada di Poinku",
+                description: "Cek katalog promo terbaru, info event seru, sampai cek struk belanja, semua dalam satu aplikasi!")
         ]
     }
     

@@ -97,12 +97,13 @@ public class StampCardCell: UICollectionViewCell {
     }
 
     private func setupStampCard() {
-        if let nib = Bundle.main.loadNibNamed("StampCard", owner: self, options: nil),
-           let card = nib.first as? UIView {
-            stampCard = card
-            stampCard.frame = contentView.bounds
-            stampCard.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            contentView.addSubview(stampCard)
+        let bundle = Bundle(for: type(of: self))
+        if let nib = bundle.loadNibNamed("StampCard", owner: self, options: nil),
+           let view = nib.first as? UIView {
+            stampCard = view
+            stampCard.frame = bounds
+            stampCard.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+            addSubview(stampCard)
             
             setupUI()
         } else {
@@ -134,7 +135,7 @@ public class StampCardCell: UICollectionViewCell {
         vQuantity.clipsToBounds = true
         
         lblStampCard.textColor = UIColor.grey70
-        lblStampCard.font = Font.Body.B3.Small.font
+        lblStampCard.font = Font.B3.Small.font
         
         btnExchange.titleLabel?.text = "Tukar Stamp"
         btnExchange.backgroundColor = UIColor.blue30
@@ -143,15 +144,14 @@ public class StampCardCell: UICollectionViewCell {
         btnExchange.titleLabel?.font = Font.Button.Small.font
         
         lblStampCard.text = "Diskon Rp2.000 Kellogg’s Frosted Flakes "
-        ivStampCard.image = UIImage(named: "product-image")
+//        ivStampCard.image = UIImage(named: "product-image")
     }
     
     private func UICoupon() {
-        ivQuantity.image = if quantity < 10 && quantity > 0 {
-            UIImage(named: "exclamation")
-        } else {
-            UIImage(named: "product-empty")
+        if quantity > 10 && quantity < 0 {
+            ivQuantity.image = UIImage(named: "product-empty")
         }
+        
         ivQuantity.image = ivQuantity.image?.withRenderingMode(.alwaysTemplate)
         
         ivQuantity.tintColor = if quantity < 10 && quantity > 0 {
@@ -184,7 +184,7 @@ public class StampCardCell: UICollectionViewCell {
         vStamp.backgroundColor = UIColor.highlightWeak
         vStamp.layer.cornerRadius = 8
         vStamp.layer.borderWidth = 1
-        vStamp.layer.borderColor = UIColor.warningStrong?.cgColor
+        vStamp.layer.borderColor = UIColor.warningStrong.cgColor
         
         lblStamp.textColor = UIColor.warningStrong
         lblStamp.font = Font.B4.Small.font

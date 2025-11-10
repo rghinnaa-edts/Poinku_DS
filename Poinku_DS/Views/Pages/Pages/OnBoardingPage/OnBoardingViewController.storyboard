@@ -54,7 +54,7 @@
                                     <constraint firstItem="FN8-7z-Y01" firstAttribute="leading" secondItem="TJd-jY-qJ8" secondAttribute="leading" constant="16" id="kRt-hB-T6H"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="24x-g9-Bpb" customClass="OnBoarding2" customModule="Poinku_DS" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="24x-g9-Bpb" customClass="OnBoarding" customModule="Poinku_DS" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="118" width="393" height="628"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
